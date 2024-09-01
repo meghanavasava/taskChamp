@@ -1,5 +1,5 @@
 import { ref, set, update } from "firebase/database";
-import { realDb } from "./firebaseConfig";
+import { realDb } from "./firebase";
 
 export const createUser = (userId, userData) => {
   const userRef = ref(realDb, "users/" + userId);

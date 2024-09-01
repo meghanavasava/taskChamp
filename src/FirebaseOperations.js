@@ -3,8 +3,9 @@ import { realDb } from "./firebaseConfig";
 import { User } from "./models/User";
 import { Task } from "./models/Task";
 
-export const createUserInFirebase = (userId, user) => {
-  const userRef = ref(realDb, "users/" + userId);
+// Function to create a user in Firebase
+export const createUserInFirebase = (user) => {
+  const userRef = ref(realDb, `users/${user.userId}`);
   return set(userRef, user)
     .then(() => {
       console.log("User created successfully!");
@@ -14,8 +15,9 @@ export const createUserInFirebase = (userId, user) => {
     });
 };
 
-export const addTaskToUserInFirebase = (userId, taskId, task) => {
-  const taskRef = ref(realDb, `users/${userId}/tasks/${taskId}`);
+// Function to add a task to a user in Firebase
+export const addTaskToUserInFirebase = (userId, task) => {
+  const taskRef = ref(realDb, `users/${userId}/tasks/${task.taskId}`);
   return set(taskRef, task)
     .then(() => {
       console.log("Task added successfully!");
@@ -26,20 +28,29 @@ export const addTaskToUserInFirebase = (userId, taskId, task) => {
 };
 
 // Example usage
-const setupUserAndTask = () => {
-  const userId = "userId1"; // Example user ID
-  const user = new User("user1", "password1", "01-01-2000", "CountryName");
-  const task = new Task("01-09-2024", "Example Task", "medium", false);
+// export const setupUserAndTask = () => {
+//   const userId = "userId1"; // Example user ID
+//   const user = new User(
+//     userId,
+//     "user1",
+//     "password1",
+//     "01-01-2000",
+//     "CountryName"
+//   );
 
-  user.addTask("taskId1", task);
+//   const taskId = "taskId1"; // Example task ID
+//   const task = new Task(taskId, "01-09-2024", "Example Task", "medium", false);
 
-  return createUserInFirebase(userId, user)
-    .then(() => {
-      return addTaskToUserInFirebase(userId, "taskId1", user.tasks["taskId1"]);
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
-};
+//   // Add task to the user
+//   user.addTask(taskId, task);
 
-export { setupUserAndTask };
+//   // Save user to Firebase
+//   return createUserInFirebase(user)
+//     .then(() => {
+//       // Save task to Firebase
+//       return addTaskToUserInFirebase(user.userId, task);
+//     })
+//     .catch((error) => {
+//       console.error("Error:", error);
+//     });
+// };

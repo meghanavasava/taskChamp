@@ -1,5 +1,6 @@
 export class User {
-  constructor(username, password, birthdate, country) {
+  constructor(userId, username, password, birthdate, country) {
+    this.userId = userId; 
     this.username = username;
     this.password = password;
     this.birthdate = birthdate;
@@ -7,8 +8,8 @@ export class User {
     this.tasks = {};
   }
 
-  addTask(taskId, task) {
-    this.tasks[taskId] = task;
+  addTask(task) {
+    this.tasks[task.taskId] = task;
   }
 }
 

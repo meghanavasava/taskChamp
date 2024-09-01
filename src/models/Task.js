@@ -1,8 +1,11 @@
 export class Task {
-  constructor(date, taskname, level, is_done) {
-    this.date = date; 
+  constructor(taskId, date, taskname, level, is_done) {
+    this.taskId = taskId;
+    this.date = date;
     this.taskname = taskname;
-    this.level = level; 
+    this.level = level;
     this.is_done = is_done;
   }
 }
+
+// Format is provided on WhatsApp
