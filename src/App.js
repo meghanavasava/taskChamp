@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import MyComponent from "./Components/MyComponent";
 //import { setupUserAndTask } from "./FirebaseOperations";
 
 function App() {
