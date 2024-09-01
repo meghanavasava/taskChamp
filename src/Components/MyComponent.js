@@ -1,25 +1,39 @@
 import React from "react";
-import { ref, set } from "firebase/database";
-import { realDb } from "../firebase";
+import { User } from "../models/User";
+import { Task } from "../models/Task";
 
 const MyComponent = () => {
-  const handleClick = () => {
-    const data = {
-      message: "Button was clicked!",
-      timestamp: new Date().toISOString(),
-    };
+  const handleClick = async () => {
+    try {
+      const userId = `user_${Date.now()}`;
+      const user = new User(
+        userId,
+        "JohnDoe",
+        "securepassword123",
+        "1990-01-01",
+        "USA"
+      );
 
-    const newEntryId = Date.now(); // Or use another method to generate a unique ID
+      await user.save();
+      console.log("User created successfully!");
 
-    const dataRef = ref(realDb, "clicks/" + newEntryId);
+      const task = new Task(
+        `task_${Date.now()}`,
+        new Date().toISOString(),
+        "Sample Task",
+        "High",
+        false
+      );
 
-    set(dataRef, data)
-      .then(() => {
-        console.log("Data added successfully!");
-      })
-      .catch((error) => {
-        console.error("Error adding data:", error);
-      });
+      await task.save(userId);
+      console.log("Task added successfully!");
+
+      task.is_done = true;
+      await task.update(userId);
+      console.log("Task updated successfully!");
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
   return (
