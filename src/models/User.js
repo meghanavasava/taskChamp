@@ -2,7 +2,7 @@ export class User {
   constructor(username, password, birthdate, country) {
     this.username = username;
     this.password = password;
-    this.birthdate = birthdate; // Format: DD-MM-YYYY
+    this.birthdate = birthdate;
     this.country = country;
     this.tasks = {};
   }
@@ -11,3 +11,5 @@ export class User {
     this.tasks[taskId] = task;
   }
 }
+
+// Format is provided on WhatsApp
