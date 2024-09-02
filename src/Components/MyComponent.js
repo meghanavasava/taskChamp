@@ -8,10 +8,10 @@ const MyComponent = () => {
       const userId = `user_${Date.now()}`;
       const user = new User(
         userId,
-        "JohnDoe",
-        "securepassword123",
-        "1990-01-01",
-        "USA"
+        "Khushi Patel",
+        "khushi123",
+        "13-04-2004",
+        "India"
       );
 
       await user.save();
@@ -20,9 +20,9 @@ const MyComponent = () => {
       const task = new Task(
         `task_${Date.now()}`,
         new Date().toISOString(),
-        "Sample Task",
-        "High",
-        false
+        "Sample Task2",
+        "Medium",
+        true
       );
 
       await task.save(userId);
