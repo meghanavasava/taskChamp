@@ -26,7 +26,7 @@ function App() {
 
   return (
     <div>
-      <StreakCalendar></StreakCalendar>
+      <MyComponent></MyComponent>
     </div>
   );
 }

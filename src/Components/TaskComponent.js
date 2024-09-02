@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Task } from "../models/Task";
 
-const TaskComponent = ({ task, onLevelChange }) => {
+const TaskComponent = ({ task, userId, onLevelChange }) => {
   const [currentLevel, setCurrentLevel] = useState(task.level);
 
   const handleLevelChange = async (e) => {
@@ -9,7 +9,7 @@ const TaskComponent = ({ task, onLevelChange }) => {
     setCurrentLevel(newLevel);
 
     task.level = newLevel;
-    await task.update(task.userId);
+    await task.update(userId);
     onLevelChange(newLevel);
   };
 
