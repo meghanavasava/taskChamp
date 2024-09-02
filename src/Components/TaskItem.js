@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Task } from "../models/Task";
 
 const TaskItem = ({ task, userId }) => {
   const [isDone, setIsDone] = useState(task.is_done);

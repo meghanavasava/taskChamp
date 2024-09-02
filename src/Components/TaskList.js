@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Task } from "../models/Task";
-import TaskItem from "./TaskItem"; // A component to render each task
+import { User } from "../models/User";
+import TaskItem from "./TaskItem";
 
 const TaskList = ({ userId }) => {
   const [tasks, setTasks] = useState([]);
@@ -9,20 +9,18 @@ const TaskList = ({ userId }) => {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const tasksSnapshot = await Task.fetch(userId); // Fetch all tasks for the user
-        const tasksArray = [];
-        tasksSnapshot.forEach((taskId) => {
-          const taskData = taskId.val();
-          tasksArray.push(
-            new Task(
-              taskId.key,
-              taskData.date,
-              taskData.taskname,
-              taskData.level,
-              taskData.is_done
-            )
+        const user = await User.fetch(userId);
+        const tasksArray = Object.keys(user.tasks).map((taskId) => {
+          const taskData = user.tasks[taskId];
+          return new Task(
+            taskId,
+            taskData.date,
+            taskData.taskname,
+            taskData.level,
+            taskData.is_done
           );
         });
+        console.log("Fetched tasks:", tasksArray); // Debug log
         setTasks(tasksArray);
       } catch (error) {
         console.error("Error fetching tasks:", error);
