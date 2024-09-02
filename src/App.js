@@ -3,6 +3,8 @@ import logo from "./logo.svg";
 import "./App.css";
 import MyComponent from "./Components/MyComponent";
 import StreakCalendar from "./Components/StreakCalendar";
+import TaskForm from "./Components/TaskForm";
+import TaskList from "./Components/TaskList";
 
 function App() {
   // return (
@@ -24,9 +26,19 @@ function App() {
   //   </div>
   // );
 
+  // return (
+  //   <div>
+  //     <MyComponent></MyComponent>
+  //   </div>
+  // );
+
+  const userId = "user_1725245987061";
   return (
-    <div>
-      <MyComponent></MyComponent>
+    <div className="App">
+      <h1>Add Task</h1>
+      <TaskForm userId={userId} />
+      <h1>Your Task List</h1>
+      <TaskList userId={userId} />
     </div>
   );
 }
