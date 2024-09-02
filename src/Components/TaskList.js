@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { User } from "../models/User";
+import { Task } from "../models/Task";
 import TaskItem from "./TaskItem";
 
 const TaskList = ({ userId }) => {
