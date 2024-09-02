@@ -18,10 +18,10 @@ const TaskItem = ({ task, userId }) => {
   return (
     <div className={`task-item ${isDone ? "done" : ""}`}>
       <h3>{task.taskname}</h3>
-      <p>Due Date: {task.date}</p>
-      <p>Priority: {task.level}</p>
+      <p>Due Date : {task.date}</p>
+      <p>Level : {task.level}</p>
       <label>
-        Done:
+        Done :
         <input type="checkbox" checked={isDone} onChange={handleToggleDone} />
       </label>
     </div>
