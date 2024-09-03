@@ -1,7 +1,23 @@
 import React, { useState } from "react";
+import { ref, set, get } from "firebase/database";
+import { realDb } from "../firebase";
 
-const TaskItem = ({ task, priority, userId, upList, downList, deleteList }) => {
+const TaskItem = ({ task, userId, upList, downList, deleteList }) => {
   const [isDone, setIsDone] = useState(task.is_done);
+
+  const handleDeleteClick = () => {
+    const taskRef = ref(realDb, `users/${userId}/tasks/${task.taskId}`);
+    set(taskRef, null);
+    deleteList(task.priority - 1);
+  };
+
+  const handleUpClick = () => {
+    upList(task.priority - 1);
+  };
+
+  const handleDownClick = () => {
+    downList(task.priority - 1);
+  };
 
   const handleToggleDone = async () => {
     task.is_done = !isDone;
@@ -23,9 +39,9 @@ const TaskItem = ({ task, priority, userId, upList, downList, deleteList }) => {
         Done :
         <input type="checkbox" checked={isDone} onChange={handleToggleDone} />
       </label>
-      <button onClick={() => deleteList(priority - 1)}>Delete</button>
-      <button onClick={() => upList(priority - 1)}>Up</button>
-      <button onClick={() => downList(priority - 1)}>Down</button>
+      <button onClick={handleDeleteClick}>Delete</button>
+      <button onClick={handleUpClick}>Up</button>
+      <button onClick={handleDownClick}>Down</button>
     </div>
   );
 };
