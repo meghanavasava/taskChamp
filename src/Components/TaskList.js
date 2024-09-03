@@ -12,7 +12,6 @@ const TaskList = ({ userId }) => {
       ...task,
       priority: index + 1,
     }));
-
     setTasks(updatedTasks);
   }
 
@@ -76,7 +75,6 @@ const TaskList = ({ userId }) => {
       {tasks.map((task, index) => (
         <TaskItem
           key={index}
-          priority={task.priority}
           task={task}
           userId={userId}
           upList={upList}
