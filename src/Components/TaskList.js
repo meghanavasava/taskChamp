@@ -16,6 +16,12 @@ const TaskList = ({ userId }) => {
     setTasks(updatedTasks);
   }
 
+  function deleteList(index) {
+    const temp = [...tasks];
+    temp.splice(index, 1);
+    updatePriorities(temp);
+  }
+
   function upList(index) {
     if (index > 0) {
       const temp = [...tasks];
@@ -75,6 +81,7 @@ const TaskList = ({ userId }) => {
           userId={userId}
           upList={upList}
           downList={downList}
+          deleteList={deleteList}
         />
       ))}
     </div>

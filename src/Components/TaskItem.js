@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const TaskItem = ({ task, priority, userId, upList, downList }) => {
+const TaskItem = ({ task, priority, userId, upList, downList, deleteList }) => {
   const [isDone, setIsDone] = useState(task.is_done);
 
   const handleToggleDone = async () => {
@@ -23,7 +23,7 @@ const TaskItem = ({ task, priority, userId, upList, downList }) => {
         Done :
         <input type="checkbox" checked={isDone} onChange={handleToggleDone} />
       </label>
-      {/* <button onClick={() => deleteList(priority - 1)}>Delete</button> */}
+      <button onClick={() => deleteList(priority - 1)}>Delete</button>
       <button onClick={() => upList(priority - 1)}>Up</button>
       <button onClick={() => downList(priority - 1)}>Down</button>
     </div>
