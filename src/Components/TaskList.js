@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { User } from "../models/User";
 import { Task } from "../models/Task";
 import TaskItem from "./TaskItem";
+import { ref, set, get } from "firebase/database";
+import { realDb } from "../firebase";
 
 const TaskList = ({ userId }) => {
   const [tasks, setTasks] = useState([]);
@@ -13,6 +15,16 @@ const TaskList = ({ userId }) => {
       priority: index + 1,
     }));
     setTasks(updatedTasks);
+    updatedTasks.forEach(async (task) => {
+      const taskRef = ref(realDb, `users/${userId}/tasks/${task.taskId}`);
+      return set(taskRef, {
+        date: task.date,
+        taskname: task.taskname,
+        level: task.level,
+        is_done: task.is_done,
+        priority: task.priority,
+      });
+    });
   }
 
   function deleteList(index) {

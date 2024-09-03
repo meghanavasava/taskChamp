@@ -41,7 +41,7 @@ export class Task {
     });
   }
 
-  update(userId) {
+  async update(userId) {
     const taskRef = ref(realDb, `users/${userId}/tasks/${this.taskId}`);
     return set(taskRef, {
       date: this.date,

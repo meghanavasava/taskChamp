@@ -9,10 +9,12 @@ const TaskItem = ({ task, userId, upList, downList, deleteList }) => {
 
   const handleUpClick = () => {
     upList(task.priority - 1);
+    //task.update(userId);
   };
 
   const handleDownClick = () => {
     downList(task.priority - 1);
+    //task.update(userId);
   };
 
   const handleToggleDone = async () => {
