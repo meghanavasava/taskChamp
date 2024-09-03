@@ -52,6 +52,11 @@ export class Task {
     });
   }
 
+  async delete(userId) {
+    const taskRef = ref(realDb, `users/${userId}/tasks/${this.taskId}`);
+    return set(taskRef, null);
+  }
+
   static async getNextPriority(userId, date) {
     const userRef = ref(realDb, `users/${userId}/tasks`);
     const snapshot = await get(userRef);

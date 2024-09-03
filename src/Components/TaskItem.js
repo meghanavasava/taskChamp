@@ -1,20 +1,22 @@
 import React, { useState } from "react";
+import { ref, set, get } from "firebase/database";
+import { realDb } from "../firebase";
 
 const TaskItem = ({ task, userId, upList, downList, deleteList }) => {
   const [isDone, setIsDone] = useState(task.is_done);
 
   const handleDeleteClick = () => {
+    const taskRef = ref(realDb, `users/${userId}/tasks/${task.taskId}`);
+    set(taskRef, null);
     deleteList(task.priority - 1);
   };
 
   const handleUpClick = () => {
     upList(task.priority - 1);
-    //task.update(userId);
   };
 
   const handleDownClick = () => {
     downList(task.priority - 1);
-    //task.update(userId);
   };
 
   const handleToggleDone = async () => {
