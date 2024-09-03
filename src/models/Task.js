@@ -41,7 +41,7 @@ export class Task {
     });
   }
 
-  update(userId) {
+  async update(userId) {
     const taskRef = ref(realDb, `users/${userId}/tasks/${this.taskId}`);
     return set(taskRef, {
       date: this.date,
@@ -50,6 +50,11 @@ export class Task {
       is_done: this.is_done,
       priority: this.priority,
     });
+  }
+
+  async delete(userId) {
+    const taskRef = ref(realDb, `users/${userId}/tasks/${this.taskId}`);
+    return set(taskRef, null);
   }
 
   static async getNextPriority(userId, date) {
