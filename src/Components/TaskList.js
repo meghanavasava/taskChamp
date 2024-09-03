@@ -7,6 +7,37 @@ const TaskList = ({ userId }) => {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  function updatePriorities(temp) {
+    const updatedTasks = temp.map((task, index) => ({
+      ...task,
+      priority: index + 1,
+    }));
+
+    setTasks(updatedTasks);
+  }
+
+  function deleteList(index) {
+    const temp = [...tasks];
+    temp.splice(index, 1);
+    updatePriorities(temp);
+  }
+
+  function upList(index) {
+    if (index > 0) {
+      const temp = [...tasks];
+      [temp[index], temp[index - 1]] = [temp[index - 1], temp[index]];
+      updatePriorities(temp);
+    }
+  }
+
+  function downList(index) {
+    if (index < tasks.length - 1) {
+      const temp = [...tasks];
+      [temp[index], temp[index + 1]] = [temp[index + 1], temp[index]];
+      updatePriorities(temp);
+    }
+  }
+
   useEffect(() => {
     const fetchTasks = async () => {
       try {
@@ -18,10 +49,12 @@ const TaskList = ({ userId }) => {
             taskData.date,
             taskData.taskname,
             taskData.level,
-            taskData.is_done
+            taskData.is_done,
+            taskData.priority
           );
         });
-        console.log("Fetched tasks:", tasksArray); // Debug log
+        //console.log("Fetched tasks:", tasksArray);
+        tasksArray.sort((a, b) => a.priority - b.priority);
         setTasks(tasksArray);
       } catch (error) {
         console.error("Error fetching tasks:", error);
@@ -40,8 +73,16 @@ const TaskList = ({ userId }) => {
   return (
     <div>
       <h1>My Tasks</h1>
-      {tasks.map((task) => (
-        <TaskItem key={task.taskId} task={task} userId={userId} />
+      {tasks.map((task, index) => (
+        <TaskItem
+          key={index}
+          priority={task.priority}
+          task={task}
+          userId={userId}
+          upList={upList}
+          downList={downList}
+          deleteList={deleteList}
+        />
       ))}
     </div>
   );
