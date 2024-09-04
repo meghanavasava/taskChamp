@@ -17,12 +17,14 @@ const MyComponent = () => {
       await user.save();
       console.log("User created successfully!");
 
+      const today = new Date().toLocaleDateString("en-GB");
+
       const task = new Task(
         `task_${Date.now()}`,
-        new Date().toISOString(),
+        today,
         "Sample Task2",
         "Medium",
-        true
+        false
       );
 
       await task.save(userId);
@@ -31,6 +33,9 @@ const MyComponent = () => {
       task.is_done = true;
       await task.update(userId);
       console.log("Task updated successfully!");
+
+      user.streak.addDate(today);
+      console.log("Streak updated successfully!");
     } catch (error) {
       console.error("Error:", error);
     }
