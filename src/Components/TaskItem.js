@@ -6,10 +6,18 @@ import { User } from "../models/User";
 const TaskItem = ({ task, userId, upList, downList, deleteList }) => {
   const [isDone, setIsDone] = useState(task.is_done);
 
-  const handleDeleteClick = () => {
+  const handleDeleteClick = async () => {
     const taskRef = ref(realDb, `users/${userId}/tasks/${task.taskId}`);
     set(taskRef, null);
     deleteList(task.priority - 1);
+
+    try {
+      const user = await User.fetch(userId);
+      await user.updateStreak();
+      console.log("Task deleted and streak updated successfully!");
+    } catch (error) {
+      console.error("Error updating streak:", error);
+    }
   };
 
   const handleUpClick = () => {
