@@ -26,21 +26,21 @@ function App() {
   //   </div>
   // );
 
-  // return (
-  //   <div>
-  //     <MyComponent></MyComponent>
-  //   </div>
-  // );
-
-  const userId = "user_1725245987061";
   return (
-    <div className="App">
-      <h1>Add Task</h1>
-      <TaskForm userId={userId} />
-      <h1>Your Task List</h1>
-      <TaskList userId={userId} />
+    <div>
+      <MyComponent></MyComponent>
     </div>
   );
+
+  // const userId = "user_1725245987061";
+  // return (
+  //   <div className="App">
+  //     <h1>Add Task</h1>
+  //     <TaskForm userId={userId} />
+  //     <h1>Your Task List</h1>
+  //     <TaskList userId={userId} />
+  //   </div>
+  // );
 }
 
 export default App;

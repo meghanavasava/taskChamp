@@ -1,5 +1,6 @@
 import { ref, set, get } from "firebase/database";
 import { realDb } from "../firebase";
+import { Streak } from "./Streak";
 
 export class User {
   constructor(userId, username, password, birthdate, country) {
