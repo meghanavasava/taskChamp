@@ -18,6 +18,7 @@ const TaskForm = ({ userId }) => {
       is_done
     );
     console.log("Done");
+    window.location.reload();
   };
 
   return (
