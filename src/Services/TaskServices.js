@@ -1,4 +1,5 @@
 import { Task } from "../models/Task";
+import { User } from "../models/User";
 
 export const createTaskWithPriority = async (
   userId,
@@ -22,6 +23,10 @@ export const createTaskWithPriority = async (
 
     await newTask.save(userId);
     console.log("Task created successfully with priority:", nextPriority);
+
+    const user = await User.fetch(userId);
+    await user.updateStreak();
+    console.log("Streak updated successfully!");
   } catch (error) {
     console.error("Error creating task:", error);
   }
