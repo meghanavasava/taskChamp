@@ -53,17 +53,23 @@ const TaskList = ({ userId }) => {
     const fetchTasks = async () => {
       try {
         const user = await User.fetch(userId);
-        const tasksArray = Object.keys(user.tasks).map((taskId) => {
-          const taskData = user.tasks[taskId];
-          return new Task(
-            taskId,
-            taskData.date,
-            taskData.taskname,
-            taskData.level,
-            taskData.is_done,
-            taskData.priority
-          );
-        });
+        const today = new Date().toLocaleDateString("en-GB");
+        const tasksArray = Object.keys(user.tasks)
+          .filter((taskId) => {
+            const taskData = user.tasks[taskId];
+            return taskData.date === today;
+          })
+          .map((taskId) => {
+            const taskData = user.tasks[taskId];
+            return new Task(
+              taskId,
+              taskData.date,
+              taskData.taskname,
+              taskData.level,
+              taskData.is_done,
+              taskData.priority
+            );
+          });
         //console.log("Fetched tasks:", tasksArray);
         tasksArray.sort((a, b) => a.priority - b.priority);
         setTasks(tasksArray);
