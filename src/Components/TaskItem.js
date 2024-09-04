@@ -1,14 +1,23 @@
 import React, { useState } from "react";
-import { ref, set, get } from "firebase/database";
+import { ref, set } from "firebase/database";
 import { realDb } from "../firebase";
+import { User } from "../models/User";
 
 const TaskItem = ({ task, userId, upList, downList, deleteList }) => {
   const [isDone, setIsDone] = useState(task.is_done);
 
-  const handleDeleteClick = () => {
+  const handleDeleteClick = async () => {
     const taskRef = ref(realDb, `users/${userId}/tasks/${task.taskId}`);
     set(taskRef, null);
     deleteList(task.priority - 1);
+
+    try {
+      const user = await User.fetch(userId);
+      await user.updateStreak();
+      console.log("Task deleted and streak updated successfully!");
+    } catch (error) {
+      console.error("Error updating streak:", error);
+    }
   };
 
   const handleUpClick = () => {
@@ -20,14 +29,22 @@ const TaskItem = ({ task, userId, upList, downList, deleteList }) => {
   };
 
   const handleToggleDone = async () => {
-    task.is_done = !isDone;
-    setIsDone(task.is_done);
+    const newStatus = !isDone;
+    setIsDone(newStatus);
 
     try {
-      await task.update(userId);
-      console.log("Task updated successfully");
+      const taskRef = ref(realDb, `users/${userId}/tasks/${task.taskId}`);
+      await set(taskRef, {
+        ...task,
+        is_done: newStatus,
+      });
+
+      const user = await User.fetch(userId);
+      await user.updateStreak();
+
+      console.log("Task updated successfully and streak updated!");
     } catch (error) {
-      console.error("Error updating task:", error);
+      console.error("Error updating task or streak:", error);
     }
   };
 
