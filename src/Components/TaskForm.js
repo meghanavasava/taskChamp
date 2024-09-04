@@ -9,7 +9,14 @@ const TaskForm = ({ userId }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await createTaskWithPriority(userId, date, taskname, level, is_done);
+    const formattedDate = new Date(date).toLocaleDateString("en-GB");
+    await createTaskWithPriority(
+      userId,
+      formattedDate,
+      taskname,
+      level,
+      is_done
+    );
     console.log("Done");
   };
 
