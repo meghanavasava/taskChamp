@@ -38,7 +38,8 @@ const MyComponent = () => {
         today,
         "Sample Task2",
         "Medium",
-        false
+        false,
+        1
       );
 
       await newTask.save(user.userId);
