@@ -9,6 +9,7 @@ export class User {
     this.birthdate = birthdate;
     this.country = country;
     this.tasks = {};
+    this.streak = new Streak();
   }
 
   save() {
