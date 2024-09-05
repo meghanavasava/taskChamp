@@ -56,6 +56,8 @@ const TaskList = ({ userId, dateTask }) => {
         const tasksArray = Object.keys(user.tasks)
           .filter((taskId) => {
             const taskData = user.tasks[taskId];
+            //console.log("Date1:", taskData.date);
+            //console.log("Date2:", dateTask);
             return taskData.date === dateTask;
           })
           .map((taskId) => {
@@ -91,7 +93,7 @@ const TaskList = ({ userId, dateTask }) => {
       <h1>My Tasks</h1>
       {tasks.map((task, index) => (
         <TaskItem
-          key={index}
+          key={task.taskId}
           task={task}
           userId={userId}
           upList={upList}
