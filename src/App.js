@@ -33,12 +33,18 @@ function App() {
   // );
 
   const userId = "user_1725465375818";
+  // return (
+  //   <div className="App">
+  //     <h1>Add Task</h1>
+  //     <TaskForm userId={userId} />
+  //     <h1>Your Task List</h1>
+  //     <TaskList userId={userId} />
+  //   </div>
+  // );
+
   return (
-    <div className="App">
-      <h1>Add Task</h1>
-      <TaskForm userId={userId} />
-      <h1>Your Task List</h1>
-      <TaskList userId={userId} />
+    <div>
+      <StreakCalendar></StreakCalendar>
     </div>
   );
 }

@@ -5,15 +5,22 @@ const StreakCalendar = () => {
   const [activityDays, setActivityDays] = useState([]);
 
   const specialDates = {
-    "2024-09-05": "🎉",
-    "2024-09-10": "🌟",
-    "2024-09-15": (
+    "05-09-2024": "🎉",
+    "10-09-2024": "🌟",
+    "15-09-2024": (
       <img
         src="logo.svg"
         alt="Special"
         style={{ width: "20px", height: "20px" }}
       />
     ),
+  };
+
+  const formatDateToDDMMYYYY = (date) => {
+    const day = date.getDate().toString().padStart(2, "0");
+    const month = (date.getMonth() + 1).toString().padStart(2, "0");
+    const year = date.getFullYear();
+    return `${day}-${month}-${year}`;
   };
 
   useEffect(() => {
@@ -38,7 +45,7 @@ const StreakCalendar = () => {
   }, []);
 
   const toggleActivity = (day) => {
-    const dayString = day.toISOString().split("T")[0];
+    const dayString = formatDateToDDMMYYYY(day);
 
     if (activityDays.includes(dayString)) {
       setActivityDays(activityDays.filter((d) => d !== dayString));
@@ -46,6 +53,8 @@ const StreakCalendar = () => {
       setActivityDays([...activityDays, dayString]);
     }
   };
+
+  const getTaskListOfDay = (day) => {};
 
   return (
     <div>
