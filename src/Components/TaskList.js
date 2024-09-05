@@ -53,7 +53,6 @@ const TaskList = ({ userId, dateTask }) => {
     const fetchTasks = async () => {
       try {
         const user = await User.fetch(userId);
-        const today = new Date().toLocaleDateString("en-GB");
         const tasksArray = Object.keys(user.tasks)
           .filter((taskId) => {
             const taskData = user.tasks[taskId];

@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import TaskList from "./TaskList";
 
-const StreakCalendar = (userId) => {
+const StreakCalendar = ({ userId }) => {
   const [calendarDays, setCalendarDays] = useState([]);
   const [activityDays, setActivityDays] = useState([]);
+  const [dateTask, setDateTask] = useState(
+    new Date().toLocaleDateString("en-GB")
+  );
 
   const specialDates = {
     "05-09-2024": "🎉",
@@ -58,7 +61,7 @@ const StreakCalendar = (userId) => {
   const getTaskListOfDay = (day) => {
     const formattedDate = formatDateToDDMMYYYY(day);
     console.log("Task list for:", formattedDate);
-    <TaskList userId={userId} dateTask={formattedDate}></TaskList>;
+    setDateTask(formattedDate);
   };
 
   return (
@@ -105,6 +108,7 @@ const StreakCalendar = (userId) => {
           );
         })}
       </div>
+      <TaskList userId={userId} dateTask={dateTask}></TaskList>
     </div>
   );
 };
