@@ -21,10 +21,8 @@ const StreakCalendar = ({ userId }) => {
     try {
       const user = await User.fetch(userId);
       const streakDates = user.streak.getDates();
-      const formattedDates = streakDates.map((date) =>
-        formatDateToDDMMYYYY(new Date(date))
-      );
-      setSpecialDates(formattedDates);
+      console.log(streakDates);
+      setSpecialDates(streakDates);
     } catch (error) {
       console.error("Error fetching streak dates:", error);
     }
