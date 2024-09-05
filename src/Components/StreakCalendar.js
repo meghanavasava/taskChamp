@@ -33,7 +33,7 @@ const StreakCalendar = () => {
 
     const firstDayOfWeek = startOfMonth.getDay();
     for (let i = 0; i < firstDayOfWeek; i++) {
-      days.push(null);
+      days.push(null); // Add nulls to shift the first day to the correct weekday
     }
 
     while (day <= endOfMonth) {
@@ -54,7 +54,9 @@ const StreakCalendar = () => {
     }
   };
 
-  const getTaskListOfDay = (day) => {};
+  const getTaskListOfDay = (day) => {
+    // Logic to get task list for the selected day
+  };
 
   return (
     <div>
@@ -76,12 +78,11 @@ const StreakCalendar = () => {
 
         {calendarDays.map((day, index) => {
           if (day === null) {
-            return <div key={index} style={{ padding: "10px" }} />;
+            return <div key={index} style={{ padding: "10px" }} />; // Empty cell for alignment
           }
 
-          const dayString = day.toISOString().split("T")[0];
+          const dayString = formatDateToDDMMYYYY(day);
           const isActivityDay = activityDays.includes(dayString);
-
           const displayContent = specialDates[dayString] || day.getDate();
 
           return (
