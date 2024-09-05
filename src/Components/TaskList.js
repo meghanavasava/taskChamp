@@ -5,7 +5,7 @@ import TaskItem from "./TaskItem";
 import { ref, set, get } from "firebase/database";
 import { realDb } from "../firebase";
 
-const TaskList = ({ userId }) => {
+const TaskList = ({ userId, dateTask }) => {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -53,11 +53,12 @@ const TaskList = ({ userId }) => {
     const fetchTasks = async () => {
       try {
         const user = await User.fetch(userId);
-        const today = new Date().toLocaleDateString("en-GB");
         const tasksArray = Object.keys(user.tasks)
           .filter((taskId) => {
             const taskData = user.tasks[taskId];
-            return taskData.date === today;
+            //console.log("Date1:", taskData.date);
+            //console.log("Date2:", dateTask);
+            return taskData.date === dateTask;
           })
           .map((taskId) => {
             const taskData = user.tasks[taskId];
@@ -81,7 +82,7 @@ const TaskList = ({ userId }) => {
     };
 
     fetchTasks();
-  }, [userId]);
+  }, [userId, dateTask]);
 
   if (loading) return <div>Loading tasks...</div>;
 
@@ -92,7 +93,7 @@ const TaskList = ({ userId }) => {
       <h1>My Tasks</h1>
       {tasks.map((task, index) => (
         <TaskItem
-          key={index}
+          key={task.taskId}
           task={task}
           userId={userId}
           upList={upList}

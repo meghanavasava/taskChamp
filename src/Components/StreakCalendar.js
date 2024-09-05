@@ -1,19 +1,30 @@
 import React, { useState, useEffect } from "react";
+import TaskList from "./TaskList";
 
-const StreakCalendar = () => {
+const StreakCalendar = ({ userId }) => {
   const [calendarDays, setCalendarDays] = useState([]);
   const [activityDays, setActivityDays] = useState([]);
+  const [dateTask, setDateTask] = useState(
+    new Date().toLocaleDateString("en-GB")
+  );
 
   const specialDates = {
-    "2024-09-05": "🎉",
-    "2024-09-10": "🌟",
-    "2024-09-15": (
+    "05-09-2024": "🎉",
+    "10-09-2024": "🌟",
+    "15-09-2024": (
       <img
         src="logo.svg"
         alt="Special"
         style={{ width: "20px", height: "20px" }}
       />
     ),
+  };
+
+  const formatDateToDDMMYYYY = (date) => {
+    const day = date.getDate().toString().padStart(2, "0");
+    const month = (date.getMonth() + 1).toString().padStart(2, "0");
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
   };
 
   useEffect(() => {
@@ -38,13 +49,19 @@ const StreakCalendar = () => {
   }, []);
 
   const toggleActivity = (day) => {
-    const dayString = day.toISOString().split("T")[0];
+    const dayString = formatDateToDDMMYYYY(day);
 
     if (activityDays.includes(dayString)) {
       setActivityDays(activityDays.filter((d) => d !== dayString));
     } else {
       setActivityDays([...activityDays, dayString]);
     }
+  };
+
+  const getTaskListOfDay = (day) => {
+    const formattedDate = formatDateToDDMMYYYY(day);
+    console.log("Task list for:", formattedDate);
+    setDateTask(formattedDate);
   };
 
   return (
@@ -70,9 +87,8 @@ const StreakCalendar = () => {
             return <div key={index} style={{ padding: "10px" }} />;
           }
 
-          const dayString = day.toISOString().split("T")[0];
+          const dayString = formatDateToDDMMYYYY(day);
           const isActivityDay = activityDays.includes(dayString);
-
           const displayContent = specialDates[dayString] || day.getDate();
 
           return (
@@ -85,13 +101,14 @@ const StreakCalendar = () => {
                 textAlign: "center",
                 cursor: "pointer",
               }}
-              onClick={() => toggleActivity(day)}
+              onClick={() => getTaskListOfDay(day)}
             >
               {displayContent}
             </div>
           );
         })}
       </div>
+      <TaskList userId={userId} dateTask={dateTask}></TaskList>
     </div>
   );
 };
