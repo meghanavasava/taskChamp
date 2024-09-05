@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import TaskList from "./TaskList";
+import { User } from "../models/User";
 
 const StreakCalendar = ({ userId }) => {
   const [calendarDays, setCalendarDays] = useState([]);
@@ -7,18 +8,7 @@ const StreakCalendar = ({ userId }) => {
   const [dateTask, setDateTask] = useState(
     new Date().toLocaleDateString("en-GB")
   );
-
-  const specialDates = {
-    "05-09-2024": "🎉",
-    "10-09-2024": "🌟",
-    "15-09-2024": (
-      <img
-        src="logo.svg"
-        alt="Special"
-        style={{ width: "20px", height: "20px" }}
-      />
-    ),
-  };
+  const [specialDates, setSpecialDates] = useState([]);
 
   const formatDateToDDMMYYYY = (date) => {
     const day = date.getDate().toString().padStart(2, "0");
@@ -26,6 +16,21 @@ const StreakCalendar = ({ userId }) => {
     const year = date.getFullYear();
     return `${day}/${month}/${year}`;
   };
+
+  const fetchStreakDates = async () => {
+    try {
+      const user = await User.fetch(userId);
+      const streakDates = user.streak.getDates();
+      console.log(streakDates);
+      setSpecialDates(streakDates);
+    } catch (error) {
+      console.error("Error fetching streak dates:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchStreakDates();
+  }, [userId]);
 
   useEffect(() => {
     const today = new Date();
@@ -89,7 +94,9 @@ const StreakCalendar = ({ userId }) => {
 
           const dayString = formatDateToDDMMYYYY(day);
           const isActivityDay = activityDays.includes(dayString);
-          const displayContent = specialDates[dayString] || day.getDate();
+          const displayContent = specialDates.includes(dayString)
+            ? "🌟"
+            : day.getDate();
 
           return (
             <div
