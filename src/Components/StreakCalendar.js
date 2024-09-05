@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import TaskList from "./TaskList";
+import { User } from "../models/User";
 
 const StreakCalendar = ({ userId }) => {
   const [calendarDays, setCalendarDays] = useState([]);
@@ -7,18 +8,36 @@ const StreakCalendar = ({ userId }) => {
   const [dateTask, setDateTask] = useState(
     new Date().toLocaleDateString("en-GB")
   );
+  const [specialDates, setSpecialDates] = useState([]);
 
-  const specialDates = {
-    "05-09-2024": "🎉",
-    "10-09-2024": "🌟",
-    "15-09-2024": (
-      <img
-        src="logo.svg"
-        alt="Special"
-        style={{ width: "20px", height: "20px" }}
-      />
-    ),
+  const fetchStreakDates = async () => {
+    try {
+      const user = await User.fetch(userId);
+      const streakDates = user.streak.getDates();
+      const formattedDates = streakDates.map((date) =>
+        formatDateToDDMMYYYY(new Date(date))
+      );
+      setSpecialDates(formattedDates);
+    } catch (error) {
+      console.error("Error fetching streak dates:", error);
+    }
   };
+
+  useEffect(() => {
+    fetchStreakDates();
+  }, [userId]);
+
+  // const specialDates = {
+  //   "05-09-2024": "🎉",
+  //   "10-09-2024": "🌟",
+  //   "15-09-2024": (
+  //     <img
+  //       src="logo.svg"
+  //       alt="Special"
+  //       style={{ width: "20px", height: "20px" }}
+  //     />
+  //   ),
+  // };
 
   const formatDateToDDMMYYYY = (date) => {
     const day = date.getDate().toString().padStart(2, "0");
