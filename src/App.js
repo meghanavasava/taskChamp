@@ -44,7 +44,7 @@ function App() {
 
   return (
     <div>
-      <StreakCalendar></StreakCalendar>
+      <StreakCalendar userId={userId}></StreakCalendar>
     </div>
   );
 }

@@ -5,7 +5,7 @@ import TaskItem from "./TaskItem";
 import { ref, set, get } from "firebase/database";
 import { realDb } from "../firebase";
 
-const TaskList = ({ userId }) => {
+const TaskList = ({ userId, dateTask }) => {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -57,7 +57,7 @@ const TaskList = ({ userId }) => {
         const tasksArray = Object.keys(user.tasks)
           .filter((taskId) => {
             const taskData = user.tasks[taskId];
-            return taskData.date === today;
+            return taskData.date === dateTask;
           })
           .map((taskId) => {
             const taskData = user.tasks[taskId];

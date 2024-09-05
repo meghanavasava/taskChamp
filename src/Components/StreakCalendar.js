@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
+import TaskList from "./TaskList";
 
-const StreakCalendar = () => {
+const StreakCalendar = (userId) => {
   const [calendarDays, setCalendarDays] = useState([]);
   const [activityDays, setActivityDays] = useState([]);
 
@@ -33,7 +34,7 @@ const StreakCalendar = () => {
 
     const firstDayOfWeek = startOfMonth.getDay();
     for (let i = 0; i < firstDayOfWeek; i++) {
-      days.push(null); // Add nulls to shift the first day to the correct weekday
+      days.push(null);
     }
 
     while (day <= endOfMonth) {
@@ -55,7 +56,9 @@ const StreakCalendar = () => {
   };
 
   const getTaskListOfDay = (day) => {
-    // Logic to get task list for the selected day
+    const formattedDate = formatDateToDDMMYYYY(day);
+    console.log("Task list for:", formattedDate);
+    <TaskList userId={userId} dateTask={formattedDate}></TaskList>;
   };
 
   return (
@@ -78,7 +81,7 @@ const StreakCalendar = () => {
 
         {calendarDays.map((day, index) => {
           if (day === null) {
-            return <div key={index} style={{ padding: "10px" }} />; // Empty cell for alignment
+            return <div key={index} style={{ padding: "10px" }} />;
           }
 
           const dayString = formatDateToDDMMYYYY(day);
@@ -95,7 +98,7 @@ const StreakCalendar = () => {
                 textAlign: "center",
                 cursor: "pointer",
               }}
-              onClick={() => toggleActivity(day)}
+              onClick={() => getTaskListOfDay(day)}
             >
               {displayContent}
             </div>
