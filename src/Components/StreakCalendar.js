@@ -10,6 +10,13 @@ const StreakCalendar = ({ userId }) => {
   );
   const [specialDates, setSpecialDates] = useState([]);
 
+  const formatDateToDDMMYYYY = (date) => {
+    const day = date.getDate().toString().padStart(2, "0");
+    const month = (date.getMonth() + 1).toString().padStart(2, "0");
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
+  };
+
   const fetchStreakDates = async () => {
     try {
       const user = await User.fetch(userId);
@@ -26,25 +33,6 @@ const StreakCalendar = ({ userId }) => {
   useEffect(() => {
     fetchStreakDates();
   }, [userId]);
-
-  // const specialDates = {
-  //   "05-09-2024": "🎉",
-  //   "10-09-2024": "🌟",
-  //   "15-09-2024": (
-  //     <img
-  //       src="logo.svg"
-  //       alt="Special"
-  //       style={{ width: "20px", height: "20px" }}
-  //     />
-  //   ),
-  // };
-
-  const formatDateToDDMMYYYY = (date) => {
-    const day = date.getDate().toString().padStart(2, "0");
-    const month = (date.getMonth() + 1).toString().padStart(2, "0");
-    const year = date.getFullYear();
-    return `${day}/${month}/${year}`;
-  };
 
   useEffect(() => {
     const today = new Date();
@@ -108,7 +96,9 @@ const StreakCalendar = ({ userId }) => {
 
           const dayString = formatDateToDDMMYYYY(day);
           const isActivityDay = activityDays.includes(dayString);
-          const displayContent = specialDates[dayString] || day.getDate();
+          const displayContent = specialDates.includes(dayString)
+            ? "🌟"
+            : day.getDate();
 
           return (
             <div
