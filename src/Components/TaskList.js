@@ -80,7 +80,7 @@ const TaskList = ({ userId, dateTask }) => {
     };
 
     fetchTasks();
-  }, [userId]);
+  }, [userId, dateTask]);
 
   if (loading) return <div>Loading tasks...</div>;
 
