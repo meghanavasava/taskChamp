@@ -33,19 +33,19 @@ function App() {
   //   </div>
   // );
 
-  // const userId = "user_1725465375818";
-
-  // return (
-  //   <div>
-  //     <StreakCalendar userId={userId}></StreakCalendar>
-  //   </div>
-  // );
+  const userId = "user_1725465375818";
 
   return (
     <div>
-      <Navbar></Navbar>
+      <StreakCalendar userId={userId}></StreakCalendar>
     </div>
   );
+
+  // return (
+  //   <div>
+  //     <Navbar></Navbar>
+  //   </div>
+  // );
 }
 
 export default App;
