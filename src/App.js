@@ -5,6 +5,7 @@ import MyComponent from "./Components/MyComponent";
 import StreakCalendar from "./Components/StreakCalendar";
 import TaskForm from "./Components/TaskForm";
 import TaskList from "./Components/TaskList";
+import Navbar from "./Components/Navbar";
 
 function App() {
   // return (
@@ -32,11 +33,17 @@ function App() {
   //   </div>
   // );
 
-  const userId = "user_1725465375818";
+  // const userId = "user_1725465375818";
+
+  // return (
+  //   <div>
+  //     <StreakCalendar userId={userId}></StreakCalendar>
+  //   </div>
+  // );
 
   return (
     <div>
-      <StreakCalendar userId={userId}></StreakCalendar>
+      <Navbar></Navbar>
     </div>
   );
 }
