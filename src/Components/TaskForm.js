@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { createTaskWithPriority } from "../Services/TaskServices";
+import styles from "./TaskForm.module.css";
 
 const TaskForm = ({ userId, reloadWithTask }) => {
   const [taskname, setTaskname] = useState("");
@@ -22,7 +23,7 @@ const TaskForm = ({ userId, reloadWithTask }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} class={styles.task_form}>
       <input
         type="text"
         value={taskname}
