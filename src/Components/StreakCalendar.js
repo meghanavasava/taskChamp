@@ -29,6 +29,10 @@ const StreakCalendar = ({ userId }) => {
     }
   };
 
+  const reloadWithTask = () => {
+    window.location.reload();
+  };
+
   useEffect(() => {
     fetchStreakDates();
   }, [userId]);
@@ -116,8 +120,12 @@ const StreakCalendar = ({ userId }) => {
           );
         })}
       </div>
-      <TaskForm userId={userId}></TaskForm>
-      <TaskList userId={userId} dateTask={dateTask}></TaskList>
+      <TaskForm userId={userId} reloadWithTask={reloadWithTask}></TaskForm>
+      <TaskList
+        userId={userId}
+        reloadWithTask={reloadWithTask}
+        dateTask={dateTask}
+      ></TaskList>
     </div>
   );
 };
