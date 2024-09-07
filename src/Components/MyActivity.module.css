@@ -1,14 +1,13 @@
 .container {
   display: flex;
   width: 100%;
-  justify-content: center;
-  justify-items: center;
+  justify-content: space-between;
   align-items: center;
 }
 
 .row {
   width: 100%;
-  display: inline;
+  display: block;
 }
 
 .navbar {
