@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import TaskList from "./TaskList";
 import { User } from "../models/User";
+import TaskForm from "./TaskForm";
 
 const StreakCalendar = ({ userId }) => {
   const [calendarDays, setCalendarDays] = useState([]);
@@ -115,6 +116,7 @@ const StreakCalendar = ({ userId }) => {
           );
         })}
       </div>
+      <TaskForm userId={userId}></TaskForm>
       <TaskList userId={userId} dateTask={dateTask}></TaskList>
     </div>
   );
