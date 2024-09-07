@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { createTaskWithPriority } from "../Services/TaskServices";
+import styles from "./TaskForm.module.css";
 
 const TaskForm = ({ userId, reloadWithTask }) => {
   const [taskname, setTaskname] = useState("");
