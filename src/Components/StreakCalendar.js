@@ -120,6 +120,7 @@ const StreakCalendar = ({ userId }) => {
           );
         })}
       </div>
+      <br></br>
       <TaskForm userId={userId} reloadWithTask={reloadWithTask}></TaskForm>
       <TaskList
         userId={userId}
