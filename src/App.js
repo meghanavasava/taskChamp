@@ -1,11 +1,8 @@
 import React, { useEffect } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import MyComponent from "./Components/MyComponent";
 import StreakCalendar from "./Components/StreakCalendar";
-import TaskForm from "./Components/TaskForm";
-import TaskList from "./Components/TaskList";
-import Navbar from "./Components/Navbar";
+import MyActivity from "./Components/MyActivity";
 
 function App() {
   // return (
@@ -37,7 +34,7 @@ function App() {
 
   return (
     <div>
-      <StreakCalendar userId={userId}></StreakCalendar>
+      <MyActivity userId={userId}></MyActivity>
     </div>
   );
 
