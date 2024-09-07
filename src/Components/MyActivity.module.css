@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+}
+
+.row {
+  width: 100%;
+  display: inline;
+}
+
+.navbar {
+  width: 20%;
+  display: flex;
+}
+
+.streak {
+  width: 80%;
+  display: flex;
+}

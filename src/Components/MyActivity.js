@@ -1,14 +1,15 @@
 import StreakCalendar from "./StreakCalendar";
 import Navbar from "./Navbar";
+import styles from "./MyActivity.module.css";
 
 const MyActivity = ({ userId }) => {
   return (
-    <div class="container">
-      <div class="row">
-        <div class="col-md-2">
+    <div class={styles.container}>
+      <div class={styles.row}>
+        <div class={styles.navbar}>
           <Navbar></Navbar>
         </div>
-        <div class="col-md-10">
+        <div class={styles.streak}>
           <StreakCalendar userId={userId}></StreakCalendar>
         </div>
       </div>
