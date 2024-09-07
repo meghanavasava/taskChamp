@@ -100,6 +100,7 @@ const TaskList = ({ userId, dateTask, reloadWithTask }) => {
           upList={upList}
           downList={downList}
           deleteList={deleteList}
+          reloadWithTask={reloadWithTask}
         />
       ))}
     </div>
