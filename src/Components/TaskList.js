@@ -5,7 +5,7 @@ import TaskItem from "./TaskItem";
 import { ref, set, get } from "firebase/database";
 import { realDb } from "../firebase";
 
-const TaskList = ({ userId, dateTask }) => {
+const TaskList = ({ userId, dateTask, reloadWithTask }) => {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -31,6 +31,7 @@ const TaskList = ({ userId, dateTask }) => {
     const temp = [...tasks];
     temp.splice(index, 1);
     updatePriorities(temp);
+    reloadWithTask();
   }
 
   function upList(index) {
@@ -99,6 +100,7 @@ const TaskList = ({ userId, dateTask }) => {
           upList={upList}
           downList={downList}
           deleteList={deleteList}
+          reloadWithTask={reloadWithTask}
         />
       ))}
     </div>

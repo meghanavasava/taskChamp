@@ -3,7 +3,14 @@ import { ref, set } from "firebase/database";
 import { realDb } from "../firebase";
 import { User } from "../models/User";
 
-const TaskItem = ({ task, userId, upList, downList, deleteList }) => {
+const TaskItem = ({
+  task,
+  userId,
+  upList,
+  downList,
+  deleteList,
+  reloadWithTask,
+}) => {
   const [isDone, setIsDone] = useState(task.is_done);
 
   const handleDeleteClick = async () => {
@@ -41,6 +48,7 @@ const TaskItem = ({ task, userId, upList, downList, deleteList }) => {
 
       const user = await User.fetch(userId);
       await user.updateStreak();
+      reloadWithTask();
 
       console.log("Task updated successfully and streak updated!");
     } catch (error) {
