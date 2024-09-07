@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { createTaskWithPriority } from "../Services/TaskServices";
 
-const TaskForm = ({ userId }) => {
+const TaskForm = ({ userId, reloadWithTask }) => {
   const [taskname, setTaskname] = useState("");
   const [date, setDate] = useState("");
   const [level, setLevel] = useState("medium");
@@ -18,7 +18,7 @@ const TaskForm = ({ userId }) => {
       is_done
     );
     console.log("Done");
-    window.location.reload();
+    reloadWithTask();
   };
 
   return (

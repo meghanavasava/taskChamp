@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import TaskList from "./TaskList";
 import { User } from "../models/User";
+import TaskForm from "./TaskForm";
 
 const StreakCalendar = ({ userId }) => {
   const [calendarDays, setCalendarDays] = useState([]);
@@ -26,6 +27,10 @@ const StreakCalendar = ({ userId }) => {
     } catch (error) {
       console.error("Error fetching streak dates:", error);
     }
+  };
+
+  const reloadWithTask = () => {
+    window.location.reload();
   };
 
   useEffect(() => {
@@ -115,7 +120,12 @@ const StreakCalendar = ({ userId }) => {
           );
         })}
       </div>
-      <TaskList userId={userId} dateTask={dateTask}></TaskList>
+      <TaskForm userId={userId} reloadWithTask={reloadWithTask}></TaskForm>
+      <TaskList
+        userId={userId}
+        reloadWithTask={reloadWithTask}
+        dateTask={dateTask}
+      ></TaskList>
     </div>
   );
 };
