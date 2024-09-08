@@ -8,7 +8,7 @@ const TaskUpdate = ({ isOpen, onClose, task, onUpdate }) => {
 
   if (!isOpen) return null;
 
-  const handleUpdate = () => {
+  const handleUpdate = (e) => {
     e.preventDefault();
     onUpdate(task.taskId, taskName, level);
     onClose();
@@ -20,7 +20,7 @@ const TaskUpdate = ({ isOpen, onClose, task, onUpdate }) => {
         <input
           type="text"
           value={taskName}
-          placeholder="Task Name"
+          placeholder="Task name"
           onChange={(e) => setTaskName(e.target.value)}
           required
         />
