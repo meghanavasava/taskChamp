@@ -2,6 +2,11 @@ import { User } from "../models/User";
 import { Task } from "../models/Task";
 
 const TaskUpdate = ({ isOpen, onClose, task }) => {
+  const [taskName, setTaskName] = useState(task.name);
+  const [level, setLevel] = useState(task.level);
+
+  if (!isOpen) return null;
+
   return (
     <div>
       <form>

@@ -13,6 +13,8 @@ const TaskItem = ({
   reloadWithTask,
 }) => {
   const [isDone, setIsDone] = useState(task.is_done);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [updatedTask, setUpdatedTask] = useState(task);
 
   const handleDeleteClick = async () => {
     const taskRef = ref(realDb, `users/${userId}/tasks/${task.taskId}`);
@@ -71,6 +73,14 @@ const TaskItem = ({
       <button>Update</button>
       <button onClick={handleUpClick}>Up</button>
       <button onClick={handleDownClick}>Down</button>
+      {isModalOpen && (
+        <TaskUpdate
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          task={updatedTask}
+          onUpdate={updateTask}
+        />
+      )}
     </div>
   );
 };
