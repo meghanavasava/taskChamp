@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { ref, set } from "firebase/database";
 import { realDb } from "../firebase";
 import { User } from "../models/User";
+import TaskUpdate from "./TaskUpdate";
 
 const TaskItem = ({
   task,
@@ -26,6 +27,8 @@ const TaskItem = ({
       console.error("Error updating streak:", error);
     }
   };
+
+  const updateTask = () => {};
 
   const handleUpClick = () => {
     upList(task.priority - 1);

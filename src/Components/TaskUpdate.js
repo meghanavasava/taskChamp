@@ -1,4 +1,7 @@
-const TaskUpdate = () => {
+import { User } from "../models/User";
+import { Task } from "../models/Task";
+
+const TaskUpdate = ({ isOpen, onClose, task }) => {
   return (
     <div>
       <form>
