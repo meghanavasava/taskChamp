@@ -1,7 +1,8 @@
 import { User } from "../models/User";
 import { Task } from "../models/Task";
+import { useState } from "react";
 
-const TaskUpdate = ({ isOpen, onClose, task }) => {
+const TaskUpdate = ({ isOpen, onClose, task, updateTask }) => {
   const [taskName, setTaskName] = useState(task.name);
   const [level, setLevel] = useState(task.level);
 
@@ -10,8 +11,13 @@ const TaskUpdate = ({ isOpen, onClose, task }) => {
   return (
     <div>
       <form>
-        <input type="text" value={taskname} placeholder="Task Name" required />
-        <select value={level}>
+        <input
+          type="text"
+          value={task.taskname}
+          placeholder="Task Name"
+          required
+        />
+        <select value={task.level}>
           <option value="easy">Easy</option>
           <option value="medium">Medium</option>
           <option value="hard">Hard</option>

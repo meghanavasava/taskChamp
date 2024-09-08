@@ -61,6 +61,14 @@ const TaskItem = ({
     }
   };
 
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <div className={`task-item ${isDone ? "done" : ""}`}>
       <h3>{task.taskname}</h3>
