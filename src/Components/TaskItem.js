@@ -30,8 +30,6 @@ const TaskItem = ({
     }
   };
 
-  const updateTask = () => {};
-
   const handleUpClick = () => {
     upList(task.priority - 1);
   };
@@ -61,6 +59,19 @@ const TaskItem = ({
     }
   };
 
+  const updateTask = async (taskId, newName, newLevel) => {
+    const taskRef = ref(realDb, `users/${userId}/tasks/${taskId}`);
+    const updatedTaskData = { ...task, taskname: newName, level: newLevel };
+    try {
+      await set(taskRef, updatedTaskData);
+      setUpdatedTask(updatedTaskData); // Update the task state
+      reloadWithTask();
+      console.log("Task updated successfully!");
+    } catch (error) {
+      console.error("Error updating task:", error);
+    }
+  };
+
   const openModal = () => {
     setIsModalOpen(true);
   };
@@ -78,7 +89,7 @@ const TaskItem = ({
         <input type="checkbox" checked={isDone} onChange={handleToggleDone} />
       </label>
       <button onClick={handleDeleteClick}>Delete</button>
-      <button>Update</button>
+      <button onClick={openModal}>Update</button>
       <button onClick={handleUpClick}>Up</button>
       <button onClick={handleDownClick}>Down</button>
       {isModalOpen && (

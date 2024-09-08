@@ -2,28 +2,37 @@ import { User } from "../models/User";
 import { Task } from "../models/Task";
 import { useState } from "react";
 
-const TaskUpdate = ({ isOpen, onClose, task, updateTask }) => {
-  const [taskName, setTaskName] = useState(task.name);
+const TaskUpdate = ({ isOpen, onClose, task, onUpdate }) => {
+  const [taskName, setTaskName] = useState(task.taskName);
   const [level, setLevel] = useState(task.level);
 
   if (!isOpen) return null;
 
+  const handleUpdate = () => {
+    e.preventDefault();
+    onUpdate(task.taskId, taskName, level);
+    onClose();
+  };
+
   return (
     <div>
-      <form>
+      <form onSubmit={handleUpdate}>
         <input
           type="text"
-          value={task.taskname}
+          value={taskName}
           placeholder="Task Name"
+          onChange={(e) => setTaskName(e.target.value)}
           required
         />
-        <select value={task.level}>
+        <select value={level} onChange={(e) => setLevel(e.target.value)}>
           <option value="easy">Easy</option>
           <option value="medium">Medium</option>
           <option value="hard">Hard</option>
         </select>
         <button type="submit">Update</button>
-        <button type="submit">Cancel</button>
+        <button type="button" onClick={onClose}>
+          Cancel
+        </button>
       </form>
     </div>
   );
