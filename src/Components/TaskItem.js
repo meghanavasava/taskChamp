@@ -65,6 +65,7 @@ const TaskItem = ({
         <input type="checkbox" checked={isDone} onChange={handleToggleDone} />
       </label>
       <button onClick={handleDeleteClick}>Delete</button>
+      <button>Update</button>
       <button onClick={handleUpClick}>Up</button>
       <button onClick={handleDownClick}>Down</button>
     </div>
