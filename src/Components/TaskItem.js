@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { ref, set } from "firebase/database";
 import { realDb } from "../firebase";
 import { User } from "../models/User";
+import TaskUpdate from "./TaskUpdate";
 
 const TaskItem = ({
   task,
@@ -12,6 +13,8 @@ const TaskItem = ({
   reloadWithTask,
 }) => {
   const [isDone, setIsDone] = useState(task.is_done);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [updatedTask, setUpdatedTask] = useState(task);
 
   const handleDeleteClick = async () => {
     const taskRef = ref(realDb, `users/${userId}/tasks/${task.taskId}`);
@@ -56,6 +59,27 @@ const TaskItem = ({
     }
   };
 
+  const updateTask = async (taskId, newName, newLevel) => {
+    const taskRef = ref(realDb, `users/${userId}/tasks/${taskId}`);
+    const updatedTaskData = { ...task, taskname: newName, level: newLevel };
+    try {
+      await set(taskRef, updatedTaskData);
+      setUpdatedTask(updatedTaskData); // Update the task state
+      reloadWithTask();
+      console.log("Task updated successfully!");
+    } catch (error) {
+      console.error("Error updating task:", error);
+    }
+  };
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <div className={`task-item ${isDone ? "done" : ""}`}>
       <h3>{task.taskname}</h3>
@@ -65,8 +89,17 @@ const TaskItem = ({
         <input type="checkbox" checked={isDone} onChange={handleToggleDone} />
       </label>
       <button onClick={handleDeleteClick}>Delete</button>
+      <button onClick={openModal}>Update</button>
       <button onClick={handleUpClick}>Up</button>
       <button onClick={handleDownClick}>Down</button>
+      {isModalOpen && (
+        <TaskUpdate
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          task={updatedTask}
+          onUpdate={updateTask}
+        />
+      )}
     </div>
   );
 };
