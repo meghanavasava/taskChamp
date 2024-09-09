@@ -82,7 +82,7 @@ const TaskItem = ({
   };
 
   return (
-    <div className={`${styles.taskItem} ${isDone ? styles.done : ""}`}>
+    <div className={`${styles.task_item} ${isDone ? styles.done : ""}`}>
       <h3>{task.taskname}</h3>
       <p>Level : {task.level}</p>
       <label>
