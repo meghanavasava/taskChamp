@@ -37,8 +37,8 @@ export class User {
     }
   }
 
-  updateStreak() {
-    const today = new Date().toLocaleDateString("en-GB");
+  updateStreak(date) {
+    const today = date;
     const allTasksDone = Object.values(this.tasks).every(
       (task) => task.is_done
     );

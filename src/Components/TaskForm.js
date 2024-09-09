@@ -23,7 +23,7 @@ const TaskForm = ({ userId, reloadWithTask }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} class={styles.task_form}>
+    <form onSubmit={handleSubmit} className={styles.task_form}>
       <input
         type="text"
         value={taskname}

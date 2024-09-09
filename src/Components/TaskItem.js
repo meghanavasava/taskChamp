@@ -23,7 +23,7 @@ const TaskItem = ({
 
     try {
       const user = await User.fetch(userId);
-      await user.updateStreak();
+      await user.updateStreak(task.date);
       console.log("Task deleted and streak updated successfully!");
     } catch (error) {
       console.error("Error updating streak:", error);
@@ -50,7 +50,7 @@ const TaskItem = ({
       });
 
       const user = await User.fetch(userId);
-      await user.updateStreak();
+      await user.updateStreak(task.date);
       reloadWithTask();
 
       console.log("Task updated successfully and streak updated!");
@@ -64,7 +64,7 @@ const TaskItem = ({
     const updatedTaskData = { ...task, taskname: newName, level: newLevel };
     try {
       await set(taskRef, updatedTaskData);
-      setUpdatedTask(updatedTaskData); // Update the task state
+      setUpdatedTask(updatedTaskData);
       reloadWithTask();
       console.log("Task updated successfully!");
     } catch (error) {

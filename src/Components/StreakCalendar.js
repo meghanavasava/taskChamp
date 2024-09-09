@@ -76,20 +76,20 @@ const StreakCalendar = ({ userId }) => {
   };
 
   return (
-    <div class={styles.streak_calendar_container}>
+    <div className={styles.streak_calendar_container}>
       <TaskForm userId={userId} reloadWithTask={reloadWithTask}></TaskForm>
       <br></br>
       <br></br>
-      <div class={styles.streak_calendar_table}>
-        <h2 class={styles.streak_calendar_title}>Streak Calendar</h2>
-        <div class={styles.streak_calendar_grid}>
-          <div class={styles.streak_calendar_header}>Sun</div>
-          <div class={styles.streak_calendar_header}>Mon</div>
-          <div class={styles.streak_calendar_header}>Tue</div>
-          <div class={styles.streak_calendar_header}>Wed</div>
-          <div class={styles.streak_calendar_header}>Thu</div>
-          <div class={styles.streak_calendar_header}>Fri</div>
-          <div class={styles.streak_calendar_header}>Sat</div>
+      <div className={styles.streak_calendar_table}>
+        <h2 className={styles.streak_calendar_title}>Streak Calendar</h2>
+        <div className={styles.streak_calendar_grid}>
+          <div className={styles.streak_calendar_header}>Sun</div>
+          <div className={styles.streak_calendar_header}>Mon</div>
+          <div className={styles.streak_calendar_header}>Tue</div>
+          <div className={styles.streak_calendar_header}>Wed</div>
+          <div className={styles.streak_calendar_header}>Thu</div>
+          <div className={styles.streak_calendar_header}>Fri</div>
+          <div className={styles.streak_calendar_header}>Sat</div>
 
           {calendarDays.map((day, index) => {
             if (day === null) {
