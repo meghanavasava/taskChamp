@@ -77,6 +77,7 @@ const StreakCalendar = ({ userId }) => {
 
   return (
     <div class={styles.streak_calendar_container}>
+      <TaskForm userId={userId} reloadWithTask={reloadWithTask}></TaskForm>
       <h2 class={styles.streak_calendar_title}>Streak Calendar</h2>
       <div class={styles.streak_calendar_grid}>
         <div class={styles.streak_calendar_header}>Sun</div>
@@ -113,7 +114,6 @@ const StreakCalendar = ({ userId }) => {
         })}
       </div>
       <br></br>
-      <TaskForm userId={userId} reloadWithTask={reloadWithTask}></TaskForm>
       <TaskList
         userId={userId}
         reloadWithTask={reloadWithTask}
