@@ -3,6 +3,7 @@ import { ref, set } from "firebase/database";
 import { realDb } from "../firebase";
 import { User } from "../models/User";
 import TaskUpdate from "./TaskUpdate";
+import styles from "./TaskItem.module.css";
 
 const TaskItem = ({
   task,

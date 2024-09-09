@@ -1,4 +1,4 @@
-.task-item {
+.task_item {
   background: #ffffff;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -8,25 +8,25 @@
   position: relative;
 }
 
-.task-item.done {
+.task_item.done {
   background: #e0ffe0;
   border-color: #b0ffb0;
   text-decoration: line-through;
 }
 
-.task-item h3 {
+.task_item h3 {
   font-size: 18px;
   margin: 0 0 10px;
   color: #333;
 }
 
-.task-item p {
+.task_item p {
   font-size: 14px;
   color: #666;
   margin: 0 0 10px;
 }
 
-.task-item label {
+.task_item label {
   display: flex;
   align-items: center;
   font-size: 14px;
@@ -34,11 +34,11 @@
   margin-bottom: 10px;
 }
 
-.task-item input[type="checkbox"] {
+.task_item input[type="checkbox"] {
   margin-left: 10px;
 }
 
-.task-item button {
+.task_item button {
   background: #007bff;
   color: #fff;
   border: none;
@@ -49,43 +49,43 @@
   font-size: 14px;
 }
 
-.task-item button:hover {
+.task_item button:hover {
   background: #0056b3;
 }
 
-.task-item button.delete {
+.task_item button.delete {
   background: #dc3545;
 }
 
-.task-item button.delete:hover {
+.task_item button.delete:hover {
   background: #c82333;
 }
 
-.task-item button.update {
+.task_item button.update {
   background: #17a2b8;
 }
 
-.task-item button.update:hover {
+.task_item button.update:hover {
   background: #138496;
 }
 
-.task-item button.up {
+.task_item button.up {
   background: #28a745;
 }
 
-.task-item button.up:hover {
+.task_item button.up:hover {
   background: #218838;
 }
 
-.task-item button.down {
+.task_item button.down {
   background: #ffc107;
 }
 
-.task-item button.down:hover {
+.task_item button.down:hover {
   background: #e0a800;
 }
 
-.task-update-modal {
+.task_update_modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -97,7 +97,7 @@
   align-items: center;
 }
 
-.task-update-modal .modal-content {
+.task_update_modal .modal_content {
   background: #fff;
   border-radius: 8px;
   padding: 20px;
