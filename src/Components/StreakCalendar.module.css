@@ -1,9 +1,11 @@
 .streak_calendar_container {
   width: 100%;
-  padding: 20px;
+  padding: 20px 70px;
   background-color: #f8f9fa;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .streak_calendar_title {
@@ -54,4 +56,10 @@
 
 .task_section {
   margin-top: 20px;
+}
+
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
 }
