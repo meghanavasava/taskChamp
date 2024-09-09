@@ -1,26 +1,26 @@
-.streak-calendar-container {
+.streak_calendar_container {
   width: 100%;
 }
 
-.streak-calendar-title {
+.streak_calendar_title {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 20px;
 }
 
-.streak-calendar-grid {
+.streak_calendar_grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 10px;
 }
 
-.streak-calendar-header {
+.streak_calendar_header {
   text-align: center;
   font-weight: bold;
   padding: 10px;
 }
 
-.streak-calendar-day {
+.streak_calendar_day {
   padding: 10px;
   background-color: lightgray;
   color: white;
@@ -28,14 +28,14 @@
   cursor: pointer;
 }
 
-.streak-calendar-day.activity {
+.streak_calendar_day.activity {
   background-color: green;
 }
 
-.streak-calendar-day.special {
-  background-color: gold;
+.streak_calendar_day.special {
+  background-color: rgb(134, 133, 137);
 }
 
-.task-section {
+.task_section {
   margin-top: 20px;
 }
