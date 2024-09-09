@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import TaskList from "./TaskList";
 import { User } from "../models/User";
 import TaskForm from "./TaskForm";
+import styles from "./StreakCalendar.module.css";
 
 const StreakCalendar = ({ userId }) => {
   const [calendarDays, setCalendarDays] = useState([]);
@@ -75,53 +76,48 @@ const StreakCalendar = ({ userId }) => {
   };
 
   return (
-    <div>
-      <h2>Streak Calendar</h2>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(7, 1fr)",
-          gap: "10px",
-        }}
-      >
-        <div style={{ textAlign: "center", fontWeight: "bold" }}>Sun</div>
-        <div style={{ textAlign: "center", fontWeight: "bold" }}>Mon</div>
-        <div style={{ textAlign: "center", fontWeight: "bold" }}>Tue</div>
-        <div style={{ textAlign: "center", fontWeight: "bold" }}>Wed</div>
-        <div style={{ textAlign: "center", fontWeight: "bold" }}>Thu</div>
-        <div style={{ textAlign: "center", fontWeight: "bold" }}>Fri</div>
-        <div style={{ textAlign: "center", fontWeight: "bold" }}>Sat</div>
+    <div class={styles.streak_calendar_container}>
+      <TaskForm userId={userId} reloadWithTask={reloadWithTask}></TaskForm>
+      <br></br>
+      <br></br>
+      <div class={styles.streak_calendar_table}>
+        <h2 class={styles.streak_calendar_title}>Streak Calendar</h2>
+        <div class={styles.streak_calendar_grid}>
+          <div class={styles.streak_calendar_header}>Sun</div>
+          <div class={styles.streak_calendar_header}>Mon</div>
+          <div class={styles.streak_calendar_header}>Tue</div>
+          <div class={styles.streak_calendar_header}>Wed</div>
+          <div class={styles.streak_calendar_header}>Thu</div>
+          <div class={styles.streak_calendar_header}>Fri</div>
+          <div class={styles.streak_calendar_header}>Sat</div>
 
-        {calendarDays.map((day, index) => {
-          if (day === null) {
-            return <div key={index} style={{ padding: "10px" }} />;
-          }
+          {calendarDays.map((day, index) => {
+            if (day === null) {
+              return <div key={index} class={styles.streak_calendar_day} />;
+            }
 
-          const dayString = formatDateToDDMMYYYY(day);
-          const isActivityDay = activityDays.includes(dayString);
-          const displayContent = specialDates.includes(dayString)
-            ? "🌟"
-            : day.getDate();
+            const dayString = formatDateToDDMMYYYY(day);
+            const isActivityDay = activityDays.includes(dayString);
+            const isSpecialDay = specialDates.includes(dayString);
+            const displayContent = specialDates.includes(dayString)
+              ? "🌟"
+              : day.getDate();
 
-          return (
-            <div
-              key={index}
-              style={{
-                padding: "10px",
-                backgroundColor: isActivityDay ? "green" : "lightgray",
-                color: "white",
-                textAlign: "center",
-                cursor: "pointer",
-              }}
-              onClick={() => getTaskListOfDay(day)}
-            >
-              {displayContent}
-            </div>
-          );
-        })}
+            return (
+              <div
+                key={index}
+                className={`${styles.streak_calendar_day} ${
+                  isActivityDay ? styles.activity : ""
+                } ${isSpecialDay ? styles.special : ""}`}
+                onClick={() => getTaskListOfDay(day)}
+              >
+                {displayContent}
+              </div>
+            );
+          })}
+        </div>
       </div>
       <br></br>
-      <TaskForm userId={userId} reloadWithTask={reloadWithTask}></TaskForm>
       <TaskList
         userId={userId}
         reloadWithTask={reloadWithTask}
