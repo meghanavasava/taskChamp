@@ -1,0 +1,41 @@
+.streak-calendar-container {
+  width: 100%;
+}
+
+.streak-calendar-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.streak-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+
+.streak-calendar-header {
+  text-align: center;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.streak-calendar-day {
+  padding: 10px;
+  background-color: lightgray;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+}
+
+.streak-calendar-day.activity {
+  background-color: green;
+}
+
+.streak-calendar-day.special {
+  background-color: gold;
+}
+
+.task-section {
+  margin-top: 20px;
+}
