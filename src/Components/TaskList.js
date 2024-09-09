@@ -4,6 +4,7 @@ import { Task } from "../models/Task";
 import TaskItem from "./TaskItem";
 import { ref, set, get } from "firebase/database";
 import { realDb } from "../firebase";
+import styles from "./TaskList.module.css";
 
 const TaskList = ({ userId, dateTask, reloadWithTask }) => {
   const [tasks, setTasks] = useState([]);
@@ -90,7 +91,7 @@ const TaskList = ({ userId, dateTask, reloadWithTask }) => {
   if (!tasks.length) return <div>No tasks available</div>;
 
   return (
-    <div>
+    <div className={styles.tasklist}>
       <h1>My Tasks</h1>
       {tasks.map((task, index) => (
         <TaskItem
