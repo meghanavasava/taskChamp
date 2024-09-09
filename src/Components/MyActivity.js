@@ -4,11 +4,11 @@ import styles from "./MyActivity.module.css";
 
 const MyActivity = ({ userId }) => {
   return (
-    <div class={styles.container}>
-      <div class={styles.navbar}>
+    <div className={styles.container}>
+      <div className={styles.navbar}>
         <Navbar></Navbar>
       </div>
-      <div class={styles.streak}>
+      <div className={styles.streak}>
         <StreakCalendar userId={userId}></StreakCalendar>
       </div>
     </div>

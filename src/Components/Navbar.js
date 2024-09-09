@@ -2,7 +2,7 @@ import styles from "./Navbar.module.css";
 
 const Navbar = () => {
   return (
-    <div class={styles.navbar}>
+    <div className={styles.navbar}>
       <nav>
         <ul>
           <li>Dashboard</li>
