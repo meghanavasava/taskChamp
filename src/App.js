@@ -33,16 +33,16 @@ function App() {
 
   const userId = "user_1725465375818";
 
-  // return (
-  //   <div>
-  //     <MyActivity userId={userId}></MyActivity>
-  //   </div>
-  // );
   return (
     <div>
-      <Footer></Footer>
+      <MyActivity userId={userId}></MyActivity>
     </div>
   );
+  // return (
+  //   <div>
+  //     <Footer></Footer>
+  //   </div>
+  // );
 
   // return (
   //   <div>

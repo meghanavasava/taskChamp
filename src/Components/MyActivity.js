@@ -5,16 +5,16 @@ import Footer from "./Footer";
 
 const MyActivity = ({ userId }) => {
   return (
-    <div>
+    <div className={styles.pageContainer}>
       <div className={styles.container}>
         <div className={styles.navbar}>
-          <Navbar></Navbar>
+          <Navbar />
         </div>
         <div className={styles.streak}>
-          <StreakCalendar userId={userId}></StreakCalendar>
+          <StreakCalendar userId={userId} />
         </div>
       </div>
-      <Footer></Footer>
+      <Footer className={styles.footer} />
     </div>
   );
 };

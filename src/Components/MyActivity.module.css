@@ -1,5 +1,13 @@
+/* Ensure full-page layout with sticky footer */
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Full viewport height */
+}
+
 .container {
   display: flex;
+  flex: 1; /* Fills the remaining space to push footer to the bottom */
   width: 100%;
 }
 
@@ -17,17 +25,15 @@
 .streak {
   width: 80%;
   margin-left: 20%;
-  height: calc(100vh - 20px);
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
   padding: 20px;
   padding-bottom: 50px;
+  overflow-y: auto;
 }
 
-html,
-body {
-  height: 100%;
-  margin: 0;
-  overflow: hidden;
+.footer {
+  background-color: #0d1b2a;
+  color: #fff;
+  padding: 40px 0;
+  text-align: center;
+  width: 100%;
 }
