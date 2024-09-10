@@ -3,6 +3,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import StreakCalendar from "./Components/StreakCalendar";
 import MyActivity from "./Components/MyActivity";
+import Footer from "./Components/Footer";
 
 function App() {
   // return (
@@ -37,6 +38,11 @@ function App() {
       <MyActivity userId={userId}></MyActivity>
     </div>
   );
+  // return (
+  //   <div>
+  //     <Footer></Footer>
+  //   </div>
+  // );
 
   // return (
   //   <div>
