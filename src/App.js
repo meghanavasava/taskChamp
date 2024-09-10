@@ -3,6 +3,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import StreakCalendar from "./Components/StreakCalendar";
 import MyActivity from "./Components/MyActivity";
+import Footer from "./Components/Footer";
 
 function App() {
   // return (
@@ -32,9 +33,14 @@ function App() {
 
   const userId = "user_1725465375818";
 
+  // return (
+  //   <div>
+  //     <MyActivity userId={userId}></MyActivity>
+  //   </div>
+  // );
   return (
     <div>
-      <MyActivity userId={userId}></MyActivity>
+      <Footer></Footer>
     </div>
   );
 
