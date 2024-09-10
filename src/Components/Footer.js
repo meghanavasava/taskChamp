@@ -13,7 +13,7 @@ const Footer = () => {
             progress all in one place.
           </p>
         </div>
-        <div className={styles.footerSection}>
+        <div className={`${styles.footerSection} ${styles.footerMargin}`}>
           <h3>Navigation</h3>
           <ul className={styles.navList}>
             <li>Home</li>
@@ -39,10 +39,10 @@ const Footer = () => {
       <div className={styles.footerBottom}>
         <p>&copy; 2024 All rights reserved | Block is made by Khushi Patel</p>
         <div className={styles.socialIcons}>
-          <i className="fab fa-facebook"></i>
-          <i className="fab fa-twitter"></i>
-          <i className="fab fa-instagram"></i>
-          <i className="fab fa-linkedin"></i>
+          <img src="/facebook.svg" alt="Facebook" className="socialIcon" />
+          <img src="/twitter.svg" alt="Twitter" className="socialIcon" />
+          <img src="/instagram.svg" alt="Instagram" className="socialIcon" />
+          <img src="/linkedin.svg" alt="LinkedIn" className="socialIcon" />
         </div>
       </div>
     </footer>
