@@ -17,7 +17,11 @@ const TaskUpdate = ({ isOpen, onClose, task, onUpdate }) => {
 
   return (
     <div className={styles.formContainer}>
-      <form onSubmit={handleUpdate}>
+      <span className={styles.alertText}>Update Task:</span>
+      <form
+        onSubmit={handleUpdate}
+        style={{ display: "inline-flex", alignItems: "center", width: "100%" }}
+      >
         <input
           type="text"
           value={taskName}
@@ -35,21 +39,19 @@ const TaskUpdate = ({ isOpen, onClose, task, onUpdate }) => {
           <option value="medium">Medium</option>
           <option value="hard">Hard</option>
         </select>
-        <div className={styles.buttonGroup}>
-          <button
-            type="submit"
-            className={`${styles.button} ${styles.updateButton}`}
-          >
-            Update
-          </button>
-          <button
-            type="button"
-            className={`${styles.button} ${styles.cancelButton}`}
-            onClick={onClose}
-          >
-            Cancel
-          </button>
-        </div>
+        <button
+          type="submit"
+          className={`${styles.button} ${styles.updateButton}`}
+        >
+          Update
+        </button>
+        <button
+          type="button"
+          className={`${styles.button} ${styles.cancelButton}`}
+          onClick={onClose}
+        >
+          Cancel
+        </button>
       </form>
     </div>
   );
