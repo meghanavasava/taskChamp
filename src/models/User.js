@@ -38,17 +38,17 @@ export class User {
   }
 
   updateStreak(date) {
-    const today = date;
-    const allTasksDone = Object.values(this.tasks).every(
-      (task) => task.is_done
+    const tasksForDate = Object.values(this.tasks).filter(
+      (task) => task.date === date
     );
 
-    if (allTasksDone) {
-      this.streak.addDate(today);
-    } else {
-      this.streak.removeDate(today);
-    }
+    const allTasksDone = tasksForDate.every((task) => task.is_done);
 
+    if (allTasksDone) {
+      this.streak.addDate(date);
+    } else {
+      this.streak.removeDate(date);
+    }
     return this.save();
   }
 
