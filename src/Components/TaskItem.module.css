@@ -85,7 +85,9 @@
   background: #e0a800;
 }
 
-.task_update_modal {
+/* TaskUpdateModal.module.css */
+
+.taskUpdateModal {
   position: fixed;
   top: 0;
   left: 0;
@@ -95,12 +97,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1000;
 }
 
-.task_update_modal .modal_content {
+.modalContent {
   background: #fff;
   border-radius: 8px;
   padding: 20px;
   width: 80%;
   max-width: 500px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
