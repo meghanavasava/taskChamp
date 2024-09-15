@@ -28,6 +28,7 @@ const TaskItem = ({
     } catch (error) {
       console.error("Error updating streak:", error);
     }
+    reloadWithTask();
   };
 
   const handleUpClick = () => {
