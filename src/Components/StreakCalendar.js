@@ -100,12 +100,16 @@ const StreakCalendar = ({ userId }) => {
         </h2>
 
         <div className={styles.navigation_buttons}>
-          <button onClick={handlePrevMonth} className={styles.prev_button}>
-            Previous Month
-          </button>
-          <button onClick={handleNextMonth} className={styles.next_button}>
-            Next Month
-          </button>
+          <button
+            onClick={handlePrevMonth}
+            className={styles.prev_button}
+            aria-label="Previous Month"
+          ></button>
+          <button
+            onClick={handleNextMonth}
+            className={styles.next_button}
+            aria-label="Next Month"
+          ></button>
         </div>
 
         <div className={styles.streak_calendar_grid}>

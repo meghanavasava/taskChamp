@@ -97,10 +97,10 @@ button:hover {
   transform: scale(1.1);
 }
 
-/* .prev_button {
-  background-image: url("/image.png");
+.prev_button {
+  background-image: url("/public/next.svg");
 }
 
 .next_button {
-  background-image: url("/image.png");
-} */
+  background-image: url("/public/next.svg");
+}
