@@ -73,3 +73,33 @@ body {
   width: 100%;
   overflow-x: hidden;
 }
+
+.navigation_buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.navigation_buttons button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: transform 0.3s ease;
+}
+
+.navigation_buttons button:hover {
+  transform: scale(1.1);
+}
+
+.prev_button {
+  background-image: url("/public/prev.svg");
+}
+
+.next_button {
+  background-image: url("/public/next.svg");
+}

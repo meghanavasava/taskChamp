@@ -21,6 +21,9 @@
 
 .task_form button {
   background-color: #007bff;
+  width: 100%;
+  margin-top: 10px;
+  height: 40px;
   color: white;
   cursor: pointer;
   border: none;
