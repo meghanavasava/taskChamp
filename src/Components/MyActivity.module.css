@@ -36,3 +36,10 @@
   text-align: center;
   width: 100%;
 }
+
+.heading {
+  color: #0d1b2a !important;
+  z-index: 10;
+  text-align: center;
+  position: relative;
+}
