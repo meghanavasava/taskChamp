@@ -41,12 +41,18 @@ export class User {
     const tasksForDate = Object.values(this.tasks).filter(
       (task) => task.date === date
     );
+
     if (tasksForDate.length === 0) {
+      console.log("No tasks found for this date.");
       this.streak.removeDate(date);
     } else {
       const allTasksDone = tasksForDate.every((task) => task.is_done);
       if (allTasksDone) {
-        this.streak.addDate(date);
+        if (!this.streak.getDates().includes(date)) {
+          this.streak.addDate(date);
+        } else {
+          console.log("Date is already in the streak.");
+        }
       } else {
         this.streak.removeDate(date);
       }
