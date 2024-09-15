@@ -1,7 +1,7 @@
 .footer {
   background-color: #0d1b2a;
   color: #fff;
-  padding: 40px 0;
+  padding: 25px 0;
   position: relative;
 }
 
@@ -10,7 +10,8 @@
   justify-content: space-between;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 60px;
+  padding-left: 80px;
 }
 
 .footerMargin {
@@ -36,8 +37,11 @@
   margin-bottom: 8px;
 }
 
+.navList li:hover {
+  color: #81b8f3;
+}
+
 .footerBottom {
-  margin-top: 40px;
   text-align: center;
 }
 
@@ -47,6 +51,7 @@
 
 .socialIcons {
   font-size: 18px;
+  margin-top: 25px;
 }
 
 .socialIcons img {
