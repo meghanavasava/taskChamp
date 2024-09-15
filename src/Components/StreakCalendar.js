@@ -55,19 +55,18 @@ const StreakCalendar = ({ userId }) => {
       days.push(new Date(day));
       day.setDate(day.getDate() + 1);
     }
-
     setCalendarDays(days);
   }, []);
 
-  const toggleActivity = (day) => {
-    const dayString = formatDateToDDMMYYYY(day);
+  // const toggleActivity = (day) => {
+  //   const dayString = formatDateToDDMMYYYY(day);
 
-    if (activityDays.includes(dayString)) {
-      setActivityDays(activityDays.filter((d) => d !== dayString));
-    } else {
-      setActivityDays([...activityDays, dayString]);
-    }
-  };
+  //   if (activityDays.includes(dayString)) {
+  //     setActivityDays(activityDays.filter((d) => d !== dayString));
+  //   } else {
+  //     setActivityDays([...activityDays, dayString]);
+  //   }
+  // };
 
   const getTaskListOfDay = (day) => {
     const formattedDate = formatDateToDDMMYYYY(day);

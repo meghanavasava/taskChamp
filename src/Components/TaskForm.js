@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { createTaskWithPriority } from "../Services/TaskServices";
 import styles from "./TaskForm.module.css";
+import { User } from "../models/User";
 
 const TaskForm = ({ userId, reloadWithTask }) => {
   const [taskname, setTaskname] = useState("");
@@ -19,6 +20,8 @@ const TaskForm = ({ userId, reloadWithTask }) => {
       is_done
     );
     console.log("Done");
+    const user = await User.fetch(userId);
+    await user.updateStreak(formattedDate);
     reloadWithTask();
   };
 
