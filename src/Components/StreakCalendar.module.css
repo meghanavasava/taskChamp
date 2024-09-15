@@ -106,3 +106,8 @@ body {
   background-image: url("/public/next.svg");
   float: right;
 }
+
+.selected_day {
+  background-color: #93de96 !important;
+  color: #000;
+}
