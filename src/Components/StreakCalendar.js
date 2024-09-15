@@ -7,9 +7,12 @@ import styles from "./StreakCalendar.module.css";
 const StreakCalendar = ({ userId }) => {
   const [calendarDays, setCalendarDays] = useState([]);
   const [activityDays, setActivityDays] = useState([]);
-  const [dateTask, setDateTask] = useState(
-    new Date().toLocaleDateString("en-GB")
-  );
+
+  const initialDateTask = localStorage.getItem("selectedDate")
+    ? localStorage.getItem("selectedDate")
+    : new Date().toLocaleDateString("en-GB");
+
+  const [dateTask, setDateTask] = useState(initialDateTask);
   const [specialDates, setSpecialDates] = useState([]);
   const [currentMonth, setCurrentMonth] = useState(new Date());
 
@@ -82,6 +85,7 @@ const StreakCalendar = ({ userId }) => {
   const getTaskListOfDay = (day) => {
     const formattedDate = formatDateToDDMMYYYY(day);
     console.log("Task list for:", formattedDate);
+    localStorage.setItem("selectedDate", formattedDate);
     setDateTask(formattedDate);
   };
 
