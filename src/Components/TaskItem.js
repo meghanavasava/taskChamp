@@ -21,7 +21,6 @@ const TaskItem = ({
     const taskRef = ref(realDb, `users/${userId}/tasks/${task.taskId}`);
     set(taskRef, null);
     deleteList(task.priority - 1);
-
     try {
       const user = await User.fetch(userId);
       await user.updateStreak(task.date);

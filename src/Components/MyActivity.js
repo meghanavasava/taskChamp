@@ -11,6 +11,7 @@ const MyActivity = ({ userId }) => {
           <Navbar />
         </div>
         <div className={styles.streak}>
+          <h1 className={styles.heading}>My Activity</h1>{" "}
           <StreakCalendar userId={userId} />
         </div>
       </div>

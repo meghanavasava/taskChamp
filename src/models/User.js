@@ -41,13 +41,15 @@ export class User {
     const tasksForDate = Object.values(this.tasks).filter(
       (task) => task.date === date
     );
-
-    const allTasksDone = tasksForDate.every((task) => task.is_done);
-
-    if (allTasksDone) {
-      this.streak.addDate(date);
-    } else {
+    if (tasksForDate.length === 0) {
       this.streak.removeDate(date);
+    } else {
+      const allTasksDone = tasksForDate.every((task) => task.is_done);
+      if (allTasksDone) {
+        this.streak.addDate(date);
+      } else {
+        this.streak.removeDate(date);
+      }
     }
     return this.save();
   }
