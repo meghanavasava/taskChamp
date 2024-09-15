@@ -129,6 +129,7 @@ const StreakCalendar = ({ userId }) => {
             const dayString = formatDateToDDMMYYYY(day);
             const isActivityDay = activityDays.includes(dayString);
             const isSpecialDay = specialDates.includes(dayString);
+            const isSelectedDay = dateTask === dayString;
             const displayContent = specialDates.includes(dayString)
               ? "🌟"
               : day.getDate();
@@ -138,7 +139,9 @@ const StreakCalendar = ({ userId }) => {
                 key={index}
                 className={`${styles.streak_calendar_day} ${
                   isActivityDay ? styles.activity : ""
-                } ${isSpecialDay ? styles.special : ""}`}
+                } ${isSpecialDay ? styles.special : ""} ${
+                  isSelectedDay ? styles.selected_day : ""
+                }`}
                 onClick={() => getTaskListOfDay(day)}
               >
                 {displayContent}
