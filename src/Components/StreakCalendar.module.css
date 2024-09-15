@@ -74,7 +74,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Style for navigation buttons */
 .navigation_buttons {
   display: flex;
   justify-content: center;
@@ -82,7 +81,7 @@ body {
   margin-bottom: 20px;
 }
 
-button {
+.navigation_buttons button {
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -93,7 +92,7 @@ button {
   transition: transform 0.3s ease;
 }
 
-button:hover {
+.navigation_buttons button:hover {
   transform: scale(1.1);
 }
 
