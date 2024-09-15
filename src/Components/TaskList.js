@@ -32,7 +32,6 @@ const TaskList = ({ userId, dateTask, reloadWithTask }) => {
     const temp = [...tasks];
     temp.splice(index, 1);
     updatePriorities(temp);
-    reloadWithTask();
   }
 
   function upList(index) {
