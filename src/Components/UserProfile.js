@@ -9,6 +9,7 @@ const UserProfile = ({ userId }) => {
     password: "",
     birthdate: "",
     country: "",
+    email: "", // new email field
   });
 
   useEffect(() => {
@@ -21,6 +22,7 @@ const UserProfile = ({ userId }) => {
           password: fetchedUser.password,
           birthdate: fetchedUser.birthdate,
           country: fetchedUser.country,
+          email: fetchedUser.email, // set email from fetched user
         });
         setLoading(false);
       } catch (error) {
@@ -47,6 +49,7 @@ const UserProfile = ({ userId }) => {
       user.password = formData.password;
       user.birthdate = formData.birthdate;
       user.country = formData.country;
+      user.email = formData.email; // update email
       try {
         await user.save();
         alert("Profile updated successfully!");
@@ -97,6 +100,15 @@ const UserProfile = ({ userId }) => {
             type="text"
             name="country"
             value={formData.country}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label>Email:</label>
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
             onChange={handleChange}
           />
         </div>
