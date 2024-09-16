@@ -114,7 +114,7 @@ const UserProfile = ({ userId }) => {
         <div>
           <label className={styles.profile_label}>Password:</label>
           <input
-            type={passwordVisible ? "text" : "password"} // Toggle password visibility
+            type={passwordVisible ? "text" : "password"}
             name="password"
             className={styles.profile_input}
             value={formData.password}

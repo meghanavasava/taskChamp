@@ -1,12 +1,12 @@
-/* UserProfile.module.css */
-
 .profile_container {
   max-width: 600px;
   margin: auto;
   padding: 20px;
+  padding-right: 40px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: #f9f9f9;
+  position: relative;
 }
 
 .profile_header {
@@ -21,6 +21,7 @@
 
 .profile_form div {
   margin-bottom: 15px;
+  position: relative;
 }
 
 .profile_label {
@@ -36,10 +37,37 @@
   border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 16px;
+  box-sizing: border-box;
 }
 
 .profile_dateInput {
   padding: 8px;
+}
+
+.profile_passwordContainer {
+  display: flex;
+  align-items: center;
+}
+
+.profile_passwordInput {
+  flex: 1;
+  padding-right: 50px;
+}
+
+.profile_toggleButton {
+  position: absolute;
+  right: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #6c757d;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 5px 10px;
+}
+
+.profile_toggleButton:hover {
+  background-color: #5a6268;
 }
 
 .profile_submitButton {
@@ -55,20 +83,6 @@
 
 .profile_submitButton:hover {
   background-color: #0056b3;
-}
-
-.profile_toggleButton {
-  padding: 5px 10px;
-  border: none;
-  border-radius: 4px;
-  background-color: #6c757d;
-  color: white;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.profile_toggleButton:hover {
-  background-color: #5a6268;
 }
 
 .profile_error {
