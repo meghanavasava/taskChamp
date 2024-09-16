@@ -12,6 +12,7 @@ const UserProfile = ({ userId }) => {
     email: "",
   });
   const [errors, setErrors] = useState({});
+  const [passwordVisible, setPasswordVisible] = useState(false); // State for password visibility
 
   useEffect(() => {
     const fetchUserDetails = async () => {
@@ -70,14 +71,14 @@ const UserProfile = ({ userId }) => {
       return;
     }
 
-    setErrors({}); 
+    setErrors({});
 
     if (user) {
       user.username = formData.username;
       user.password = formData.password;
-      user.birthdate = formatDateForStorage(formData.birthdate); 
+      user.birthdate = formatDateForStorage(formData.birthdate);
       user.country = formData.country;
-      user.email = formData.email; 
+      user.email = formData.email;
       try {
         await user.save();
         alert("Profile updated successfully!");
@@ -85,6 +86,10 @@ const UserProfile = ({ userId }) => {
         console.error("Error updating profile:", error);
       }
     }
+  };
+
+  const togglePasswordVisibility = () => {
+    setPasswordVisible((prev) => !prev);
   };
 
   if (loading) {
@@ -107,11 +112,14 @@ const UserProfile = ({ userId }) => {
         <div>
           <label>Password:</label>
           <input
-            type="password"
+            type={passwordVisible ? "text" : "password"} // Toggle password visibility
             name="password"
             value={formData.password}
             onChange={handleChange}
           />
+          <button type="button" onClick={togglePasswordVisibility}>
+            {passwordVisible ? "Hide" : "Show"}
+          </button>
         </div>
         <div>
           <label>Birthdate:</label>
