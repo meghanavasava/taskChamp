@@ -9,7 +9,7 @@ const UserProfile = ({ userId }) => {
     password: "",
     birthdate: "",
     country: "",
-    email: "", // new email field
+    email: "",
   });
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const UserProfile = ({ userId }) => {
           password: fetchedUser.password,
           birthdate: fetchedUser.birthdate,
           country: fetchedUser.country,
-          email: fetchedUser.email, // set email from fetched user
+          email: fetchedUser.email,
         });
         setLoading(false);
       } catch (error) {
@@ -33,6 +33,15 @@ const UserProfile = ({ userId }) => {
 
     fetchUserDetails();
   }, [userId]);
+
+  // Function to format date to dd-mm-yyyy
+  const formatDate = (date) => {
+    const d = new Date(date);
+    const day = String(d.getDate()).padStart(2, "0");
+    const month = String(d.getMonth() + 1).padStart(2, "0"); // Months are 0-based
+    const year = d.getFullYear();
+    return `${day}-${month}-${year}`;
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -47,9 +56,9 @@ const UserProfile = ({ userId }) => {
     if (user) {
       user.username = formData.username;
       user.password = formData.password;
-      user.birthdate = formData.birthdate;
+      user.birthdate = formatDate(formData.birthdate); // Format the birthdate here
       user.country = formData.country;
-      user.email = formData.email; // update email
+      user.email = formData.email;
       try {
         await user.save();
         alert("Profile updated successfully!");
