@@ -4,6 +4,7 @@ import "./App.css";
 import StreakCalendar from "./Components/StreakCalendar";
 import MyActivity from "./Components/MyActivity";
 import Footer from "./Components/Footer";
+import UserProfile from "./Components/UserProfile";
 
 function App() {
   // return (
@@ -33,22 +34,17 @@ function App() {
 
   const userId = "user_1725465375818";
 
-  return (
-    <div>
-      <MyActivity userId={userId}></MyActivity>
-    </div>
-  );
   // return (
   //   <div>
-  //     <Footer></Footer>
+  //     <MyActivity userId={userId}></MyActivity>
   //   </div>
   // );
 
-  // return (
-  //   <div>
-  //     <Navbar></Navbar>
-  //   </div>
-  // );
+  return (
+    <div>
+      <UserProfile userId={userId}></UserProfile>
+    </div>
+  );
 }
 
 export default App;
