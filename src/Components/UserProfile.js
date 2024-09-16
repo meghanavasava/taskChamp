@@ -98,73 +98,76 @@ const UserProfile = ({ userId }) => {
   }
 
   return (
-    <div className={styles.profile_container}>
-      <h2 className={styles.profile_header}>User Profile</h2>
-      <form className={styles.profile_form} onSubmit={handleSubmit}>
-        <div>
-          <label className={styles.profile_label}>Username :</label>
-          <input
-            type="text"
-            name="username"
-            className={styles.profile_input}
-            value={formData.username}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label className={styles.profile_label}>Email :</label>
-          <input
-            type="email"
-            name="email"
-            className={styles.profile_input}
-            value={formData.email}
-            onChange={handleChange}
-          />
-          {errors.email && (
-            <p className={styles.profile_error}>{errors.email}</p>
-          )}
-        </div>
-        <div className={styles.profile_passwordContainer}>
-          <label className={styles.profile_label}>Password :</label>
-          <input
-            type={passwordVisible ? "text" : "password"}
-            name="password"
-            className={styles.profile_passwordInput}
-            value={formData.password}
-            onChange={handleChange}
-          />
-          <button
-            type="button"
-            className={styles.profile_toggleButton}
-            onClick={togglePasswordVisibility}
-          >
-            {passwordVisible ? "Hide" : "Show"}
+    <div>
+      <br></br><br></br>
+      <div className={styles.profile_container}>
+        <h2 className={styles.profile_header}>User Profile</h2>
+        <form className={styles.profile_form} onSubmit={handleSubmit}>
+          <div>
+            <label className={styles.profile_label}>Username :</label>
+            <input
+              type="text"
+              name="username"
+              className={styles.profile_input}
+              value={formData.username}
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <label className={styles.profile_label}>Email :</label>
+            <input
+              type="email"
+              name="email"
+              className={styles.profile_input}
+              value={formData.email}
+              onChange={handleChange}
+            />
+            {errors.email && (
+              <p className={styles.profile_error}>{errors.email}</p>
+            )}
+          </div>
+          <div className={styles.profile_passwordContainer}>
+            <label className={styles.profile_label}>Password :</label>
+            <input
+              type={passwordVisible ? "text" : "password"}
+              name="password"
+              className={styles.profile_passwordInput}
+              value={formData.password}
+              onChange={handleChange}
+            />
+            <button
+              type="button"
+              className={styles.profile_toggleButton}
+              onClick={togglePasswordVisibility}
+            >
+              {passwordVisible ? "Hide" : "Show"}
+            </button>
+          </div>
+          <div>
+            <label className={styles.profile_label}>Birthdate :</label>
+            <input
+              type="date"
+              name="birthdate"
+              className={styles.profile_dateInput}
+              value={formData.birthdate}
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <label className={styles.profile_label}>Country :</label>
+            <input
+              type="text"
+              name="country"
+              className={styles.profile_input}
+              value={formData.country}
+              onChange={handleChange}
+            />
+          </div>
+          <button type="submit" className={styles.profile_submitButton}>
+            Update Profile
           </button>
-        </div>
-        <div>
-          <label className={styles.profile_label}>Birthdate :</label>
-          <input
-            type="date"
-            name="birthdate"
-            className={styles.profile_dateInput}
-            value={formData.birthdate}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label className={styles.profile_label}>Country :</label>
-          <input
-            type="text"
-            name="country"
-            className={styles.profile_input}
-            value={formData.country}
-            onChange={handleChange}
-          />
-        </div>
-        <button type="submit" className={styles.profile_submitButton}>
-          Update Profile
-        </button>
-      </form>
+        </form>
+      </div>
     </div>
   );
 };
