@@ -18,10 +18,12 @@ const UserProfile = ({ userId }) => {
       try {
         const fetchedUser = await User.fetch(userId);
         setUser(fetchedUser);
+        const [day, month, year] = fetchedUser.birthdate.split("-");
+        const formattedDate = `${year}-${month}-${day}`;
         setFormData({
           username: fetchedUser.username,
           password: fetchedUser.password,
-          birthdate: fetchedUser.birthdate,
+          birthdate: formattedDate,
           country: fetchedUser.country,
           email: fetchedUser.email,
         });
@@ -35,16 +37,14 @@ const UserProfile = ({ userId }) => {
     fetchUserDetails();
   }, [userId]);
 
-  // Function to format date to dd-mm-yyyy
-  const formatDate = (date) => {
-    const d = new Date(date);
-    const day = String(d.getDate()).padStart(2, "0");
-    const month = String(d.getMonth() + 1).padStart(2, "0"); // Months are 0-based
-    const year = d.getFullYear();
-    return `${day}-${month}-${year}`;
+  const formatDateForStorage = (date) => {
+    const [year, month, day] = date.split("-");
+    return `${String(day).padStart(2, "0")}-${String(month).padStart(
+      2,
+      "0"
+    )}-${year}`;
   };
 
-  // Function to validate email format
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
@@ -61,7 +61,6 @@ const UserProfile = ({ userId }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validate email
     const emailValid = validateEmail(formData.email);
     if (!emailValid) {
       setErrors((prevErrors) => ({
@@ -71,14 +70,14 @@ const UserProfile = ({ userId }) => {
       return;
     }
 
-    setErrors({}); // Clear previous errors
+    setErrors({}); 
 
     if (user) {
       user.username = formData.username;
       user.password = formData.password;
-      user.birthdate = formatDate(formData.birthdate); // Format the birthdate here
+      user.birthdate = formatDateForStorage(formData.birthdate); 
       user.country = formData.country;
-      user.email = formData.email; // Update email
+      user.email = formData.email; 
       try {
         await user.save();
         alert("Profile updated successfully!");
