@@ -112,11 +112,24 @@ const UserProfile = ({ userId }) => {
           />
         </div>
         <div>
+          <label className={styles.profile_label}>Email:</label>
+          <input
+            type="email"
+            name="email"
+            className={styles.profile_input}
+            value={formData.email}
+            onChange={handleChange}
+          />
+          {errors.email && (
+            <p className={styles.profile_error}>{errors.email}</p>
+          )}
+        </div>
+        <div className={styles.profile_passwordContainer}>
           <label className={styles.profile_label}>Password:</label>
           <input
-            type={passwordVisible ? "text" : "password"}
+            type={passwordVisible ? "text" : "password"} // Toggle password visibility
             name="password"
-            className={styles.profile_input}
+            className={styles.profile_passwordInput}
             value={formData.password}
             onChange={handleChange}
           />
@@ -147,19 +160,6 @@ const UserProfile = ({ userId }) => {
             value={formData.country}
             onChange={handleChange}
           />
-        </div>
-        <div>
-          <label className={styles.profile_label}>Email:</label>
-          <input
-            type="email"
-            name="email"
-            className={styles.profile_input}
-            value={formData.email}
-            onChange={handleChange}
-          />
-          {errors.email && (
-            <p className={styles.profile_error}>{errors.email}</p>
-          )}
         </div>
         <button type="submit" className={styles.profile_submitButton}>
           Update Profile
