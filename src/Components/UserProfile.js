@@ -102,7 +102,7 @@ const UserProfile = ({ userId }) => {
       <h2 className={styles.profile_header}>User Profile</h2>
       <form className={styles.profile_form} onSubmit={handleSubmit}>
         <div>
-          <label className={styles.profile_label}>Username:</label>
+          <label className={styles.profile_label}>Username :</label>
           <input
             type="text"
             name="username"
@@ -112,7 +112,7 @@ const UserProfile = ({ userId }) => {
           />
         </div>
         <div>
-          <label className={styles.profile_label}>Email:</label>
+          <label className={styles.profile_label}>Email :</label>
           <input
             type="email"
             name="email"
@@ -125,9 +125,9 @@ const UserProfile = ({ userId }) => {
           )}
         </div>
         <div className={styles.profile_passwordContainer}>
-          <label className={styles.profile_label}>Password:</label>
+          <label className={styles.profile_label}>Password :</label>
           <input
-            type={passwordVisible ? "text" : "password"} // Toggle password visibility
+            type={passwordVisible ? "text" : "password"}
             name="password"
             className={styles.profile_passwordInput}
             value={formData.password}
@@ -142,7 +142,7 @@ const UserProfile = ({ userId }) => {
           </button>
         </div>
         <div>
-          <label className={styles.profile_label}>Birthdate:</label>
+          <label className={styles.profile_label}>Birthdate :</label>
           <input
             type="date"
             name="birthdate"
@@ -152,7 +152,7 @@ const UserProfile = ({ userId }) => {
           />
         </div>
         <div>
-          <label className={styles.profile_label}>Country:</label>
+          <label className={styles.profile_label}>Country :</label>
           <input
             type="text"
             name="country"
