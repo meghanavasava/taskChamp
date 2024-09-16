@@ -1,14 +1,11 @@
-/* UserProfile.module.css */
-
 .profile_container {
   max-width: 600px;
   margin: auto;
   padding: 20px;
-  padding-right: 40px; /* Add right padding */
+  padding-right: 40px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: #f9f9f9;
-  position: relative; /* Relative positioning for inner elements */
 }
 
 .profile_header {
@@ -23,7 +20,7 @@
 
 .profile_form div {
   margin-bottom: 15px;
-  position: relative; /* Position relative to place button inside input */
+  position: relative;
 }
 
 .profile_label {
@@ -39,26 +36,21 @@
   border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 16px;
-  box-sizing: border-box; /* Ensure padding does not affect width */
+  box-sizing: border-box;
 }
 
 .profile_dateInput {
   padding: 8px;
 }
 
-.profile_passwordContainer {
-  display: flex;
-  align-items: center;
-}
-
 .profile_passwordInput {
-  flex: 1; /* Take up remaining space */
-  padding-right: 50px; /* Space for button */
+  width: calc(100% - 90px);
+  padding: 10px;
 }
 
 .profile_toggleButton {
-  position: absolute;
-  right: 10px; /* Distance from the right edge */
+  display: inline;
+  margin-top: 5px;
   border: none;
   border-radius: 4px;
   background-color: #6c757d;
