@@ -3,12 +3,13 @@ import { realDb } from "../firebase";
 import { Streak } from "./Streak";
 
 export class User {
-  constructor(userId, username, password, birthdate, country) {
+  constructor(userId, username, password, birthdate, country, email) {
     this.userId = userId;
     this.username = username;
     this.password = password;
     this.birthdate = birthdate;
     this.country = country;
+    this.email = email;
     this.tasks = {};
     this.streak = new Streak();
   }
@@ -20,6 +21,7 @@ export class User {
       password: this.password,
       birthdate: this.birthdate,
       country: this.country,
+      email: this.email,
       tasks: this.tasks,
       streak: this.streak.getDates(),
     });
@@ -70,7 +72,8 @@ export class User {
           data.username,
           data.password,
           data.birthdate,
-          data.country
+          data.country,
+          data.email
         );
         user.tasks = data.tasks || {};
         user.streak = new Streak();
