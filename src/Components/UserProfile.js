@@ -11,6 +11,7 @@ const UserProfile = ({ userId }) => {
     country: "",
     email: "",
   });
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     const fetchUserDetails = async () => {
@@ -43,6 +44,12 @@ const UserProfile = ({ userId }) => {
     return `${day}-${month}-${year}`;
   };
 
+  // Function to validate email format
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -53,12 +60,25 @@ const UserProfile = ({ userId }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Validate email
+    const emailValid = validateEmail(formData.email);
+    if (!emailValid) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        email: "Invalid email format.",
+      }));
+      return;
+    }
+
+    setErrors({}); // Clear previous errors
+
     if (user) {
       user.username = formData.username;
       user.password = formData.password;
       user.birthdate = formatDate(formData.birthdate); // Format the birthdate here
       user.country = formData.country;
-      user.email = formData.email;
+      user.email = formData.email; // Update email
       try {
         await user.save();
         alert("Profile updated successfully!");
@@ -120,6 +140,7 @@ const UserProfile = ({ userId }) => {
             value={formData.email}
             onChange={handleChange}
           />
+          {errors.email && <p style={{ color: "red" }}>{errors.email}</p>}
         </div>
         <button type="submit">Update Profile</button>
       </form>
