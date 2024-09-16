@@ -51,6 +51,7 @@
   display: inline;
   border: none;
   border-radius: 4px;
+  background: url("../../public/hidden.svg");
   height: 40px;
   background-color: #6c757d;
   color: white;
