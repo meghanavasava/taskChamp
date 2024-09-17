@@ -9,6 +9,7 @@ const Registration = () => {
   const [country, setCountry] = useState("");
   const [email, setEmail] = useState("");
   const [userId, setUserId] = useState(null);
+  const [showPassword, setShowPassword] = useState(false);
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -70,11 +71,14 @@ const Registration = () => {
         <div>
           <label>Password:</label>
           <input
-            type="password"
+            type={showPassword ? "text" : "password"}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
+          <button type="button" onClick={() => setShowPassword(!showPassword)}>
+            {showPassword ? "Hide" : "Show"}
+          </button>
         </div>
         <div>
           <label>Birthdate:</label>
