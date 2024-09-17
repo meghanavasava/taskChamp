@@ -1,17 +1,19 @@
-import { ref, set } from "firebase/database";
 import { realDb } from "./firebase";
+import { ref, set } from "firebase/database";
 
 export const createUserInFirebase = (user) => {
   const userId = `user_${Date.now()}`;
   const userRef = ref(realDb, `users/${userId}`);
 
-  return set(userRef, user)
-    .then(() => {
-      console.log("User created successfully with userId:", userId);
-    })
-    .catch((error) => {
-      console.error("Error creating user:", error);
-    });
+  return set(userRef, {
+    username: user.username,
+    password: user.password,
+    birthdate: user.birthdate,
+    country: user.country,
+    email: user.email,
+  }).then(() => {
+    return userId;
+  });
 };
 
 export const addTaskToUserInFirebase = (userId, task) => {

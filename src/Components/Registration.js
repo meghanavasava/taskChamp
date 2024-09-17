@@ -8,6 +8,7 @@ const Registration = () => {
   const [birthdate, setBirthdate] = useState("");
   const [country, setCountry] = useState("");
   const [email, setEmail] = useState("");
+  const [userId, setUserId] = useState(null);
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -23,17 +24,21 @@ const Registration = () => {
     const formattedBirthdate = formatDate(birthdate);
 
     const newUser = new User(
-      null, 
+      null,
       username,
       password,
-      formattedBirthdate, 
+      formattedBirthdate,
       country,
       email
     );
 
     createUserInFirebase(newUser)
-      .then(() => {
-        console.log("User registered successfully!");
+      .then((generatedUserId) => {
+        setUserId(generatedUserId);
+        console.log(
+          "User registered successfully with userId:",
+          generatedUserId
+        );
       })
       .catch((error) => {
         console.error("Error registering user:", error);
@@ -91,6 +96,8 @@ const Registration = () => {
         </div>
         <button type="submit">Register</button>
       </form>
+
+      {userId && <p>User ID: {userId}</p>}
     </div>
   );
 };
