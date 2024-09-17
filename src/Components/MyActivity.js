@@ -14,6 +14,7 @@ const MyActivity = ({ userId }) => {
           <h1 className={styles.heading}>My Activity</h1>{" "}
           <StreakCalendar userId={userId} />
         </div>
+
       </div>
       <Footer className={styles.footer} />
     </div>
