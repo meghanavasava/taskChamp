@@ -24,31 +24,3 @@ export const addTaskToUserInFirebase = (userId, task) => {
       console.error("Error adding task:", error);
     });
 };
-
-// Example usage
-// export const setupUserAndTask = () => {
-//   const userId = "userId1"; // Example user ID
-//   const user = new User(
-//     userId,
-//     "user1",
-//     "password1",
-//     "01-01-2000",
-//     "CountryName"
-//   );
-
-//   const taskId = "taskId1"; // Example task ID
-//   const task = new Task(taskId, "01-09-2024", "Example Task", "medium", false);
-
-//   // Add task to the user
-//   user.addTask(taskId, task);
-
-//   // Save user to Firebase
-//   return createUserInFirebase(user)
-//     .then(() => {
-//       // Save task to Firebase
-//       return addTaskToUserInFirebase(user.userId, task);
-//     })
-//     .catch((error) => {
-//       console.error("Error:", error);
-//     });
-// };

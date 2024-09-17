@@ -9,14 +9,24 @@ const Registration = () => {
   const [country, setCountry] = useState("");
   const [email, setEmail] = useState("");
 
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = String(date.getDate()).padStart(2, "0");
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const year = date.getFullYear();
+    return `${day}-${month}-${year}`;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const formattedBirthdate = formatDate(birthdate);
+
     const newUser = new User(
-      null, // userId is no longer needed here
+      null, 
       username,
       password,
-      birthdate,
+      formattedBirthdate, 
       country,
       email
     );
