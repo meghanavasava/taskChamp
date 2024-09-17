@@ -3,12 +3,13 @@ import { realDb } from "../firebase";
 import { Streak } from "./Streak";
 
 export class User {
-  constructor(userId, username, password, birthdate, country) {
+  constructor(userId, username, password, birthdate, country, email) {
     this.userId = userId;
     this.username = username;
     this.password = password;
     this.birthdate = birthdate;
     this.country = country;
+    this.email = email;
     this.tasks = {};
     this.streak = new Streak();
   }
@@ -20,6 +21,7 @@ export class User {
       password: this.password,
       birthdate: this.birthdate,
       country: this.country,
+      email: this.email,
       tasks: this.tasks,
       streak: this.streak.getDates(),
     });
@@ -38,17 +40,25 @@ export class User {
   }
 
   updateStreak(date) {
-    const today = date;
-    const allTasksDone = Object.values(this.tasks).every(
-      (task) => task.is_done
+    const tasksForDate = Object.values(this.tasks).filter(
+      (task) => task.date === date
     );
 
-    if (allTasksDone) {
-      this.streak.addDate(today);
+    if (tasksForDate.length === 0) {
+      console.log("No tasks found for this date.");
+      this.streak.removeDate(date);
     } else {
-      this.streak.removeDate(today);
+      const allTasksDone = tasksForDate.every((task) => task.is_done);
+      if (allTasksDone) {
+        if (!this.streak.getDates().includes(date)) {
+          this.streak.addDate(date);
+        } else {
+          console.log("Date is already in the streak.");
+        }
+      } else {
+        this.streak.removeDate(date);
+      }
     }
-
     return this.save();
   }
 
@@ -62,7 +72,8 @@ export class User {
           data.username,
           data.password,
           data.birthdate,
-          data.country
+          data.country,
+          data.email
         );
         user.tasks = data.tasks || {};
         user.streak = new Streak();

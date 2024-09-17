@@ -7,10 +7,14 @@ import styles from "./StreakCalendar.module.css";
 const StreakCalendar = ({ userId }) => {
   const [calendarDays, setCalendarDays] = useState([]);
   const [activityDays, setActivityDays] = useState([]);
-  const [dateTask, setDateTask] = useState(
-    new Date().toLocaleDateString("en-GB")
-  );
+
+  const initialDateTask = localStorage.getItem("selectedDate")
+    ? localStorage.getItem("selectedDate")
+    : new Date().toLocaleDateString("en-GB");
+
+  const [dateTask, setDateTask] = useState(initialDateTask);
   const [specialDates, setSpecialDates] = useState([]);
+  const [currentMonth, setCurrentMonth] = useState(new Date());
 
   const formatDateToDDMMYYYY = (date) => {
     const day = date.getDate().toString().padStart(2, "0");
@@ -34,14 +38,33 @@ const StreakCalendar = ({ userId }) => {
     window.location.reload();
   };
 
+  const handlePrevMonth = () => {
+    setCurrentMonth(
+      new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1)
+    );
+  };
+
+  const handleNextMonth = () => {
+    setCurrentMonth(
+      new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1)
+    );
+  };
+
   useEffect(() => {
     fetchStreakDates();
   }, [userId]);
 
   useEffect(() => {
-    const today = new Date();
-    const startOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
-    const endOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+    const startOfMonth = new Date(
+      currentMonth.getFullYear(),
+      currentMonth.getMonth(),
+      1
+    );
+    const endOfMonth = new Date(
+      currentMonth.getFullYear(),
+      currentMonth.getMonth() + 1,
+      0
+    );
 
     const days = [];
     let day = new Date(startOfMonth);
@@ -57,31 +80,42 @@ const StreakCalendar = ({ userId }) => {
     }
 
     setCalendarDays(days);
-  }, []);
-
-  const toggleActivity = (day) => {
-    const dayString = formatDateToDDMMYYYY(day);
-
-    if (activityDays.includes(dayString)) {
-      setActivityDays(activityDays.filter((d) => d !== dayString));
-    } else {
-      setActivityDays([...activityDays, dayString]);
-    }
-  };
+  }, [currentMonth]);
 
   const getTaskListOfDay = (day) => {
     const formattedDate = formatDateToDDMMYYYY(day);
     console.log("Task list for:", formattedDate);
+    localStorage.setItem("selectedDate", formattedDate);
     setDateTask(formattedDate);
   };
 
   return (
     <div className={styles.streak_calendar_container}>
-      <TaskForm userId={userId} reloadWithTask={reloadWithTask}></TaskForm>
-      <br></br>
-      <br></br>
+      <TaskForm userId={userId} reloadWithTask={reloadWithTask} />
+      <br />
+      <br />
       <div className={styles.streak_calendar_table}>
-        <h2 className={styles.streak_calendar_title}>Streak Calendar</h2>
+        <h2 className={styles.streak_calendar_title}>
+          Streak Calendar -{" "}
+          {currentMonth.toLocaleDateString("en-US", {
+            month: "long",
+            year: "numeric",
+          })}
+        </h2>
+
+        <div className={styles.navigation_buttons}>
+          <button
+            onClick={handlePrevMonth}
+            className={styles.prev_button}
+            aria-label="Previous Month"
+          ></button>
+          <button
+            onClick={handleNextMonth}
+            className={styles.next_button}
+            aria-label="Next Month"
+          ></button>
+        </div>
+
         <div className={styles.streak_calendar_grid}>
           <div className={styles.streak_calendar_header}>Sun</div>
           <div className={styles.streak_calendar_header}>Mon</div>
@@ -93,12 +127,13 @@ const StreakCalendar = ({ userId }) => {
 
           {calendarDays.map((day, index) => {
             if (day === null) {
-              return <div key={index} class={styles.streak_calendar_day} />;
+              return <div key={index} className={styles.streak_calendar_day} />;
             }
 
             const dayString = formatDateToDDMMYYYY(day);
             const isActivityDay = activityDays.includes(dayString);
             const isSpecialDay = specialDates.includes(dayString);
+            const isSelectedDay = dateTask === dayString;
             const displayContent = specialDates.includes(dayString)
               ? "🌟"
               : day.getDate();
@@ -108,7 +143,9 @@ const StreakCalendar = ({ userId }) => {
                 key={index}
                 className={`${styles.streak_calendar_day} ${
                   isActivityDay ? styles.activity : ""
-                } ${isSpecialDay ? styles.special : ""}`}
+                } ${isSpecialDay ? styles.special : ""} ${
+                  isSelectedDay ? styles.selected_day : ""
+                }`}
                 onClick={() => getTaskListOfDay(day)}
               >
                 {displayContent}
@@ -117,12 +154,12 @@ const StreakCalendar = ({ userId }) => {
           })}
         </div>
       </div>
-      <br></br>
+      <br />
       <TaskList
         userId={userId}
         reloadWithTask={reloadWithTask}
         dateTask={dateTask}
-      ></TaskList>
+      />
     </div>
   );
 };

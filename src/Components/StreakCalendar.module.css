@@ -37,7 +37,7 @@
   padding: 50px 70px;
   background-color: #e4e7ed;
   border-radius: 12px;
-  margin: 0px 50px;
+  margin: 0px 120px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
@@ -72,4 +72,42 @@ html,
 body {
   width: 100%;
   overflow-x: hidden;
+}
+
+.navigation_buttons {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 385px;
+  margin-bottom: 20px;
+}
+
+.navigation_buttons button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: transform 0.3s ease;
+}
+
+.navigation_buttons button:hover {
+  transform: scale(1.1);
+}
+
+.prev_button {
+  background-image: url("/public/prev.svg");
+  float: left;
+}
+
+.next_button {
+  background-image: url("/public/next.svg");
+  float: right;
+}
+
+.selected_day {
+  background-color: #93de96 !important;
+  color: #000;
 }
