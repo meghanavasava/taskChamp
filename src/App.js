@@ -5,6 +5,7 @@ import StreakCalendar from "./Components/StreakCalendar";
 import MyActivity from "./Components/MyActivity";
 import Footer from "./Components/Footer";
 import UserProfile from "./Components/UserProfile";
+import Registration from "./Components/Registration";
 
 function App() {
   // return (
@@ -40,9 +41,15 @@ function App() {
   //   </div>
   // );
 
+  // return (
+  //   <div>
+  //     <UserProfile userId={userId}></UserProfile>
+  //   </div>
+  // );
+
   return (
     <div>
-      <UserProfile userId={userId}></UserProfile>
+      <Registration></Registration>
     </div>
   );
 }
