@@ -1,12 +1,12 @@
-import { ref, set } from "firebase/database";
+import { ref, push, set } from "firebase/database";
 import { realDb } from "./firebase";
-import { User } from "./models/User";
-import { Task } from "./models/Task";
 
-// Function to create a user in Firebase
+// Function to create a user in Firebase without explicit userId
 export const createUserInFirebase = (user) => {
-  const userRef = ref(realDb, `users/${user.userId}`);
-  return set(userRef, user)
+  const userRef = ref(realDb, "users"); // 'users' collection in the database
+  const newUserRef = push(userRef); // Generate unique ID for the user
+
+  return set(newUserRef, user)
     .then(() => {
       console.log("User created successfully!");
     })

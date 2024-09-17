@@ -11,10 +11,9 @@ const Registration = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const userId = `user_${Date.now()}`;
 
     const newUser = new User(
-      userId,
+      null, // userId is no longer needed here
       username,
       password,
       birthdate,
