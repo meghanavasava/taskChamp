@@ -59,6 +59,15 @@ const Registration = () => {
           />
         </div>
         <div>
+          <label>Email:</label>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+        <div>
           <label>Password:</label>
           <input
             type="password"
@@ -82,15 +91,6 @@ const Registration = () => {
             type="text"
             value={country}
             onChange={(e) => setCountry(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Email:</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>
