@@ -1,5 +1,5 @@
 import { ref, set } from "firebase/database";
-import { realDb } from "./firebaseConfig";
+import { realDb } from "./firebase";
 import { User } from "./models/User";
 import { Task } from "./models/Task";
 
