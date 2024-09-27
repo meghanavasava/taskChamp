@@ -5,7 +5,11 @@ import StreakCalendar from "./Components/StreakCalendar";
 import MyActivity from "./Components/MyActivity";
 import Footer from "./Components/Footer";
 import UserProfile from "./Components/UserProfile";
+
 import LeaderBoard from "./Components/LeaderBoard";
+
+import Registration from "./Components/Registration";
+
 
 function App() {
   // return (
@@ -41,6 +45,7 @@ function App() {
   //  </div>
   //  );
 
+
   //return (
     //<div>
       //<UserProfile userId={userId}></UserProfile>
@@ -48,12 +53,23 @@ function App() {
     //</div>
   //);
 
-   return (
-    <div>
-       <UserProfile userId={userId}></UserProfile>
-      <LeaderBoard />
+   //return (
+    //<div>
+       //<UserProfile userId={userId}></UserProfile>
+      //<LeaderBoard />
 
       
+//=======
+  // return (
+  //   <div>
+  //     <UserProfile userId={userId}></UserProfile>
+  //   </div>
+  // );
+
+  return (
+    <div>
+      <Registration></Registration>
+
     </div>
   );
 }
