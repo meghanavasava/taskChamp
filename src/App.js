@@ -9,6 +9,7 @@ import UserProfile from "./Components/UserProfile";
 import LeaderBoard from "./Components/LeaderBoard";
 
 import Registration from "./Components/Registration";
+import Login from "./Components/Login";
 
 
 function App() {
@@ -66,9 +67,16 @@ function App() {
   //   </div>
   // );
 
+  // return (
+  //   <div>
+  //     <Registration></Registration>
+
+  //   </div>
+  // );
+
   return (
     <div>
-      <Registration></Registration>
+    <Login></Login>
 
     </div>
   );
