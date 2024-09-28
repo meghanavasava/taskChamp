@@ -6,6 +6,7 @@ import MyActivity from "./Components/MyActivity";
 import Footer from "./Components/Footer";
 import UserProfile from "./Components/UserProfile";
 import Registration from "./Components/Registration";
+import AboutUs from "./Components/AboutUs";
 
 function App() {
   // return (
@@ -47,9 +48,15 @@ function App() {
   //   </div>
   // );
 
+  // return (
+    // <div>
+      // <Registration></Registration>
+    // </div>
+  // );
+
   return (
     <div>
-      <Registration></Registration>
+      <AboutUs></AboutUs>
     </div>
   );
 }
