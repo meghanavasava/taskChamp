@@ -12,6 +12,9 @@ import Registration from "./Components/Registration";
 import Login from "./Components/Login";
 
 
+
+
+
 function App() {
   // return (
   //   <div className="App">
@@ -67,13 +70,7 @@ function App() {
   //   </div>
   // );
 
-  // return (
-  //   <div>
-  //     <Registration></Registration>
-
-  //   </div>
-  // );
-
+ 
   return (
     <div>
     <Login></Login>
