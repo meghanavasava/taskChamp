@@ -52,17 +52,17 @@ function App() {
   //</div>
   //);
 
-  //return (
-  //<div>
-  //<UserProfile userId={userId}></UserProfile>
-  //<LeaderBoard />
+  return (
+    <div>
+      <LeaderBoard></LeaderBoard>
+    </div>
+  );
 
-  //=======
-  // return (
-  //   <div>
-  //     <UserProfile userId={userId}></UserProfile>
-  //   </div>
-  // );
+  return (
+    <div>
+      <UserProfile userId={userId}></UserProfile>
+    </div>
+  );
 
   return (
     <div>
