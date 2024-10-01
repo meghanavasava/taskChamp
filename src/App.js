@@ -5,7 +5,11 @@ import StreakCalendar from "./Components/StreakCalendar";
 import MyActivity from "./Components/MyActivity";
 import Footer from "./Components/Footer";
 import UserProfile from "./Components/UserProfile";
+
+import LeaderBoard from "./Components/LeaderBoard";
+
 import Registration from "./Components/Registration";
+import Login from "./Components/Login";
 
 function App() {
   // return (
@@ -35,21 +39,34 @@ function App() {
 
   const userId = "user_1725465375818";
 
-  // return (
-  //   <div>
-  //     <MyActivity userId={userId}></MyActivity>
-  //   </div>
-  // );
+  //  return (
+  //    <div>
+  //    <MyActivity userId={userId}></MyActivity>
+  //  </div>
+  //  );
 
-  // return (
-  //   <div>
-  //     <UserProfile userId={userId}></UserProfile>
-  //   </div>
-  // );
+  //return (
+  //<div>
+  //<UserProfile userId={userId}></UserProfile>
+
+  //</div>
+  //);
 
   return (
     <div>
-      <Registration></Registration>
+      <LeaderBoard></LeaderBoard>
+    </div>
+  );
+
+  return (
+    <div>
+      <UserProfile userId={userId}></UserProfile>
+    </div>
+  );
+
+  return (
+    <div>
+      <Login></Login>
     </div>
   );
 }
