@@ -11,10 +11,6 @@ import LeaderBoard from "./Components/LeaderBoard";
 import Registration from "./Components/Registration";
 import Login from "./Components/Login";
 
-
-
-
-
 function App() {
   // return (
   //   <div className="App">
@@ -49,32 +45,28 @@ function App() {
   //  </div>
   //  );
 
-
   //return (
-    //<div>
-      //<UserProfile userId={userId}></UserProfile>
-      
-    //</div>
+  //<div>
+  //<UserProfile userId={userId}></UserProfile>
+
+  //</div>
   //);
 
-   //return (
-    //<div>
-       //<UserProfile userId={userId}></UserProfile>
-      //<LeaderBoard />
+  //return (
+  //<div>
+  //<UserProfile userId={userId}></UserProfile>
+  //<LeaderBoard />
 
-      
-//=======
+  //=======
   // return (
   //   <div>
   //     <UserProfile userId={userId}></UserProfile>
   //   </div>
   // );
 
- 
   return (
     <div>
-    <Login></Login>
-
+      <Login></Login>
     </div>
   );
 }
