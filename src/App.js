@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import {BrowserRouter,Router ,Route, Routes} from "react-router-dom";
 import logo from "./logo.svg";
 import "./App.css";
 import StreakCalendar from "./Components/StreakCalendar";
@@ -60,7 +61,7 @@ function App() {
    //return (
     //<div>
        //<UserProfile userId={userId}></UserProfile>
-      //<LeaderBoard />
+      //<
 
       
 //=======
@@ -71,12 +72,43 @@ function App() {
   // );
 
  
-  return (
-    <div>
-    <Login></Login>
+  // return (
+  //   <div>
+  //   <LeaderBoard />
 
+  //   </div>
+  // );
+  
+
+  
+  // return (
+  //   <div>
+  //     <Registration></Registration>
+      
+  //   <Login userId={userId}></Login>
+
+  //   </div>
+  // );
+  return (
+    <div>   
+    <BrowserRouter>
+    <Routes>
+      <Route path="/Login" element={<Login/>}></Route>
+      <Route path="/Registration" element={<Registration userId={ userId}/>}></Route>
+      <Route path="/MyActivity" element={<MyActivity userId={userId} />} />
+      
+    </Routes>
+    </BrowserRouter>
     </div>
+ 
   );
+
+  
 }
 
 export default App;
+
+
+
+
+
