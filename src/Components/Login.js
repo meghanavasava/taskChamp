@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { realDb } from "../firebase"; 
+import { useNavigate } from "react-router-dom";
 import { ref, get, child } from "firebase/database";
 import styles from "./Login.module.css";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [usernameOrEmail, setUsernameOrEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -11,7 +13,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setError(""); 
+    setError("");
 
     const dbRef = ref(realDb);
 
@@ -27,10 +29,15 @@ const Login = () => {
           );
 
           if (user) {
-         
             if (user.password === password) {
               console.log("Login successful!");
-        
+
+              // Storing user ID in local storage
+              localStorage.setItem("userId", user.id);
+
+              // Redirect to MyActivity page
+              window.location.href = "/MyActivity";
+
             } else {
               setError("Incorrect password.");
             }
@@ -47,10 +54,14 @@ const Login = () => {
       });
   };
 
+  const handleRegistrationRedirect = () => {
+    navigate("/Registration");
+  };
+
   return (
     <div>
-      <br></br>
-      <br></br>
+      <br />
+      <br />
       <div className={styles.login_container}>
         <h2 className={styles.login_header}>Login</h2>
         <form className={styles.login_form} onSubmit={handleSubmit}>
@@ -85,11 +96,21 @@ const Login = () => {
               </button>
             </div>
           </div>
+          
           <button type="submit" className={styles.login_submitButton}>
             Login
           </button>
           {error && <p className={styles.login_error}>{error}</p>}
         </form>
+
+        <div className={styles.registration_link}>
+          <p>
+            Don't have an account?{" "}
+            <button onClick={handleRegistrationRedirect} className={styles.link}>
+              Register here
+            </button>
+          </p>
+        </div>
       </div>
     </div>
   );
