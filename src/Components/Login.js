@@ -36,7 +36,8 @@ const Login = () => {
               localStorage.setItem("userId", user.id);
 
               // Redirect to MyActivity page
-              navigate("/MyActivity");
+              window.location.href = "/MyActivity";
+
             } else {
               setError("Incorrect password.");
             }
