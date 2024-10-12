@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { createUserInFirebase } from "../FirebaseOperations";
+import { useNavigate } from "react-router-dom";
 import { User } from "../models/User";
 import styles from "./Registration.module.css";
 
 const Registration = () => {
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [birthdate, setBirthdate] = useState("");
@@ -22,6 +24,7 @@ const Registration = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    navigate("/Login")
 
     const formattedBirthdate = formatDate(birthdate);
 
@@ -45,7 +48,14 @@ const Registration = () => {
       .catch((error) => {
         console.error("Error registering user:", error);
       });
+
+
+      
   };
+  const handleLoginRedirect = () => {
+    navigate("/Login");  // Redirect to the login page
+  };
+
 
   return (
     <div>
@@ -124,6 +134,18 @@ const Registration = () => {
         </form>
 
         {userId && <p>User ID: {userId}</p>}
+        <div className={styles.login_link}>
+          <p>
+            Already have an account?{" "}
+            <button
+              type="button"
+              onClick={handleLoginRedirect}
+              className={styles.link_button}
+            >
+              Login here
+            </button>
+          </p>
+        </div>
       </div>
     </div>
   );

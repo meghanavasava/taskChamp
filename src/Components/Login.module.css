@@ -89,4 +89,19 @@
     font-size: 14px;
     margin-top: 10px;
   }
+
+  .registration_link {
+    margin-top: 20px;
+  }
+  
+  .link {
+    color: blue; /* Change the color as needed */
+    text-decoration: underline; /* Optional for underlining */
+    cursor: pointer; /* Show pointer cursor on hover */
+  }
+  
+  .link:hover {
+    color: darkblue; /* Change color on hover */
+  }
+  
   
