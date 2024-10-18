@@ -3,13 +3,9 @@ import React, { useEffect ,useState} from "react";
 import {BrowserRouter,Router ,Route, Routes} from "react-router-dom";
 import logo from "./logo.svg";
 import "./App.css";
-import Feed from './Components/Feed';
 // import "./Components/chatComponents/styles.scss"
-import { getCurrentUser } from './FirebaseOperations';
 
-import Chat from "./Components/Chat";
-import "./Components/stylescommunity.css";
-
+import Chat from "./Components/Chat"
 
 // import Home from "./Components/chatComponents/Home"
 import StreakCalendar from "./Components/StreakCalendar";
@@ -53,21 +49,20 @@ function App() {
   //   </div>
   // );
 
-  
-  // const [userId, setUserId] = useState(null);
-
-  // useEffect(() => {
-  //   const user = getCurrentUser(); // Retrieve the current user
-  //   if (user) {
-  //     setUserId(user.uid); // Assuming `uid` is the user ID
-  //   }
-  // }, []);
+  const userId = "user_1729172812032"; // Example user ID, replace as needed
+ 
+  const mockUser = { id: userId, username: 'aashi' }; // Replace with actual user data
   // const [chatId, setChatId] = useState(null); // For storing the active chat ID
   // const [selectedUser, setSelectedUser] = useState(null); // For storing the selected user
   // const currentUser = { id: userId, username: "ExampleUser" }; // Mock current user
-  const userId = "user_1729172812032";
 
-
+  // // Function to handle user selection and create/get a chat session
+  // const handleUserSelect = (user) => {
+  //   createOrGetChat(currentUser.id, user.id).then((chatId) => {
+  //     setChatId(chatId); // Set the chat ID for the session
+  //     setSelectedUser(user); // Set the selected user
+  //   });
+  // };
 
 
   //  return (
@@ -127,10 +122,8 @@ function App() {
       <Route path="/Login" element={<Login/>}></Route>
       <Route path="/Registration" element={<Registration userId={ userId}/>}></Route>
       <Route path="/MyActivity" element={<MyActivity userId={userId} />} />
-      <Route path="/Chat" element={<Chat userId={userId} />} />    
-      <Route path="/feed" element={<Feed />} />
-      
-      
+      <Route path="/Chat" element={<Chat userId={userId} />} />
+    
     
     </Routes>
     </BrowserRouter> 
