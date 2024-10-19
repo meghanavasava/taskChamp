@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { createUserInFirebase } from "../FirebaseOperations";
+import { createUserWithEmailAndPassword } from "firebase/auth"; // Firebase Authentication import
+import { auth } from "../firebase"; // Assuming you have Firebase configuration in this file
+import { createUserInFirebase } from "../FirebaseOperations"; // Still keeping the user creation in the Firestore/Database
 import { useNavigate } from "react-router-dom";
 import { User } from "../models/User";
 import styles from "./Registration.module.css";
@@ -26,10 +29,16 @@ const Registration = () => {
     e.preventDefault();
     navigate("/Login")
 
+    // Firebase authentication
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log("User created in Firebase Auth:", user);
+
     const formattedBirthdate = formatDate(birthdate);
 
     const newUser = new User(
-      null,
+          user.uid, // Use Firebase user UID
       username,
       password,
       formattedBirthdate,
@@ -37,6 +46,7 @@ const Registration = () => {
       email
     );
 
+        // Store user details in Firestore or Firebase Realtime Database
     createUserInFirebase(newUser)
       .then((generatedUserId) => {
         setUserId(generatedUserId);
@@ -44,9 +54,14 @@ const Registration = () => {
           "User registered successfully with userId:",
           generatedUserId
         );
+            navigate("/Login");
+          })
+          .catch((error) => {
+            console.error("Error saving user to database:", error);
+          });
       })
       .catch((error) => {
-        console.error("Error registering user:", error);
+        console.error("Error registering user in Firebase Auth:", error);
       });
 
 
@@ -56,6 +71,10 @@ const Registration = () => {
     navigate("/Login");  // Redirect to the login page
   };
 
+
+  const handleLoginRedirect = () => {
+    navigate("/Login"); // Redirect to the login page
+  };
 
   return (
     <div>

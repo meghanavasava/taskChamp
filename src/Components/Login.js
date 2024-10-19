@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { realDb } from "../firebase"; 
 import { useNavigate } from "react-router-dom";
 import { ref, get, child } from "firebase/database";
+=======
+import { auth } from "../firebase"; // Import Firebase auth
+import { useNavigate } from "react-router-dom";
+import { signInWithEmailAndPassword } from "firebase/auth"; // Import Firebase auth methods
 import styles from "./Login.module.css";
 
 const Login = () => {
@@ -11,22 +15,25 @@ const Login = () => {
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
 
-    const dbRef = ref(realDb);
+    // Use Firebase Authentication to sign in
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, usernameOrEmail, password);
+      const user = userCredential.user;
 
-    get(child(dbRef, `users`))
-      .then((snapshot) => {
-        if (snapshot.exists()) {
-          const users = snapshot.val();
+      // Storing user ID in local storage
+      localStorage.setItem("userId", user.uid);
 
-          const user = Object.values(users).find(
-            (user) =>
-              user.username === usernameOrEmail ||
-              user.email === usernameOrEmail
-          );
+      // Redirect to MyActivity page
+      window.location.href = "/MyActivity";
+    } catch (err) {
+      console.error("Error during login:", err);
+      setError(err.message || "Login failed. Please try again.");
+    }
+  };
 
           if (user) {
             if (user.password === password) {
@@ -52,6 +59,9 @@ const Login = () => {
         console.error("Error during login:", error);
         setError("Login failed. Please try again.");
       });
+=======
+  const handleRegistrationRedirect = () => {
+    navigate("/Registration");
   };
 
   const handleRegistrationRedirect = () => {
