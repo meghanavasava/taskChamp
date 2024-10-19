@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import { realDb } from "../firebase"; 
+import { useNavigate } from "react-router-dom";
+import { ref, get, child } from "firebase/database";
+=======
 import { auth } from "../firebase"; // Import Firebase auth
 import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth"; // Import Firebase auth methods
@@ -13,7 +17,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(""); 
+    setError("");
 
     // Use Firebase Authentication to sign in
     try {
@@ -29,6 +33,35 @@ const Login = () => {
       console.error("Error during login:", err);
       setError(err.message || "Login failed. Please try again.");
     }
+  };
+
+          if (user) {
+            if (user.password === password) {
+              console.log("Login successful!");
+
+              // Storing user ID in local storage
+              localStorage.setItem("userId", user.id);
+
+              // Redirect to MyActivity page
+              window.location.href = "/MyActivity";
+
+            } else {
+              setError("Incorrect password.");
+            }
+          } else {
+            setError("User not found.");
+          }
+        } else {
+          setError("No users found in the database.");
+        }
+      })
+      .catch((error) => {
+        console.error("Error during login:", error);
+        setError("Login failed. Please try again.");
+      });
+=======
+  const handleRegistrationRedirect = () => {
+    navigate("/Registration");
   };
 
   const handleRegistrationRedirect = () => {

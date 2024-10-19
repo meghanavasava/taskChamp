@@ -1,5 +1,5 @@
+import React, { useEffect } from "react";
 import React, { useEffect ,useState} from "react";
-
 import {BrowserRouter,Router ,Route, Routes} from "react-router-dom";
 import logo from "./logo.svg";
 import "./App.css";
@@ -79,12 +79,6 @@ function App() {
   //return (
   //<div>
   //<UserProfile userId={userId}></UserProfile>
-
-
-
-
-
-
  
   // return (
   //   <div>
@@ -104,6 +98,8 @@ function App() {
   //   </div>
   // );
   return (
+    <div>   
+    <BrowserRouter>
     <div>
       {/* Uncomment and modify these returns based on your need */}
       {/* <MyActivity userId={userId}></MyActivity> */}
@@ -122,23 +118,21 @@ function App() {
       {/* <Login></Login> */}
     
     <BrowserRouter>
-    
     <Routes>
       <Route path="/Login" element={<Login/>}></Route>
       <Route path="/Registration" element={<Registration userId={ userId}/>}></Route>
       <Route path="/MyActivity" element={<MyActivity userId={userId} />} />
       <Route path="/Chat" element={<Chat userId={userId} />} />    
       <Route path="/feed" element={<Feed />} />
-      
-      
-    
+      <Route path="/MyActivity" element={<MyActivity userId={userId} />} />      
+    </Routes>
+    </BrowserRouter>
+      <Route path="/Chat" element={<Chat userId={userId} />} />       
     </Routes>
     </BrowserRouter> 
     </div>
  
   );
-
-  
 }
 
 export default App;

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { createUserInFirebase } from "../FirebaseOperations";
 import { createUserWithEmailAndPassword } from "firebase/auth"; // Firebase Authentication import
 import { auth } from "../firebase"; // Assuming you have Firebase configuration in this file
 import { createUserInFirebase } from "../FirebaseOperations"; // Still keeping the user creation in the Firestore/Database
@@ -26,6 +27,7 @@ const Registration = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    navigate("/Login")
 
     // Firebase authentication
     createUserWithEmailAndPassword(auth, email, password)
@@ -61,7 +63,14 @@ const Registration = () => {
       .catch((error) => {
         console.error("Error registering user in Firebase Auth:", error);
       });
+
+
+      
   };
+  const handleLoginRedirect = () => {
+    navigate("/Login");  // Redirect to the login page
+  };
+
 
   const handleLoginRedirect = () => {
     navigate("/Login"); // Redirect to the login page
