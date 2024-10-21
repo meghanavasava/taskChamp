@@ -20,12 +20,16 @@ import UserProfile from "./Components/UserProfile";
 import LeaderBoard from "./Components/LeaderBoard";
 
 import Registration from "./Components/Registration";
+
 import Login from "./Components/Login";
 
 
 // import { UserList } from './Components/UserList';
 
 //import { createOrGetChat } from './Components/ChatUtils';
+=======
+import AboutUs from "./Components/AboutUs";
+
 
 function App() {
   // return (
@@ -97,10 +101,21 @@ function App() {
 
   //   </div>
   // );
+
+
+
+  // return (
+    // <div>
+      // <Registration></Registration>
+    // </div>
+  // );
+
+
   return (
     <div>   
     <BrowserRouter>
     <div>
+
       {/* Uncomment and modify these returns based on your need */}
       {/* <MyActivity userId={userId}></MyActivity> */}
 
@@ -130,6 +145,8 @@ function App() {
       <Route path="/Chat" element={<Chat userId={userId} />} />       
     </Routes>
     </BrowserRouter> 
+      <AboutUs></AboutUs>
+
     </div>
  
   );
