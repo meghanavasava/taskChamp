@@ -15,7 +15,7 @@ const Login = () => {
     e.preventDefault();
     setError("");
 
-    // Use Firebase Authentication to sign in
+    
     try {
       const userCredential = await signInWithEmailAndPassword(
         auth,
@@ -24,7 +24,6 @@ const Login = () => {
       );
       const user = userCredential.user;
 
-      // Storing user ID in local storage
       localStorage.setItem("userId", user.uid);
 
       // Redirect to MyActivity page
@@ -44,6 +43,11 @@ const Login = () => {
       <br />
       <br />
       <div className={styles.login_container}>
+      <div className={styles.shape1}></div>
+      <div className={styles.shape2}></div>
+      <div className={styles.shape3}></div>
+      <div className={styles.shape4}></div>
+
         <h2 className={styles.login_header}>Login</h2>
         <form className={styles.login_form} onSubmit={handleSubmit}>
           <div>
