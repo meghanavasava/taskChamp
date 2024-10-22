@@ -1,11 +1,7 @@
 import React, { useState } from "react";
-import { realDb } from "../firebase"; 
-import { useNavigate } from "react-router-dom";
-import { ref, get, child } from "firebase/database";
-=======
 import { auth } from "../firebase"; // Import Firebase auth
-import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth"; // Import Firebase auth methods
+import { useNavigate } from "react-router-dom";
 import styles from "./Login.module.css";
 
 const Login = () => {
@@ -21,47 +17,22 @@ const Login = () => {
 
     // Use Firebase Authentication to sign in
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, usernameOrEmail, password);
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        usernameOrEmail,
+        password
+      );
       const user = userCredential.user;
 
       // Storing user ID in local storage
       localStorage.setItem("userId", user.uid);
 
       // Redirect to MyActivity page
-      window.location.href = "/MyActivity";
+      navigate("/MyActivity");
     } catch (err) {
       console.error("Error during login:", err);
       setError(err.message || "Login failed. Please try again.");
     }
-  };
-
-          if (user) {
-            if (user.password === password) {
-              console.log("Login successful!");
-
-              // Storing user ID in local storage
-              localStorage.setItem("userId", user.id);
-
-              // Redirect to MyActivity page
-              window.location.href = "/MyActivity";
-
-            } else {
-              setError("Incorrect password.");
-            }
-          } else {
-            setError("User not found.");
-          }
-        } else {
-          setError("No users found in the database.");
-        }
-      })
-      .catch((error) => {
-        console.error("Error during login:", error);
-        setError("Login failed. Please try again.");
-      });
-=======
-  const handleRegistrationRedirect = () => {
-    navigate("/Registration");
   };
 
   const handleRegistrationRedirect = () => {
@@ -106,7 +77,7 @@ const Login = () => {
               </button>
             </div>
           </div>
-          
+
           <button type="submit" className={styles.login_submitButton}>
             Login
           </button>
@@ -116,7 +87,10 @@ const Login = () => {
         <div className={styles.registration_link}>
           <p>
             Don't have an account?{" "}
-            <button onClick={handleRegistrationRedirect} className={styles.link}>
+            <button
+              onClick={handleRegistrationRedirect}
+              className={styles.link}
+            >
               Register here
             </button>
           </p>
