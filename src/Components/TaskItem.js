@@ -41,6 +41,15 @@ const TaskItem = ({
 
   const handleToggleDone = async () => {
     const newStatus = !isDone;
+    const [day, month, year] = task.date.split("/");
+    const taskDate = new Date(`${year}-${month}-${day}`);
+    const currentDate = new Date();
+
+    if (taskDate > currentDate) {
+      console.log("Task cannot be marked as done before the due date.");
+      return;
+    }
+
     setIsDone(newStatus);
 
     try {
