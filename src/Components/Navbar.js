@@ -32,6 +32,16 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
+            <Link to="/Chat" className={styles.nav_link}>
+              Chat
+            </Link>
+          </li>
+          <li>
+            <Link to="/Feed" className={styles.nav_link}>
+              Feed
+            </Link>
+          </li>
+          <li>
             <Link to="/AboutUs" className={styles.nav_link}>
               About Us
             </Link>
