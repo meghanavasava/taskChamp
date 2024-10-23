@@ -55,6 +55,11 @@ const Registration = () => {
               "User registered successfully with userId:",
               generatedUserId
             );
+
+            // Store the userId in localStorage
+            localStorage.setItem("userId", generatedUserId);
+
+            // Navigate to Login page after successful registration
             navigate("/Login");
           })
           .catch((error) => {
