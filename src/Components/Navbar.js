@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import { Link } from "react-router-dom";
 import styles from "./Navbar.module.css";
 
 const Navbar = () => {
@@ -21,6 +21,17 @@ const Navbar = () => {
               Leadership Board
             </Link>
           </li>
+
+          <li>
+            <Link to="/Chat" className={styles.nav_link}>
+              Chat
+            </Link>
+          </li>
+          <li>
+            <Link to="/Feed" className={styles.nav_link}>
+              Feed
+            </Link>
+          </li>
           <li>
             <Link to="/Registration" className={styles.nav_link}>
               Register
@@ -32,13 +43,8 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link to="/Chat" className={styles.nav_link}>
-              Chat
-            </Link>
-          </li>
-          <li>
-            <Link to="/Feed" className={styles.nav_link}>
-              Feed
+            <Link to="/UserProfile" className={styles.nav_link}>
+              User Profile
             </Link>
           </li>
           <li>
