@@ -31,6 +31,8 @@ function App() {
           <Route path="/Chat" element={<Chat userId={userId} />} />
           <Route path="/feed" element={<Feed />} />
           <Route path="/AboutUs" element={<AboutUs />} />
+          <Route path="/LeaderBoard" element={<LeaderBoard />} />
+          <Route path="/UserProfile" element={<UserProfile />} />
         </Routes>
       </BrowserRouter>
     </div>
