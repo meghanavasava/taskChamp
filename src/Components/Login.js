@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { auth } from "../firebase"; // Import Firebase auth
-import { signInWithEmailAndPassword } from "firebase/auth"; // Import Firebase auth methods
+import { realDb } from "../firebase";
 import { useNavigate } from "react-router-dom";
+import { ref, get, child } from "firebase/database";
 import styles from "./Login.module.css";
 
 const Login = () => {
@@ -11,28 +11,49 @@ const Login = () => {
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setError("");
 
-    // Use Firebase Authentication to sign in
-    try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        usernameOrEmail,
-        password
-      );
-      const user = userCredential.user;
+    const dbRef = ref(realDb);
 
-      // Storing user ID in local storage
-      localStorage.setItem("userId", user.uid);
+    get(child(dbRef, "users"))
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          const users = snapshot.val();
+          // Assuming users is an object where each user is stored under a unique key
+          const userKey = Object.keys(users).find((key) => {
+            const user = users[key];
+            return (
+              user.username === usernameOrEmail ||
+              user.email === usernameOrEmail
+            );
+          });
 
-      // Redirect to MyActivity page
-      navigate("/MyActivity");
-    } catch (err) {
-      console.error("Error during login:", err);
-      setError(err.message || "Login failed. Please try again.");
-    }
+          if (userKey) {
+            const user = users[userKey];
+            if (user.password === password) {
+              console.log("Login successful!");
+
+              // Storing user ID in local storage
+              localStorage.setItem("userId", userKey); // Store the user's key (or change to user.id if it exists)
+
+              // Redirect to MyActivity page using navigate from react-router-dom
+              navigate("/MyActivity");
+            } else {
+              setError("Incorrect password.");
+            }
+          } else {
+            setError("User not found.");
+          }
+        } else {
+          setError("No users found in the database.");
+        }
+      })
+      .catch((error) => {
+        console.error("Error during login:", error);
+        setError("Login failed. Please try again.");
+      });
   };
 
   const handleRegistrationRedirect = () => {

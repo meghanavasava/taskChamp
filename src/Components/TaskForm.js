@@ -3,12 +3,12 @@ import { createTaskWithPriority } from "../Services/TaskServices";
 import styles from "./TaskForm.module.css";
 import { User } from "../models/User";
 
-const TaskForm = ({ userId, reloadWithTask }) => {
+const TaskForm = ({ reloadWithTask }) => {
   const [taskname, setTaskname] = useState("");
   const [date, setDate] = useState("");
   const [level, setLevel] = useState("medium");
   const [is_done, setIsDone] = useState(false);
-
+  const userId = localStorage.getItem("userId");
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formattedDate = new Date(date).toLocaleDateString("en-GB");
