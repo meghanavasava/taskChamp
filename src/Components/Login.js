@@ -61,63 +61,69 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <br />
-      <br />
-      <div className={styles.login_container}>
-        <h2 className={styles.login_header}>Login</h2>
-        <form className={styles.login_form} onSubmit={handleSubmit}>
-          <div>
-            <label className={styles.login_label}>Username or Email:</label>
-            <input
-              type="text"
-              name="usernameOrEmail"
-              className={styles.login_input}
-              value={usernameOrEmail}
-              onChange={(e) => setUsernameOrEmail(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <label className={styles.login_label}>Password:</label>
-            <div style={{ display: "flex" }}>
-              <input
-                type={showPassword ? "text" : "password"}
-                name="password"
-                className={styles.login_passwordInput}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-              <button
-                type="button"
-                className={styles.login_toggleButton}
-                onClick={() => setShowPassword(!showPassword)}
-              >
-                {showPassword ? "Hide" : "Show"}
-              </button>
-            </div>
-          </div>
+  <div className={styles.bg}>
+   <div className={styles.login_container}>
+     {/* Left - Form Section */}
+     <div className={styles.form_section}>
+       <h2 className={styles.login_header}>Welcome Back</h2>
+       <form className={styles.login_form} onSubmit={handleSubmit}>
+         {/* Username or Email Input */}
+         <label className={styles.login_label}>Username or Email</label>
+         <input
+           type="text"
+           className={styles.login_input}
+           value={usernameOrEmail}
+           onChange={(e) => setUsernameOrEmail(e.target.value)}
+           required
+         />
 
-          <button type="submit" className={styles.login_submitButton}>
-            Login
-          </button>
-          {error && <p className={styles.login_error}>{error}</p>}
-        </form>
+         {/* Password Input */}
+         <label className={styles.login_label}>Password</label>
+         <div style={{ display: "flex" }}>
+           <input
+             type={showPassword ? "text" : "password"}
+             className={styles.login_passwordInput}
+             value={password}
+             onChange={(e) => setPassword(e.target.value)}
+             required
+           />
+           <button
+             type="button"
+             className={styles.login_toggleButton}
+             onClick={() => setShowPassword(!showPassword)}
+           >
+             {showPassword ? "Hide" : "Show"}
+           </button>
+         </div>
 
-        <div className={styles.registration_link}>
-          <p>
-            Don't have an account?{" "}
-            <button
-              onClick={handleRegistrationRedirect}
-              className={styles.link}
-            >
-              Register here
-            </button>
-          </p>
-        </div>
-      </div>
-    </div>
+         {/* Submit Button */}
+         <button type="submit" className={styles.login_submitButton}>
+           Log In
+         </button>
+
+         {/* Error Message */}
+         {error && <p className={styles.login_error}>{error}</p>}
+       </form>
+
+       {/* Registration Link */}
+       <div className={styles.registration_link}>
+         Don't have an account?
+         <button
+           onClick={handleRegistrationRedirect}
+           className={styles.link}
+         >
+           Sign up
+         </button>
+       </div>
+     </div>
+
+     {/* Right - Image Section */}
+     <div className={styles.image_section}>
+       <img src="your-image-path-here.jpg" alt="Illustration" />
+     </div>
+   </div>
+</div>
+
   );
 };
 
