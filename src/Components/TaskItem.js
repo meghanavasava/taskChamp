@@ -95,7 +95,7 @@ const TaskItem = ({
       <h3>{task.taskname}</h3>
       <p>Level : {task.level}</p>
       <label>
-        Done :
+        Done :{" "}
         <input type="checkbox" checked={isDone} onChange={handleToggleDone} />
       </label>
       <button className={styles.delete} onClick={handleDeleteClick}>
