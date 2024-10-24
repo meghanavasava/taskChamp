@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { ref, onValue, push, set } from "firebase/database";
 import { realDb } from "../firebase";
 import Message from "./Message";
+import { Search as SearchIcon, Send, Paperclip } from "lucide-react";
 
 const ChatWindow = ({ currentUser, chatPartner }) => {
   const [messages, setMessages] = useState([]);
@@ -99,25 +100,46 @@ const ChatWindow = ({ currentUser, chatPartner }) => {
   }
 
   return (
-    <div>
-      <h3>Chat with {chatPartner.username}</h3>
-      <div className="chat-messages" style={{ maxHeight: "300px", overflowY: "auto" }}>
-        {messages.map((msg) => (
-          <Message
-            key={msg.id}
-            message={msg}
-            isSentByCurrentUser={msg.sender === currentUser.uid}
-          />
-        ))}
+    <div className="flex-1 flex flex-col">
+    <div className="border-b border-gray-200 p-4 flex items-center gap-3">
+      <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
+        {chatPartner.username?.[0]?.toUpperCase()}
       </div>
-      <input
-        type="text"
-        placeholder="Type a message..."
-        value={messageText}
-        onChange={(e) => setMessageText(e.target.value)}
-      />
-      <button onClick={sendMessage}>Send</button>
+      <div className="font-medium">{chatPartner.username}</div>
     </div>
+    
+    <div className="flex-1 overflow-y-auto p-4 space-y-4">
+      {messages.map((msg) => (
+        <Message
+          key={msg.id}
+          message={msg}
+          isSentByCurrentUser={msg.sender === currentUser.uid}
+        />
+      ))}
+    </div>
+
+    <div className="border-t border-gray-200 p-4">
+      <div className="flex items-center gap-2">
+        <button className="text-gray-400 hover:text-gray-600">
+          <Paperclip className="h-5 w-5" />
+        </button>
+        <input
+          type="text"
+          placeholder="Type a message..."
+          value={messageText}
+          onChange={(e) => setMessageText(e.target.value)}
+          className="flex-1 border border-gray-200 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500"
+        />
+        <button
+          onClick={sendMessage}
+          className="bg-blue-500 text-white rounded-lg px-4 py-2 flex items-center gap-2 hover:bg-blue-600"
+        >
+          <Send className="h-4 w-4" />
+          Send
+        </button>
+      </div>
+    </div>
+  </div>
   );
 };
 

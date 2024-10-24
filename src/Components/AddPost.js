@@ -10,7 +10,7 @@ const AddPost = () => {
     const userRef = ref(realDb, `users/${userId}`);
     const snapshot = await get(userRef);
     if (snapshot.exists()) {
-      return snapshot.val().username; 
+      return snapshot.val().username;
     } else {
       console.log("No user found with this userId.");
       return null;
@@ -21,7 +21,6 @@ const AddPost = () => {
     e.preventDefault();
     if (!newPost.trim()) return;
 
-    // Fetch the username of the user
     const username = await fetchUsername(userId);
 
     if (username) {
@@ -29,28 +28,36 @@ const AddPost = () => {
       await push(postsRef, {
         content: newPost,
         userId: userId,
-        username: username, // Add the username
+        username: username,
         createdAt: serverTimestamp(),
         likes: {},
         comments: {},
       });
 
       setNewPost("");
-    } else {
-      console.log("Failed to post: username not found.");
     }
   };
 
   return (
-    <form onSubmit={handlePostSubmit}>
-      <textarea
-        value={newPost}
-        onChange={(e) => setNewPost(e.target.value)}
-        placeholder="What's happening?"
-      />
-      <button type="submit">Post</button>
-    </form>
+    <div className="bg-white rounded-xl shadow-sm p-6 max-w-2xl mx-auto mb-8">
+      <h2 className="text-2xl font-semibold mb-4 text-gray-800">Create Post</h2>
+      <form onSubmit={handlePostSubmit} className="space-y-4">
+        <textarea
+          value={newPost}
+          onChange={(e) => setNewPost(e.target.value)}
+          placeholder="Share your thoughts..."
+          className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none h-32 transition duration-200 text-gray-700 placeholder-gray-400"
+        />
+        <div className="flex justify-end">
+          <button
+            type="submit"
+            className="px-6 py-2.5 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg hover:from-blue-600 hover:to-blue-700 transition duration-200 font-medium shadow-sm"
+          >
+            Post
+          </button>
+        </div>
+      </form>
+    </div>
   );
 };
-
 export default AddPost;

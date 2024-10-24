@@ -5,7 +5,7 @@ import "./App.css";
 import Feed from "./Components/Feed";
 import { getCurrentUser } from "./FirebaseOperations";
 import Chat from "./Components/Chat";
-import "./Components/stylescommunity.css";
+// import "./Components/stylescommunity.css";
 import StreakCalendar from "./Components/StreakCalendar";
 import MyActivity from "./Components/MyActivity";
 import Footer from "./Components/Footer";

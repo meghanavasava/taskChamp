@@ -3,6 +3,7 @@ import Sidebar from "./Sidebar";
 import ChatWindow from "./ChatWindow";
 import { auth, realDb } from "../firebase";
 import { ref, onValue, get } from "firebase/database";
+import { Search as SearchIcon, Send, Paperclip } from "lucide-react";
 
 const Chat = () => {
   const [currentUser, setCurrentUser] = useState(null);
@@ -62,21 +63,24 @@ const Chat = () => {
   }, [userId]);
 
   return (
-    <div style={{ display: "flex" }}>
-      <Sidebar
+    <div className="flex h-screen bg-white">
+    <Sidebar
+      currentUser={currentUser}
+      recentChats={recentChats}
+      allUsers={allUsers}
+      onSelectChat={setSelectedChatPartner}
+    />
+    {currentUser && selectedChatPartner ? (
+      <ChatWindow
         currentUser={currentUser}
-        recentChats={recentChats}
-        allUsers={allUsers}
-        onSelectChat={setSelectedChatPartner}
+        chatPartner={selectedChatPartner}
       />
-
-      {currentUser && selectedChatPartner && (
-        <ChatWindow
-          currentUser={currentUser}
-          chatPartner={selectedChatPartner}
-        />
-      )}
-    </div>
+    ) : (
+      <div className="flex-1 flex items-center justify-center text-gray-500">
+        Select a conversation to start messaging
+      </div>
+    )}
+  </div>
   );
 };
 
