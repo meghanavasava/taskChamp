@@ -1,22 +1,15 @@
 import React from "react";
+import { Search as SearchIcon, Send, Paperclip } from "lucide-react";
 
 const Message = ({ message, isSentByCurrentUser }) => {
   return (
-    <div
-      style={{
-        alignSelf: isSentByCurrentUser ? "flex-end" : "flex-start",
-        margin: "5px",
-      }}
-    >
+    <div className={`flex ${isSentByCurrentUser ? "justify-end" : "justify-start"}`}>
       <div
-        style={{
-          backgroundColor: isSentByCurrentUser ? "#dcf8c6" : "#fff",
-          borderRadius: "8px",
-          padding: "10px",
-          maxWidth: "70%",
-          wordWrap: "break-word",
-          border: "1px solid #ccc",
-        }}
+        className={`max-w-[70%] rounded-lg px-4 py-2 ${
+          isSentByCurrentUser
+            ? "bg-blue-500 text-white"
+            : "bg-gray-100 text-gray-900"
+        }`}
       >
         {message.text}
       </div>
