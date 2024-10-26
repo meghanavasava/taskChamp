@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import logo from "./logo.svg";
 import "./App.css";
-import Feed from "./Components/Feed";
-import { getCurrentUser } from "./FirebaseOperations";
-import Chat from "./Components/Chat";
-// import "./Components/stylescommunity.css";
+
+// Importing components
 import StreakCalendar from "./Components/StreakCalendar";
 import MyActivity from "./Components/MyActivity";
 import Footer from "./Components/Footer";
@@ -13,10 +11,10 @@ import UserProfile from "./Components/UserProfile";
 import LeaderBoard from "./Components/LeaderBoard";
 import Registration from "./Components/Registration";
 import Login from "./Components/Login";
-import AboutUs from "./Components/AboutUs";
+import AboutUs from "./Components/AboutUs"; // If you want to include this component later
 
 function App() {
-  const userId = "user_1729172812032";
+  const userId = "user_1729172812032"; // You can change this dynamically as needed
 
   return (
     <div>
@@ -28,13 +26,16 @@ function App() {
             element={<Registration userId={userId} />}
           />
           <Route path="/MyActivity" element={<MyActivity userId={userId} />} />
-          <Route path="/Chat" element={<Chat userId={userId} />} />
-          <Route path="/feed" element={<Feed />} />
-          <Route path="/AboutUs" element={<AboutUs />} />
+          <Route
+            path="/UserProfile"
+            element={<UserProfile userId={userId} />}
+          />
           <Route path="/LeaderBoard" element={<LeaderBoard />} />
-          <Route path="/UserProfile" element={<UserProfile />} />
+          <Route path="/AboutUs" element={<AboutUs />} />
+          {/* Add more routes as needed */}
         </Routes>
       </BrowserRouter>
+      <Footer /> {/* If you want to include Footer on every page */}
     </div>
   );
 }
