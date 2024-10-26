@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ref, onValue } from "firebase/database";
 import { realDb } from "../firebase";
+import { Search as SearchIcon, Send, Paperclip } from "lucide-react";
 
 const Search = ({ onSelectUser }) => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -25,20 +26,33 @@ const Search = ({ onSelectUser }) => {
   );
 
   return (
-    <div>
-      <input
-        type="text"
-        placeholder="Search users..."
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-      />
-      <ul>
-        {filteredUsers.map((user) => (
-          <li key={user.uid} onClick={() => onSelectUser(user)}>
-            {user.username}
-          </li>
-        ))}
-      </ul>
+    <div className="relative">
+      <div className="relative">
+        <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-4 w-4" />
+        <input
+          type="text"
+          placeholder="Search users..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-blue-500"
+        />
+      </div>
+      {searchTerm && (
+        <ul className="absolute w-full mt-2 bg-white border border-gray-200 rounded-lg shadow-lg z-10">
+          {filteredUsers.map((user) => (
+            <li
+              key={user.uid}
+              onClick={() => {
+                onSelectUser(user);
+                setSearchTerm("");
+              }}
+              className="px-4 py-2 hover:bg-gray-50 cursor-pointer"
+            >
+              {user.username}
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };
