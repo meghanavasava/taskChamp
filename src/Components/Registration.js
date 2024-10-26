@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { createUserInFirebase } from "../FirebaseOperations";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase"; // Firebase configuration import
+import { createUserInFirebase } from "../FirebaseOperations"; // Saving the user in the database
 import { useNavigate } from "react-router-dom";
 import { User } from "../models/User";
 import styles from "./Registration.module.css";
@@ -13,6 +15,7 @@ const Registration = () => {
   const [email, setEmail] = useState("");
   const [userId, setUserId] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState("");
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -24,43 +27,62 @@ const Registration = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate("/Login")
+    setError(""); // Clear error before submitting
 
-    const formattedBirthdate = formatDate(birthdate);
+    // Firebase authentication
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log("User created in Firebase Auth:", user);
 
-    const newUser = new User(
-      null,
-      username,
-      password,
-      formattedBirthdate,
-      country,
-      email
-    );
+        const formattedBirthdate = formatDate(birthdate);
 
-    createUserInFirebase(newUser)
-      .then((generatedUserId) => {
-        setUserId(generatedUserId);
-        console.log(
-          "User registered successfully with userId:",
-          generatedUserId
+        // Creating new user instance
+        const newUser = new User(
+          user.uid, // Use Firebase user UID
+          username,
+          password,
+          formattedBirthdate,
+          country,
+          email
         );
+
+        // Store user details in Firebase Realtime Database or Firestore
+        createUserInFirebase(newUser)
+          .then((generatedUserId) => {
+            setUserId(generatedUserId);
+            console.log(
+              "User registered successfully with userId:",
+              generatedUserId
+            );
+
+            // Store the userId in localStorage
+            localStorage.setItem("userId", generatedUserId);
+
+            // Navigate to Login page after successful registration
+            navigate("/Login");
+          })
+          .catch((error) => {
+            console.error("Error saving user to database:", error);
+            setError("Error saving user data. Please try again.");
+          });
       })
       .catch((error) => {
-        console.error("Error registering user:", error);
+        console.error("Error registering user in Firebase Auth:", error);
+        setError(
+          "Error creating account. Please check your details and try again."
+        );
       });
-
-
-      
   };
+
   const handleLoginRedirect = () => {
-    navigate("/Login");  // Redirect to the login page
+    navigate("/Login");
   };
-
 
   return (
     <div>
-      <br></br>
-      <br></br>
+      <br />
+      <br />
       <div className={styles.reg_container}>
         <h2 className={styles.reg_header}>Register</h2>
         <form className={styles.reg_form} onSubmit={handleSubmit}>
@@ -131,6 +153,7 @@ const Registration = () => {
           <button type="submit" className={styles.reg_submitButton}>
             Register
           </button>
+          {error && <p className={styles.reg_error}>{error}</p>}
         </form>
 
         {userId && <p>User ID: {userId}</p>}

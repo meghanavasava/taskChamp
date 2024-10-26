@@ -1,82 +1,41 @@
-import React, { useEffect } from "react";
-import { BrowserRouter, Router, Route, Routes } from "react-router-dom";
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import logo from "./logo.svg";
 import "./App.css";
+
+// Importing components
 import StreakCalendar from "./Components/StreakCalendar";
 import MyActivity from "./Components/MyActivity";
 import Footer from "./Components/Footer";
 import UserProfile from "./Components/UserProfile";
-
 import LeaderBoard from "./Components/LeaderBoard";
-
 import Registration from "./Components/Registration";
 import Login from "./Components/Login";
+import AboutUs from "./Components/AboutUs"; // If you want to include this component later
 
 function App() {
-  // return (
-  //   <div className="App">
-  //     <header className="App-header">
-  //       <img src={logo} className="App-logo" alt="logo" />
-  //       <p>
-  //         Edit <code>src/App.js</code> and save to reload.
-  //       </p>
-  //       <a
-  //         className="App-link"
-  //         href="https://reactjs.org"
-  //         target="_blank"
-  //         rel="noopener noreferrer"
-  //       >
-  //         Learn React
-  //       </a>
-  //     </header>
-  //   </div>
-  // );
+  const userId = "user_1729172812032"; // You can change this dynamically as needed
 
-  // return (
-  //   <div>
-  //     <MyComponent></MyComponent>
-  //   </div>
-  // );
-
-  const userId = "user_1725465375818";
-
-  //  return (
-  //    <div>
-  //    <MyActivity userId={userId}></MyActivity>
-  //  </div>
-  //  );
-
-  //return (
-  //<div>
-  //<UserProfile userId={userId}></UserProfile>
-
-  // return (
-  //   <div>
-  //   <LeaderBoard />
-
-  //   </div>
-  // );
-
-  // return (
-  //   <div>
-  //     <Registration></Registration>
-
-  //   <Login userId={userId}></Login>
-
-  //   </div>
-  // );
   return (
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path="/Login" element={<Login />}></Route>
+          <Route path="/Login" element={<Login />} />
           <Route
             path="/Registration"
             element={<Registration userId={userId} />}
-          ></Route>
+          />
           <Route path="/MyActivity" element={<MyActivity userId={userId} />} />
+          <Route
+            path="/UserProfile"
+            element={<UserProfile userId={userId} />}
+          />
+          <Route path="/LeaderBoard" element={<LeaderBoard />} />
+          <Route path="/AboutUs" element={<AboutUs />} />
+          {/* Add more routes as needed */}
         </Routes>
       </BrowserRouter>
+      <Footer /> {/* If you want to include Footer on every page */}
     </div>
   );
 }
