@@ -60,7 +60,7 @@ const Login = () => {
 
         {/* Left Section */}
         <div className="flex-1 bg-[#f0f5fc] text-white flex flex-col rounded-3xl items-center justify-center p-8 order-1 md:order-1">
-          <h2 className="text-5xl font-bold mb-4 mt-7">Welcome back !!</h2>
+          <h2 className="text-5xl font-bold mb-4 mt-7 text-black">Welcome back !!</h2>
           <p className="text-3xl  font-bold text-center text-[#f5766f]">Let's stay on track!</p>
           <img
             src="/tt4.png"
