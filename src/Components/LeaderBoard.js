@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { ref, get } from "firebase/database";
 import { realDb } from "../firebase";
+import { getLoggedInUser } from "../FirebaseOperations"; // Import the function
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
 } from 'recharts'; 
 
-const LeaderBoard = ({ loggedInUserId }) => {
+const LeaderBoard = () => {
   const [users, setUsers] = useState([]);
   const [loggedInUserRank, setLoggedInUserRank] = useState(null);
 
@@ -39,22 +40,23 @@ const LeaderBoard = ({ loggedInUserId }) => {
         // Sort leaderboard by score, then by completed tasks
         leaderboardData.sort((a, b) => b.score - a.score || b.completedTasks - a.completedTasks);
 
-        // Find the logged-in user in the leaderboard
-        const loggedInUser = leaderboardData.find(user => user.userId === loggedInUserId);
+        // Get the logged-in user information
+        const loggedInUser = getLoggedInUser();
 
         if (loggedInUser) {
-          const rank = leaderboardData.indexOf(loggedInUser) + 1;
-          setLoggedInUserRank({ ...loggedInUser, rank });
-        } else {
-          setLoggedInUserRank(null); // Set to null if user not found
+          const userRank = leaderboardData.find(user => user.userId === loggedInUser.uid);
+          if (userRank) {
+            setLoggedInUserRank({ ...userRank, rank: leaderboardData.indexOf(userRank) + 1 });
+          }
         }
 
+        console.log("Leaderboard Data:", leaderboardData);
         setUsers(leaderboardData);
       }
     };
 
     fetchUsersData();
-  }, [loggedInUserId]);
+  }, []);
 
   const getReward = (index) => {
     switch (index) {
@@ -93,9 +95,8 @@ const LeaderBoard = ({ loggedInUserId }) => {
         {users.slice(0, 3).map((user, index) => (
           <div
             key={user.userId}
-            className={`bg-white shadow-lg text-xl rounded-2xl p-4 flex flex-col mr-4 items-center 
-              transition-transform duration-300 hover:scale-105 ${
-                index === 0 ? 'border-t-4 border-yellow-400' : index === 1 ? 'border-t-4 border-gray-300' : 'border-t-4 border-orange-400'
+            className={`bg-white shadow-xl text-xl rounded-2xl p-4 flex flex-col mr-4 items-center hover:cursor-pointer 
+              transition-transform duration-300 hover:scale-105  ${index === 0 ? 'border-t-4 border-yellow-400' : index === 1 ? 'border-t-4 border-gray-400' : 'border-t-4 border-orange-400'
               }`}
           >
             <h2 className="text-2xl font-bold mb-1">{user.username}</h2>
@@ -110,8 +111,8 @@ const LeaderBoard = ({ loggedInUserId }) => {
 
       {/* Leaderboard Table for the rest */}
       <div className="overflow-y-auto max-h-96"> {/* Scrollable div */}
-        <table className="min-w-full bg-white border border-gray-200 shadow-md rounded-lg overflow-hidden">
-          <thead className="bg-gray-100">
+        <table className="min-w-full bg-white border-2 border-gray-400 shadow-md rounded-lg overflow-hidden hover:cursor-pointer">
+          <thead className="bg-blue-200 text-xl font-bold">
             <tr>
               <th className="p-3 text-left">Rank</th>
               <th className="p-3 text-left">Username</th>
@@ -122,19 +123,17 @@ const LeaderBoard = ({ loggedInUserId }) => {
             </tr>
           </thead>
           <tbody>
-            {users.slice(3).map((user, index) => (
+            {users.map((user, index) => (
               <tr
                 key={user.userId}
-                className={`hover:bg-gray-50 transition-colors duration-300 ${
-                  user.userId === loggedInUserId ? 'bg-yellow-100' : ''
-                }`} // Highlight logged-in user's row
+                className={`hover:bg-gray-200 hover:cursor-pointer text-xl transition-colors duration-300 ${user.userId === loggedInUserRank?.userId ? 'bg-yellow-100' : ''}`} // Highlight logged-in user's row
               >
-                <td className="p-3">{index + 4}</td>
-                <td className="p-3">{user.username}</td>
+                <td className="p-3">{index + 1}</td>
+                <td className="p-3 hover:scale-105">{user.username}</td>
                 <td className="p-3">{user.userId}</td>
                 <td className="p-3">{user.completedTasks}</td>
                 <td className="p-3">{user.score}</td>
-                <td className="p-3">{getReward(index + 3)}</td>
+                <td className="p-3">{getReward(index )}</td>
               </tr>
             ))}
           </tbody>
@@ -142,16 +141,16 @@ const LeaderBoard = ({ loggedInUserId }) => {
       </div>
 
       {/* Display the performance graph */}
-      <h2 className="text-2xl font-semibold text-center mt-6">Weekly Performance Comparison (Top 7 Users)</h2>
-      <ResponsiveContainer width="100%" height={400} className="mt-4 transition-opacity duration-500 opacity-100 hover:opacity-80">
+      <h2 className="text-3xl  text-center mt-10 font-bold">Weekly Performance Comparison (Top 7 Users)</h2>
+      <ResponsiveContainer width="100%" height={400} className="mt-4 transition-opacity duration-500 opacity-100 hover:opacity-80 text-black">
         <LineChart
-          data={users.slice(0, 7)} // Show only the top 7 users
+          data={users.slice(0, 5)} // Show only the top 7 users
           margin={{
             top: 20, right: 30, left: 20, bottom: 5,
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="username" />
+          <XAxis dataKey="username" className="text-black" />
           <YAxis />
           <Tooltip />
           <Legend />
