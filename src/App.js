@@ -12,6 +12,10 @@ import LeaderBoard from "./Components/LeaderBoard";
 import Registration from "./Components/Registration";
 import Login from "./Components/Login";
 import AboutUs from "./Components/AboutUs"; // If you want to include this component later
+import ChatWindow from "./Components/ChatWindow";
+import Chat from "./Components/Chat"
+import Feed from "./Components/Feed"
+
 
 function App() {
   const userId = "user_1729172812032"; // You can change this dynamically as needed
@@ -30,12 +34,16 @@ function App() {
             path="/UserProfile"
             element={<UserProfile userId={userId} />}
           />
+         
+          <Route path="/Chat" element={<Chat userId={userId} />} />
+          <Route path="/Feed" element={<Feed userId={userId} />} />
+          
           <Route path="/LeaderBoard" element={<LeaderBoard />} />
           <Route path="/AboutUs" element={<AboutUs />} />
           {/* Add more routes as needed */}
         </Routes>
       </BrowserRouter>
-      <Footer /> {/* If you want to include Footer on every page */}
+     {/* If you want to include Footer on every page */}
     </div>
   );
 }
