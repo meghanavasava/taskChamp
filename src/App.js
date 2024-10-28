@@ -2,8 +2,6 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import logo from "./logo.svg";
 import "./App.css";
-
-// Importing components
 import MyActivity from "./Components/MyActivity";
 import Footer from "./Components/Footer";
 import UserProfile from "./Components/UserProfile";
@@ -37,7 +35,6 @@ function App() {
           <Route path="/Chat" element={<Chat></Chat>} />
         </Routes>
       </BrowserRouter>
-      <Footer />
     </div>
   );
 }
