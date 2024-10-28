@@ -61,7 +61,7 @@ const Login = () => {
         {/* Left Section */}
         <div className="flex-1 bg-[#f0f5fc] text-white flex flex-col rounded-3xl items-center justify-center p-8 order-1 md:order-1">
           <h2 className="text-5xl font-bold mb-4 mt-7">Welcome back !!</h2>
-          <p className="text-3xl  font-bold text-center text-[#f5766f]">Ready to conquer your day?</p>
+          <p className="text-3xl  font-bold text-center text-[#f5766f]">Let's stay on track!</p>
           <img
             src="/tt4.png"
             alt="Animated Graphic"
@@ -76,27 +76,29 @@ const Login = () => {
               Login
             </h2>
             <form onSubmit={handleSubmit} className="space-y-4">
-              <label className="block text-gray-700 text-2xl">Username or Email</label>
+              <label className="block text-gray-700 text-xl ">Username or Email</label>
               <input
                 type="text"
-                className="w-full px-4 py-2 text-2xl border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#5A52D5]  focus:shadow-md transition-transform duration-300"
+                placeholder="Enter your Username or Email"
+                className="w-full px-4 py-2 text-xl border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#5A52D5]  focus:shadow-md transition-transform duration-300"
                 value={usernameOrEmail}
                 onChange={(e) => setUsernameOrEmail(e.target.value)}
                 required
               />
 
-              <label className="block text-gray-700 mt-4 text-2xl">Password</label>
+              <label className="block text-gray-700 mt-4 text-xl ">Password</label>
               <div className="flex items-center">
                 <input
                   type={showPassword ? "text" : "password"}
-                  className="w-full bg-white px-4 py-2 text-2xl border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#5A52D5]  focus:shadow-md transition-transform duration-300"
+                  placeholder="Enter your Password"
+                  className="w-full bg-white px-4 py-2 text-xl border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#5A52D5]  focus:shadow-md transition-transform duration-300"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
                 />
                 <button
                   type="button"
-                  className="ml-2 text-[#6C63FF] text-2xl hover:text-[#5A52D5] transition duration-300"
+                  className="ml-2 text-[#6C63FF] text-xl hover:text-[#5A52D5] transition duration-300"
                   onClick={() => setShowPassword(!showPassword)}
                 >
                   <img
@@ -118,16 +120,16 @@ const Login = () => {
 
               <button
                 type="submit"
-                className="w-full bg-[#669fd6] text-white text-2xl py-2 rounded-lg mt-6 hover:bg-[#4b68ae] hover:scale-105 transition duration-300"
+                className="w-full bg-[#669fd6] text-white text-xl py-2  font-bold rounded-lg mt-6 hover:bg-[#4b68ae] hover:scale-105 transition duration-300"
               >
                 Login
               </button>
 
-              {error && <p className="text-red-500 text-2xl text-center mt-4">{error}</p>}
+              {error && <p className="text-red-500 text-xl text-center mt-4">{error}</p>}
             </form>
 
             <div className="text-center mt-6">
-              <p className="text-gray-600 text-2xl">
+              <p className="text-gray-600 text-xl">
                 Don't have an account?{" "}
                 <button
                   onClick={() => navigate("/Registration")}
