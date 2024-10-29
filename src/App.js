@@ -2,19 +2,18 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import logo from "./logo.svg";
 import "./App.css";
-
-// Importing components
-import StreakCalendar from "./Components/StreakCalendar";
 import MyActivity from "./Components/MyActivity";
 import Footer from "./Components/Footer";
 import UserProfile from "./Components/UserProfile";
 import LeaderBoard from "./Components/LeaderBoard";
 import Registration from "./Components/Registration";
 import Login from "./Components/Login";
-import AboutUs from "./Components/AboutUs"; // If you want to include this component later
+import AboutUs from "./Components/AboutUs";
+import Feed from "./Components/Feed";
+import Chat from "./Components/Chat";
 
 function App() {
-  const userId = "user_1729172812032"; // You can change this dynamically as needed
+  const userId = "user_1729172812032";
 
   return (
     <div>
@@ -32,10 +31,10 @@ function App() {
           />
           <Route path="/LeaderBoard" element={<LeaderBoard />} />
           <Route path="/AboutUs" element={<AboutUs />} />
-          {/* Add more routes as needed */}
+          <Route path="/Feed" element={<Feed></Feed>} />
+          <Route path="/Chat" element={<Chat></Chat>} />
         </Routes>
       </BrowserRouter>
-      <Footer /> {/* If you want to include Footer on every page */}
     </div>
   );
 }
