@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase"; // Firebase configuration import
-import { createUserInFirebase } from "../FirebaseOperations"; // Saving the user in the database
+import { auth } from "../firebase";
+import { createUserInFirebase } from "../FirebaseOperations";
 import { useNavigate } from "react-router-dom";
 import { User } from "../models/User";
-import styles from "./Registration.module.css";
 
 const Registration = () => {
   const navigate = useNavigate();
@@ -27,19 +26,15 @@ const Registration = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setError(""); // Clear error before submitting
+    setError("");
 
-    // Firebase authentication
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log("User created in Firebase Auth:", user);
-
         const formattedBirthdate = formatDate(birthdate);
 
-        // Creating new user instance
         const newUser = new User(
-          user.uid, // Use Firebase user UID
+          user.uid,
           username,
           password,
           formattedBirthdate,
@@ -47,31 +42,18 @@ const Registration = () => {
           email
         );
 
-        // Store user details in Firebase Realtime Database or Firestore
         createUserInFirebase(newUser)
           .then((generatedUserId) => {
             setUserId(generatedUserId);
-            console.log(
-              "User registered successfully with userId:",
-              generatedUserId
-            );
-
-            // Store the userId in localStorage
             localStorage.setItem("userId", generatedUserId);
-
-            // Navigate to Login page after successful registration
             navigate("/Login");
           })
           .catch((error) => {
-            console.error("Error saving user to database:", error);
             setError("Error saving user data. Please try again.");
           });
       })
       .catch((error) => {
-        console.error("Error registering user in Firebase Auth:", error);
-        setError(
-          "Error creating account. Please check your details and try again."
-        );
+        setError("Error creating account. Please check your details and try again.");
       });
   };
 
@@ -79,95 +61,88 @@ const Registration = () => {
     navigate("/Login");
   };
 
-  return (
-    <div>
-      <br />
-      <br />
-      <div className={styles.reg_container}>
-        <h2 className={styles.reg_header}>Register</h2>
-        <form className={styles.reg_form} onSubmit={handleSubmit}>
-          <div>
-            <label className={styles.reg_label}>Username :</label>
-            <input
-              type="text"
-              name="username"
-              className={styles.reg_input}
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <label className={styles.reg_label}>Email :</label>
-            <input
-              type="email"
-              name="email"
-              className={styles.reg_input}
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <label className={styles.reg_label}>Password :</label>
-            <div style={{ display: "flex" }}>
-              <input
-                type={showPassword ? "text" : "password"}
-                name="password"
-                className={styles.reg_passwordInput}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-              <button
-                type="button"
-                className={styles.reg_toggleButton}
-                onClick={() => setShowPassword(!showPassword)}
-              >
-                {showPassword ? "Hide" : "Show"}
-              </button>
-            </div>
-          </div>
-          <div>
-            <label className={styles.reg_label}>Birthdate :</label>
-            <input
-              type="date"
-              name="birthdate"
-              className={styles.reg_dateInput}
-              value={birthdate}
-              onChange={(e) => setBirthdate(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <label className={styles.reg_label}>Country :</label>
-            <input
-              type="text"
-              name="country"
-              className={styles.reg_input}
-              value={country}
-              onChange={(e) => setCountry(e.target.value)}
-              required
-            />
-          </div>
-          <button type="submit" className={styles.reg_submitButton}>
-            Register
-          </button>
-          {error && <p className={styles.reg_error}>{error}</p>}
-        </form>
+  const PasswordInput = () => {
+  const [showPassword, setShowPassword] = useState(false);}
 
-        {userId && <p>User ID: {userId}</p>}
-        <div className={styles.login_link}>
-          <p>
-            Already have an account?{" "}
+  return (
+    <div className="min-h-screen flex items-center justify-center rounded-3xl bg-[#fcf8f5] py-8 px-4">
+      <div className="flex max-w-7xl w-full rounded-3xl bg-white overflow-hidden shadow-lg order-2 md:order-2">
+        
+        {/* Left Section - Registration Form */}
+        <div className="w-full md:w-1/2 p-8">
+          <h2 className="text-4xl font-bold  text-center text-gray-800 mb-6">Create Account</h2>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+              <label className="block text-xl text-gray-700 font-medium mb-1">Full Name</label>
+              <input
+                type="text"
+                className="w-full px-4 py-2 text-xl border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none"
+                placeholder="Enter your full name"
+              />
+            </div>
+            <div>
+              <label className="block text-gray-700 text-xl font-medium mb-1">Email Address</label>
+              <input
+                type="email"
+                className="w-full px-4 text-xl py-2 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none"
+                placeholder="Enter your email"
+              />
+            </div>
+            <div>
+            <label className="block text-gray-700 text-xl font-medium mb-1">Password</label>
+            <div className="relative">
+            <input
+              type={showPassword ? "text" : "password"}
+              className="w-full px-4 py-2 border text-xl border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none"
+              placeholder="Enter your password"
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute inset-y-0 right-3 flex items-center text-blue-500"
+            >
+                  <img
+                    src={showPassword ? "/visible.svg" : "/hidden.svg"}
+                    alt={showPassword ? "Hide" : "Show"}
+                    className="w-7 h-7" 
+                  />
+            </button>
+            </div>
+            </div>
+            <div>
+              <label className="block text-gray-700 text-xl font-medium mb-1">Date of Birth</label>
+              <input
+                type="date"
+                className="w-full px-4 py-2 border text-xl border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none"
+              />
+            </div>
+            <button
+              type="submit"
+              className="w-full bg-[#669fd6] text-white text-xl font-bold py-2 rounded-lg mt-6 hover:bg-[#4b68ae] hover:scale-105 transition duration-300"
+            >
+              Register
+            </button>
+          </form>
+          <p className="text-center text-xl text-gray-700 mt-4">
+            Already have an account?{' '}
             <button
               type="button"
               onClick={handleLoginRedirect}
-              className={styles.link_button}
+              className="text-blue-500  text-xl underline hover:text-blue-700 "
             >
               Login here
             </button>
           </p>
+        </div>
+
+        {/* Right Section - Illustration */}
+        <div className="hidden md:flex md:w-1/2 order-1 md:order-1 bg-[#f0f5fc] rounded-3xl flex-col items-center justify-center p-8 text-center">
+          <h1 className="text-5xl font-bold text-gray-800">Welcome!!</h1>
+          <p className="text-red-500 font-medium text-3xl mt-2 mb-4">Ready to conquer your day?</p>
+          <img 
+          src="tt5.png" 
+          alt="Illustration" 
+          className="w-4/4" />
         </div>
       </div>
     </div>
