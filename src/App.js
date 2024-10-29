@@ -29,6 +29,10 @@ function App() {
             path="/UserProfile"
             element={<UserProfile userId={userId} />}
           />
+         
+          <Route path="/Chat" element={<Chat userId={userId} />} />
+          <Route path="/Feed" element={<Feed userId={userId} />} />
+          
           <Route path="/LeaderBoard" element={<LeaderBoard />} />
           <Route path="/AboutUs" element={<AboutUs />} />
           <Route path="/Feed" element={<Feed></Feed>} />
