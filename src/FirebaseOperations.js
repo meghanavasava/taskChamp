@@ -46,7 +46,7 @@ export const createUserInFirebase = (user) => {
     birthdate: user.birthdate,
     country: user.country,
     email: user.email,
-    imageURL: user.imageURL,
+    imageUrl: user.imageUrl,
   })
     .then(() => {
       console.log("User data saved successfully for userId:", userId);
@@ -54,7 +54,7 @@ export const createUserInFirebase = (user) => {
     })
     .catch((error) => {
       console.error("Error creating user in Firebase:", error);
-      throw error;
+      throw error; // Rethrow error to catch it in the main flow
     });
 };
 

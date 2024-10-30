@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase";
 import { createUserInFirebase } from "../FirebaseOperations";
 import { useNavigate } from "react-router-dom";
 import { User } from "../models/User";
@@ -44,37 +42,22 @@ const Registration = () => {
     e.preventDefault();
     setError("");
 
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        const formattedBirthdate = formatDate(birthdate);
+    // Create new user object
+    const formattedBirthdate = formatDate(birthdate);
+    const newUser = new User(
+      null, // userId will be generated in Firebase
+      username,
+      password,
+      formattedBirthdate,
+      country,
+      email
+    );
 
-        const newUser = new User(
-          user.uid,
-          username,
-          password,
-          formattedBirthdate,
-          country,
-          email
-        );
-
-        if (profileImage) {
-          const storageRef = ref(storage, `userProfiles/${user.uid}`);
-          uploadBytes(storageRef, profileImage).then(() => {
-            getDownloadURL(storageRef).then((url) => {
-              newUser.imageUrl = url;
-              createUserInFirebase(newUser)
-                .then((generatedUserId) => {
-                  setUserId(generatedUserId);
-                  localStorage.setItem("userId", generatedUserId);
-                  navigate("/MyActivity"); // Redirect to MyActivity page
-                })
-                .catch((error) => {
-                  setError("Error saving user data. Please try again.");
-                });
-            });
-          });
-        } else {
+    if (profileImage) {
+      const storageRef = ref(storage, `userProfiles/${Date.now()}_${username}`);
+      uploadBytes(storageRef, profileImage).then(() => {
+        getDownloadURL(storageRef).then((url) => {
+          newUser.imageUrl = url;
           createUserInFirebase(newUser)
             .then((generatedUserId) => {
               setUserId(generatedUserId);
@@ -84,13 +67,19 @@ const Registration = () => {
             .catch((error) => {
               setError("Error saving user data. Please try again.");
             });
-        }
-      })
-      .catch((error) => {
-        setError(
-          "Error creating account. Please check your details and try again."
-        );
+        });
       });
+    } else {
+      createUserInFirebase(newUser)
+        .then((generatedUserId) => {
+          setUserId(generatedUserId);
+          localStorage.setItem("userId", generatedUserId);
+          navigate("/MyActivity"); // Redirect to MyActivity page
+        })
+        .catch((error) => {
+          setError("Error saving user data. Please try again.");
+        });
+    }
   };
 
   const handleLoginRedirect = () => {
