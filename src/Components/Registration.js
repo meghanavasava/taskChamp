@@ -67,7 +67,7 @@ const Registration = () => {
                 .then((generatedUserId) => {
                   setUserId(generatedUserId);
                   localStorage.setItem("userId", generatedUserId);
-                  navigate("/Login");
+                  navigate("/MyActivity"); // Redirect to MyActivity page
                 })
                 .catch((error) => {
                   setError("Error saving user data. Please try again.");
@@ -79,7 +79,7 @@ const Registration = () => {
             .then((generatedUserId) => {
               setUserId(generatedUserId);
               localStorage.setItem("userId", generatedUserId);
-              navigate("/Login");
+              navigate("/MyActivity"); // Redirect to MyActivity page
             })
             .catch((error) => {
               setError("Error saving user data. Please try again.");
