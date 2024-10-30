@@ -89,7 +89,6 @@ const Registration = () => {
   return (
     <div className="min-h-screen flex items-center justify-center rounded-3xl bg-[#fcf8f5] py-8 px-4">
       <div className="flex max-w-7xl w-full rounded-3xl bg-white overflow-hidden shadow-lg order-2 md:order-2">
-        {/* Left Section - Registration Form */}
         <div className="w-full md:w-1/2 p-8">
           <h2 className="text-4xl font-bold text-center text-gray-800 mb-6">
             Create Account
@@ -113,10 +112,12 @@ const Registration = () => {
               </label>
               <input
                 type="text"
+                name="username"
+                placeholder="Enter Username"
                 className="w-full px-4 py-2 text-xl border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none"
-                placeholder="Enter your full name"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
+                required
               />
             </div>
             <div>
@@ -129,6 +130,8 @@ const Registration = () => {
                 placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                name="email"
+                required
               />
             </div>
             <div>
@@ -142,6 +145,8 @@ const Registration = () => {
                   placeholder="Enter your password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  name="password"
+                  required
                 />
                 <button
                   type="button"
@@ -181,6 +186,7 @@ const Registration = () => {
                 placeholder="Enter your country"
                 value={country}
                 onChange={(e) => setCountry(e.target.value)}
+                required
               />
             </div>
 
@@ -202,6 +208,14 @@ const Registration = () => {
             >
               Register
             </button>
+            {userId && <p className="text-center text-gray-600 mt-4">User ID: {userId}</p>}
+        
+            {error && (
+              <p className="text-center text-red-500 text-lg mt-4">{error}</p>
+            )}
+
+
+            
           </form>
 
           <p className="text-center text-xl text-gray-700 mt-4">
@@ -215,8 +229,6 @@ const Registration = () => {
             </button>
           </p>
         </div>
-
-        {/* Right Section - Illustration */}
         <div className="hidden md:flex md:w-1/2 order-1 md:order-1 bg-[#f0f5fc] rounded-3xl flex-col items-center justify-center p-8 text-center">
           <h1 className="text-5xl font-bold text-gray-800">Welcome!!</h1>
           <p className="text-red-500 font-medium text-3xl mt-2 mb-4">
