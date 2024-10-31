@@ -63,7 +63,7 @@ const Registration = () => {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-[#fcf8f5] px-4 py-8">
-      <div className="flex w-full max-w-7xl rounded-3xl shadow-xl drop-shadow-xl bg-white overflow-hidden">
+      <div className="flex w-full max-w-7xl rounded-3xl shadow-lg bg-white overflow-hidden">
         
         {/* Left Side - Form */}
         <div className="w-full md:w-1/2 p-8">
