@@ -42,7 +42,7 @@ const UserProfile = () => {
           birthdate: formattedDate,
           country: fetchedUser.country,
           email: fetchedUser.email,
-          imageUrl: fetchedUser.imageUrl, // Set `imageUrl` from fetched data
+          imageUrl: fetchedUser.imageUrl,
         });
 
         setLoading(false);
@@ -75,10 +75,12 @@ const UserProfile = () => {
         user.imageUrl = formData.imageUrl; // Update user instance as well
       }
 
-      // Update the `user` instance with all `formData` fields
+      const [year, month, day] = formData.birthdate.split("-");
+      const formattedBirthdate = `${day}-${month}-${year}`;
+
       user.username = formData.username;
       user.password = formData.password;
-      user.birthdate = formData.birthdate;
+      user.birthdate = formattedBirthdate;
       user.country = formData.country;
       user.email = formData.email;
 
