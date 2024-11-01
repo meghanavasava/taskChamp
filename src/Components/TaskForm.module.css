@@ -5,31 +5,51 @@
   padding: 20px;
   max-width: 400px;
   margin: 0 auto;
-  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(95, 42, 2, 0.441);
   border-radius: 8px;
-  background-color: #f9f9f9;
+  color: #a05757;
+  background-color: #fff2f2;
+  transition: transform 1s ease;
 }
 
 .task_form_input,
 .task_form_select,
 .task_form_button {
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #f5dad2;
   border-radius: 4px;
   width: 100%;
+  color: #a05757;
   font-size: 16px;
 }
 
+.task_form_input::placeholder {
+  color: #a05757;
+}
+
+.task_form_input:focus,
+.task_form_select:focus {
+  border: 3px solid #f5dad2 !important;
+  outline: none;
+}
+
 .task_form_button {
-  background-color: #007bff;
+  background-color: #ff8a8a;
   width: 100%;
   margin-top: 10px;
   height: 40px;
   color: white;
   cursor: pointer;
   border: none;
+  transition: transform 0.8s ease;
 }
 
 .task_form_button:hover {
-  background-color: #0056b3;
+  background-color: #e57c7c;
+  transform: scale(1.03);
+}
+
+.task_form:hover {
+  transform: scale(1.02);
+  box-shadow: 0 7px 10px rgba(95, 42, 2, 0.441);
 }
