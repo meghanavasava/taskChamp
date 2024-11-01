@@ -3,7 +3,7 @@ import { createTaskWithPriority } from "../Services/TaskServices";
 import styles from "./TaskForm.module.css";
 import { User } from "../models/User";
 
-const TaskForm = ({ reloadWithTask }) => {
+const TaskForm = ({ reloadWithTask, setDateTask }) => {
   const [taskname, setTaskname] = useState("");
   const [date, setDate] = useState("");
   const [level, setLevel] = useState("medium");
@@ -22,6 +22,11 @@ const TaskForm = ({ reloadWithTask }) => {
     console.log("Done");
     const user = await User.fetch(userId);
     await user.updateStreak(formattedDate);
+    localStorage.setItem(
+      "selectedDate",
+      new Date(date).toLocaleDateString("en-GB")
+    );
+    setDateTask(new Date(date).toLocaleDateString("en-GB"));
     reloadWithTask();
   };
 
