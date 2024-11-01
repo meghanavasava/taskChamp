@@ -87,8 +87,9 @@ const Registration = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center rounded-3xl bg-[#fcf8f5] py-8 px-4">
-      <div className="flex max-w-7xl w-full rounded-3xl bg-white overflow-hidden shadow-lg order-2 md:order-2">
+    <div className="flex min-h-screen items-center justify-center bg-[#fcf8f5] px-4 py-8">
+      <div className="flex w-full max-w-7xl rounded-3xl shadow-lg bg-white overflow-hidden">
+     
         <div className="w-full md:w-1/2 p-8">
           <h2 className="text-4xl font-bold text-center text-gray-800 mb-6">
             Create Account
