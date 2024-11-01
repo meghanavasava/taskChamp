@@ -16,6 +16,19 @@ const StreakCalendar = () => {
   const [dateTask, setDateTask] = useState(initialDateTask);
   const [specialDates, setSpecialDates] = useState([]);
   const [currentMonth, setCurrentMonth] = useState(new Date());
+  const [hasSpun, setHasSpun] = useState(false);
+
+  const handleMouseEnter = () => {
+    if (!hasSpun) {
+      setHasSpun(true);
+    }
+  };
+
+  const handleMouseExit = () => {
+    if (hasSpun) {
+      setHasSpun(false);
+    }
+  };
 
   const formatDateToDDMMYYYY = (date) => {
     const day = date.getDate().toString().padStart(2, "0");
@@ -92,10 +105,16 @@ const StreakCalendar = () => {
 
   return (
     <div className={styles.streak_calendar_container}>
-      <TaskForm reloadWithTask={reloadWithTask} />
+      <TaskForm reloadWithTask={reloadWithTask} setDateTask={setDateTask} />
       <br />
       <br />
-      <div className={styles.streak_calendar_table}>
+      <div
+        className={`${styles.streak_calendar_table} ${
+          hasSpun ? styles.spin : ""
+        }`}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseExit}
+      >
         <h2 className={styles.streak_calendar_title}>
           Streak Calendar -{" "}
           {currentMonth.toLocaleDateString("en-US", {
@@ -135,9 +154,24 @@ const StreakCalendar = () => {
             const isActivityDay = activityDays.includes(dayString);
             const isSpecialDay = specialDates.includes(dayString);
             const isSelectedDay = dateTask === dayString;
-            const displayContent = specialDates.includes(dayString)
-              ? "🌟"
-              : day.getDate();
+            const displayContent = specialDates.includes(dayString) ? (
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  height: "100%",
+                }}
+              >
+                <img
+                  src="streak.svg"
+                  alt="streak"
+                  className={styles.streak_image}
+                />
+              </div>
+            ) : (
+              day.getDate()
+            );
 
             return (
               <div
@@ -156,10 +190,7 @@ const StreakCalendar = () => {
         </div>
       </div>
       <br />
-      <TaskList
-        reloadWithTask={reloadWithTask}
-        dateTask={dateTask}
-      />
+      <TaskList reloadWithTask={reloadWithTask} dateTask={dateTask} />
     </div>
   );
 };
