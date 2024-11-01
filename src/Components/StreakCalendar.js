@@ -136,7 +136,7 @@ const StreakCalendar = () => {
             const isSpecialDay = specialDates.includes(dayString);
             const isSelectedDay = dateTask === dayString;
             const displayContent = specialDates.includes(dayString)
-              ? "🌟"
+              ? "🤍"
               : day.getDate();
 
             return (
