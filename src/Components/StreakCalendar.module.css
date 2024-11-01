@@ -42,7 +42,7 @@
 
 .streak_calendar_day {
   padding: 10px 8px;
-  background-color: #f2e6ff;
+  background-color: #e6d5fb;
   color: #8967b3;
   text-align: center;
   cursor: pointer;
@@ -52,15 +52,20 @@
 
 .streak_calendar_day:hover {
   transform: scale(1.02);
+  background-color: #ceb7eb;
   box-shadow: 0 4px 12px rgba(123, 68, 165, 0.35);
 }
 
 .streak_calendar_day.activity {
-  background-color: #dbc4f0;
+  background-color: #9c76c1;
 }
 
 .streak_calendar_day.special {
-  background-color: #e6d6ff;
+  background-color: #e6d5fb;
+}
+
+.streak_calendar_day.special:hover {
+  background-color: #ceb7eb;
 }
 
 .task_section {
@@ -107,7 +112,7 @@ body {
 }
 
 .selected_day {
-  background-color: #cfc1e6 !important;
+  background-color: #b19cd3 !important;
   color: #1c0432ec;
 }
 
