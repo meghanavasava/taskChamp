@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { createUserInFirebase } from "../FirebaseOperations";
 import { useNavigate } from "react-router-dom";
 import { User } from "../models/User";
+import styles from "./Registration.module.css";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 const storage = getStorage();
@@ -89,7 +90,6 @@ const Registration = () => {
   return (
     <div className="flex min-h-screen items-center justify-center bg-[#fcf8f5] px-4 py-8">
       <div className="flex w-full max-w-7xl rounded-3xl shadow-lg bg-white overflow-hidden">
-     
         <div className="w-full md:w-1/2 p-8">
           <h2 className="text-4xl font-bold text-center text-gray-800 mb-6">
             Create Account
@@ -101,7 +101,7 @@ const Registration = () => {
               <img
                 src={profileImageUrl}
                 alt="Profile Preview"
-                className="w-32 h-32 rounded-full object-cover"
+                className={styles.reg_image}
               />
             </div>
           )}
@@ -209,14 +209,15 @@ const Registration = () => {
             >
               Register
             </button>
-            {userId && <p className="text-center text-gray-600 mt-4">User ID: {userId}</p>}
-        
+            {userId && (
+              <p className="text-center text-gray-600 mt-4">
+                User ID: {userId}
+              </p>
+            )}
+
             {error && (
               <p className="text-center text-red-500 text-lg mt-4">{error}</p>
             )}
-
-
-            
           </form>
 
           <p className="text-center text-xl text-gray-700 mt-4">
