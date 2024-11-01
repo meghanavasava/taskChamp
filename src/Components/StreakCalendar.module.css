@@ -39,6 +39,7 @@
   border-radius: 12px;
   margin: 0px 120px;
   box-shadow: 0 4px 8px rgba(51, 2, 94, 0.5);
+  transition: transform 1.5s ease, box-shadow 0.3s ease;
 }
 
 .streak_calendar_day {
@@ -110,4 +111,23 @@ body {
 .selected_day {
   background-color: #cfc1e6 !important;
   color: #1c0432ec;
+}
+
+.streak_calendar_table:hover {
+  transform: scale(1.01);
+  box-shadow: 0 2px 6px rgba(51, 2, 94, 0.5);
+}
+
+.streak_calendar_table.spin {
+  transform: rotateY(360deg);
+  box-shadow: 0 8px 16px rgba(51, 2, 94, 0.7);
+}
+
+.streak_image {
+  height: 25px;
+  transition: transform 1s ease;
+}
+
+.streak_image:hover {
+  transform: rotateY(360deg);
 }
