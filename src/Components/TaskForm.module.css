@@ -3,8 +3,8 @@
   flex-direction: column;
   gap: 10px;
   padding: 20px;
-  max-width: 400px;
-  margin: 0 auto;
+  width: 400px;
+  margin: 0 20px;
   box-shadow: 0 4px 8px rgba(95, 42, 2, 0.441);
   border-radius: 8px;
   color: #a05757;
@@ -52,4 +52,66 @@
 .task_form:hover {
   transform: scale(1.02);
   box-shadow: 0 7px 10px rgba(95, 42, 2, 0.441);
+}
+
+.task_form_image1 {
+  height: 200px;
+  padding: 5px 0;
+  margin-right: 20px;
+  animation: bounceSideToSide1 10s ease-in-out infinite;
+  transition: transform 0.5s ease;
+}
+
+@keyframes bounceSideToSide1 {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-20px) translateY(-10px); /* Slight left and upward curve */
+  }
+  50% {
+    transform: translateX(0) translateY(0); /* Return to the center */
+  }
+  75% {
+    transform: translateX(20px) translateY(-10px); /* Slight right and upward curve */
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.task_form_image2 {
+  height: 200px;
+  animation: bounceSideToSide2 10s ease-in-out infinite;
+  margin-left: 20px;
+  transition: transform 0.5s ease;
+}
+
+@keyframes bounceSideToSide2 {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(20px) translateY(-10px);
+  }
+  50% {
+    transform: translateX(0) translateY(0);
+  }
+  75% {
+    transform: translateX(-20px) translateY(-10px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.task_form_image1:hover,
+.task_form_image2:hover {
+  transform: scale(1.7) !important;
+}
+
+.task_form_div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
