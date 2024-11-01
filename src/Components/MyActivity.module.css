@@ -8,8 +8,8 @@
   display: flex;
   flex: 1;
   width: 100%;
-  justify-content: center; /* Center content horizontally */
-  align-items: center; /* Center content vertically */
+  justify-content: center; 
+  align-items: center; 
 }
 
 .navbar {
