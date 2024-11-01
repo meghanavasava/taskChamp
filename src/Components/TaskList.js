@@ -6,9 +6,10 @@ import { ref, set, get } from "firebase/database";
 import { realDb } from "../firebase";
 import styles from "./TaskList.module.css";
 
-const TaskList = ({ userId, dateTask, reloadWithTask }) => {
+const TaskList = ({ dateTask, reloadWithTask }) => {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
+  const userId = localStorage.getItem("userId");
 
   function updatePriorities(temp) {
     const updatedTasks = temp.map((task, index) => ({
@@ -32,7 +33,6 @@ const TaskList = ({ userId, dateTask, reloadWithTask }) => {
     const temp = [...tasks];
     temp.splice(index, 1);
     updatePriorities(temp);
-    reloadWithTask();
   }
 
   function upList(index) {

@@ -1,54 +1,44 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import logo from "./logo.svg";
 import "./App.css";
-import StreakCalendar from "./Components/StreakCalendar";
+
 import MyActivity from "./Components/MyActivity";
 import Footer from "./Components/Footer";
+import UserProfile from "./Components/UserProfile";
+import LeaderBoard from "./Components/LeaderBoard";
+import Registration from "./Components/Registration";
+import Login from "./Components/Login";
+import AboutUs from "./Components/AboutUs";
+import Feed from "./Components/Feed";
+import Chat from "./Components/Chat";
 
 function App() {
-  // return (
-  //   <div className="App">
-  //     <header className="App-header">
-  //       <img src={logo} className="App-logo" alt="logo" />
-  //       <p>
-  //         Edit <code>src/App.js</code> and save to reload.
-  //       </p>
-  //       <a
-  //         className="App-link"
-  //         href="https://reactjs.org"
-  //         target="_blank"
-  //         rel="noopener noreferrer"
-  //       >
-  //         Learn React
-  //       </a>
-  //     </header>
-  //   </div>
-  // );
-
-  // return (
-  //   <div>
-  //     <MyComponent></MyComponent>
-  //   </div>
-  // );
-
-  const userId = "user_1725465375818";
+  const userId = "user_1729172812032";
 
   return (
     <div>
-      <MyActivity userId={userId}></MyActivity>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/Login" element={<Login />} />
+          <Route
+            path="/Registration"
+            element={<Registration userId={userId} />}
+          />
+          <Route path="/MyActivity" element={<MyActivity userId={userId} />} />
+          <Route
+            path="/UserProfile"
+            element={<UserProfile userId={userId} />}
+          />
+
+          <Route path="/LeaderBoard" element={<LeaderBoard />} />
+          <Route path="/AboutUs" element={<AboutUs />} />
+          <Route path="/Feed" element={<Feed></Feed>} />
+          <Route path="/Chat" element={<Chat></Chat>} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
-  // return (
-  //   <div>
-  //     <Footer></Footer>
-  //   </div>
-  // );
-
-  // return (
-  //   <div>
-  //     <Navbar></Navbar>
-  //   </div>
-  // );
 }
 
 export default App;
