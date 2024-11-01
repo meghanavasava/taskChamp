@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
 import ChatWindow from "./ChatWindow";
+import Footer from "./Footer";
 import { auth, realDb } from "../firebase";
 import { ref, onValue, get } from "firebase/database";
 import { Search as SearchIcon, Send, Paperclip } from "lucide-react";
@@ -87,6 +88,7 @@ const Chat = () => {
           </div>
         )}
       </div>
+      <Footer></Footer>
     </div>
   );
 };

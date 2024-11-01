@@ -4,6 +4,7 @@ import { ref, onValue, query, orderByChild, get } from "firebase/database";
 import AddPost from "./AddPost";
 import PostList from "./PostList";
 import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 const motivationalQuotes = [
   "Every moment is a fresh beginning.",
@@ -161,6 +162,7 @@ const Feed = () => {
           )}
         </div>
       </div>
+      <Footer></Footer>
     </div>
   );
 };

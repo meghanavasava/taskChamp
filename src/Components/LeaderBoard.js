@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { ref, get } from "firebase/database";
 import { realDb } from "../firebase";
 import Navbar from "./Navbar";
+import Footer from "./Footer";
 import { getLoggedInUser } from "../FirebaseOperations"; // Import the function
 import {
   LineChart,
@@ -206,6 +207,7 @@ const LeaderBoard = () => {
           </LineChart>
         </ResponsiveContainer>
       </div>
+      <Footer></Footer>
     </div>
   );
 };

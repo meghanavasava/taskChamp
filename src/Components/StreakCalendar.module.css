@@ -52,6 +52,7 @@
 
 .streak_calendar_day:hover {
   transform: scale(1.02);
+  background-color: #ceb7eb;
   box-shadow: 0 4px 12px rgba(123, 68, 165, 0.35);
 }
 
@@ -61,6 +62,10 @@
 
 .streak_calendar_day.special {
   background-color: #e6d5fb;
+}
+
+.streak_calendar_day.special:hover {
+  background-color: #ceb7eb;
 }
 
 .task_section {
