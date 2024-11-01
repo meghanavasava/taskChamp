@@ -1,9 +1,7 @@
 .streak_calendar_container {
   width: 100%;
   padding: 20px 70px;
-  background-color: #f8f9fa;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
   overflow-x: hidden;
 }
@@ -115,11 +113,6 @@ body {
 
 .streak_calendar_table:hover {
   transform: scale(1.01);
-  box-shadow: 0 2px 6px rgba(51, 2, 94, 0.5);
-}
-
-.streak_calendar_table.spin {
-  transform: rotateY(360deg);
   box-shadow: 0 8px 16px rgba(51, 2, 94, 0.7);
 }
 
