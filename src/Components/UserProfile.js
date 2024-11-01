@@ -13,12 +13,12 @@ const UserProfile = () => {
     birthdate: "",
     country: "",
     email: "",
-    imageUrl: "", // Use `imageUrl` here as per your setup
+    imageUrl: "",
   });
   const [errors, setErrors] = useState({});
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [imageFile, setImageFile] = useState(null);
-  const [imageUrlPreview, setImageUrlPreview] = useState(""); // Separate state for image preview
+  const [imageUrlPreview, setImageUrlPreview] = useState("");
 
   useEffect(() => {
     const fetchUserDetails = async () => {
@@ -83,12 +83,8 @@ const UserProfile = () => {
       user.birthdate = formattedBirthdate;
       user.country = formData.country;
       user.email = formData.email;
-
-      // Save updated user profile to Firebase
       await user.save();
-
       alert("Profile updated successfully!");
-      // Optionally refresh component state here if you need immediate feedback
       setUser({ ...user });
     } catch (error) {
       console.error("Error updating profile:", error);
@@ -106,7 +102,6 @@ const UserProfile = () => {
       <div className={styles.profile_container}>
         <h2 className={styles.profile_header}>User Profile</h2>
         <form className={styles.profile_form} onSubmit={handleSubmit}>
-          {/* Display profile image */}
           {imageUrlPreview && (
             <div className={styles.profile_imageContainer}>
               <img
