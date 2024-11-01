@@ -92,7 +92,7 @@ const StreakCalendar = () => {
 
   return (
     <div className={styles.streak_calendar_container}>
-      <TaskForm reloadWithTask={reloadWithTask} />
+      <TaskForm reloadWithTask={reloadWithTask} setDateTask={setDateTask} />
       <br />
       <br />
       <div className={styles.streak_calendar_table}>
@@ -156,10 +156,7 @@ const StreakCalendar = () => {
         </div>
       </div>
       <br />
-      <TaskList
-        reloadWithTask={reloadWithTask}
-        dateTask={dateTask}
-      />
+      <TaskList reloadWithTask={reloadWithTask} dateTask={dateTask} />
     </div>
   );
 };
