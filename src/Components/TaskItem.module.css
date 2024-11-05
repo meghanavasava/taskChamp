@@ -18,7 +18,7 @@
   bottom: 0;
   border-radius: 8px;
   border: 3px solid #b3e8e5;
-  animation: rotate-border 5s linear infinite;
+  animation: rotate-border 7s linear infinite;
   transition: border-color 0.5s ease;
   pointer-events: none;
 }
@@ -43,7 +43,7 @@
 
 .task_item:hover {
   border: 3px solid #b3e8e5;
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 
 .task_item:hover::before {
@@ -65,14 +65,14 @@
   bottom: 0;
   border-radius: 8px;
   border: 3px solid #3bacb6;
-  animation: rotate-border 5s linear infinite;
+  animation: rotate-border 7s linear infinite;
   transition: border-color 0.5s ease;
   pointer-events: none;
 }
 
 .task_item.done:hover {
   border: 3px solid #3bacb6;
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 
 .task_item.done:hover::before {

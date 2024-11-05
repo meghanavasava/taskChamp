@@ -58,7 +58,7 @@
   height: 200px;
   padding: 8px 0;
   margin-right: 20px;
-  animation: bounceSideToSide1 10s ease-in-out infinite;
+  animation: bounceSideToSide1 12s ease-in-out infinite;
   transition: transform 0.5s ease;
 }
 
@@ -82,7 +82,7 @@
 
 .task_form_image2 {
   height: 200px;
-  animation: bounceSideToSide2 10s ease-in-out infinite;
+  animation: bounceSideToSide2 12s ease-in-out infinite;
   margin-left: 20px;
 }
 
