@@ -1,9 +1,12 @@
 .footer {
-  background-color: #7d9da6;
+  background: linear-gradient(90deg, #ff8a8a, #9c76c1, #3bacb6);
   color: #fff;
   padding: 15px 0;
   font-size: 14px;
   position: relative;
+  overflow: hidden;
+  background-size: 200% 200%;
+  transition: background-position 0.3s ease-out, background-color 0.3s ease;
 }
 
 .footer_container {
@@ -28,12 +31,14 @@
   font-size: 20px;
   margin-bottom: 5px;
   color: aliceblue;
+  font-weight: 700;
   text-align: left;
 }
 
 .footer h3 {
   margin-bottom: 10px;
   font-size: large;
+  font-weight: 700;
 }
 
 .footer_navList {
@@ -56,6 +61,7 @@
 
 .footerBottom p {
   margin-bottom: 7px;
+  font-weight: 600;
 }
 
 .socialIcons {
@@ -68,4 +74,9 @@
   width: 22px;
   display: inline;
   height: 22px;
+  transition: transform 0.5s ease-in-out;
+}
+
+.footer_socialIcons img:hover {
+  transform: scale(1.2);
 }
