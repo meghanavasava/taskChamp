@@ -37,7 +37,12 @@
   border-radius: 12px;
   margin: 0px 120px;
   box-shadow: 0 4px 8px rgba(51, 2, 94, 0.5);
-  transition: transform 1.5s ease, box-shadow 0.3s ease;
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+  perspective: 1000px;
+}
+
+.streak_calendar_table:hover {
+  box-shadow: 0 8px 12px rgba(51, 2, 94, 0.5);
 }
 
 .streak_calendar_day {
