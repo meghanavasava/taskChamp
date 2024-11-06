@@ -140,6 +140,7 @@ const StreakCalendar = () => {
       <TaskForm reloadWithTask={reloadWithTask} setDateTask={setDateTask} />
       <br />
       <br />
+      <br></br>
       <div
         ref={tableRef}
         className={`${styles.streak_calendar_table} ${
