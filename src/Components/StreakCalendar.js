@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import TaskList from "./TaskList";
 import { User } from "../models/User";
 import TaskForm from "./TaskForm";
@@ -8,6 +8,38 @@ const StreakCalendar = () => {
   const [calendarDays, setCalendarDays] = useState([]);
   const [activityDays, setActivityDays] = useState([]);
   const userId = localStorage.getItem("userId");
+  const tableRef = useRef(null);
+
+  useEffect(() => {
+    const table = tableRef.current;
+
+    const handleMouseMove = (e) => {
+      const { width, height, left, top } = table.getBoundingClientRect();
+      const x = e.clientX - left;
+      const y = e.clientY - top;
+
+      const rotateX = (y / height - 0.5) * 10; // Max 10 degrees rotation
+      const rotateY = (x / width - 0.5) * -10;
+
+      table.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    };
+
+    const handleMouseLeave = () => {
+      table.style.transform = "perspective(1000px) rotateX(0) rotateY(0)";
+    };
+
+    if (table) {
+      table.addEventListener("mousemove", handleMouseMove);
+      table.addEventListener("mouseleave", handleMouseLeave);
+    }
+
+    return () => {
+      if (table) {
+        table.removeEventListener("mousemove", handleMouseMove);
+        table.removeEventListener("mouseleave", handleMouseLeave);
+      }
+    };
+  }, []);
 
   const initialDateTask = localStorage.getItem("selectedDate")
     ? localStorage.getItem("selectedDate")
@@ -109,6 +141,7 @@ const StreakCalendar = () => {
       <br />
       <br />
       <div
+        ref={tableRef}
         className={`${styles.streak_calendar_table} ${
           hasSpun ? styles.spin : ""
         }`}

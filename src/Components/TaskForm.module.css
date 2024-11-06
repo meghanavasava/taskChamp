@@ -5,11 +5,17 @@
   padding: 20px;
   width: 400px;
   margin: 0 20px;
-  box-shadow: 0 4px 8px rgba(95, 42, 2, 0.441);
+  box-shadow: 0 2px 4px rgba(95, 42, 2, 0.441);
   border-radius: 8px;
   color: #a05757;
   background-color: #fff2f2;
-  transition: transform 1s ease;
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+  perspective: 1000px;
+}
+
+.task_form:hover {
+  transform: scale(1.05);
+  box-shadow: 0 7px 10px rgba(95, 42, 2, 0.441);
 }
 
 .task_form_input,
@@ -29,7 +35,7 @@
 
 .task_form_input:focus,
 .task_form_select:focus {
-  border: 3px solid #f5dad2 !important;
+  border: 2px solid #ecb3b3 !important;
   outline: none;
 }
 
@@ -38,6 +44,7 @@
   width: 100%;
   margin-top: 10px;
   height: 40px;
+  font-weight: 700;
   color: white;
   cursor: pointer;
   border: none;
@@ -47,11 +54,6 @@
 .task_form_button:hover {
   background-color: #e57c7c;
   transform: scale(1.03);
-}
-
-.task_form:hover {
-  transform: scale(1.02);
-  box-shadow: 0 7px 10px rgba(95, 42, 2, 0.441);
 }
 
 .task_form_image1 {
