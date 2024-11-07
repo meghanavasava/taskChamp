@@ -1,6 +1,6 @@
 .streak_calendar_container {
-  width: 100%;
-  padding: 20px 70px;
+  width: 86%;
+  padding: 15px 20px;
   border-radius: 8px;
   box-sizing: border-box;
   overflow-x: hidden;
@@ -28,16 +28,21 @@
   padding: 15px 8px;
   background-color: #8967b3;
   color: white;
-  border-radius: 8px;
+  border-radius: 5px;
 }
 
 .streak_calendar_table {
   padding: 50px 70px;
-  background-color: #fcf9ff;
+  background-color: #f8f1ff;
   border-radius: 12px;
   margin: 0px 120px;
   box-shadow: 0 4px 8px rgba(51, 2, 94, 0.5);
-  transition: transform 1.5s ease, box-shadow 0.3s ease;
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+  perspective: 1000px;
+}
+
+.streak_calendar_table:hover {
+  box-shadow: 0 8px 12px rgba(51, 2, 94, 0.5);
 }
 
 .streak_calendar_day {
@@ -46,7 +51,7 @@
   color: #8967b3;
   text-align: center;
   cursor: pointer;
-  border-radius: 8px;
+  border-radius: 5px;
   transition: transform 0.5s ease, box-shadow 0.2s ease;
 }
 

@@ -127,6 +127,7 @@
 .task_item button.update,
 .task_item button.delete {
   background: #17a2b8;
+  font-weight: 600;
 }
 
 .task_item button.update:hover,
