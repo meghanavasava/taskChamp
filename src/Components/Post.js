@@ -98,7 +98,7 @@ const Post = ({ post, user }) => {
             <div key={index} className="bg-gray-50 rounded-lg p-4">
               <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center space-x-2">
-                  <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white text-sm">
+                  <div className={styles.flip_card_comment}>
                     {comment.username.charAt(0).toUpperCase()}
                   </div>
                   <span className="font-medium text-gray-800">
