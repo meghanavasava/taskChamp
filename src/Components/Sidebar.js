@@ -1,6 +1,5 @@
 
 import { Search as SearchIcon, Send, Paperclip } from "lucide-react";
-
 import React, { useState, useEffect } from "react";
 import Search from "./Search";
 import { ref, get } from "firebase/database";

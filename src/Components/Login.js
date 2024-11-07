@@ -5,8 +5,9 @@
 // #ffc11e yellow
 // #309a42 green
 
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { realDb } from "../firebase";
+import styles from "./Login.module.css";
 import { ref, get, child } from "firebase/database";
 import { useNavigate } from "react-router-dom";
 
@@ -16,6 +17,38 @@ const Login = () => {
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const cardRef = useRef(null);
+
+  useEffect(() => {
+    const card = cardRef.current;
+
+    const handleMouseMove = (e) => {
+      const { width, height, left, top } = card.getBoundingClientRect();
+      const x = e.clientX - left;
+      const y = e.clientY - top;
+
+      const rotateX = (y / height - 0.5) * 10; // Rotate based on vertical mouse movement
+      const rotateY = (x / width - 0.5) * -10; // Rotate based on horizontal mouse movement
+
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    };
+
+    const handleMouseLeave = () => {
+      card.style.transform = "perspective(1000px) rotateX(0) rotateY(0)";
+    };
+
+    if (card) {
+      card.addEventListener("mousemove", handleMouseMove);
+      card.addEventListener("mouseleave", handleMouseLeave);
+    }
+
+    return () => {
+      if (card) {
+        card.removeEventListener("mousemove", handleMouseMove);
+        card.removeEventListener("mouseleave", handleMouseLeave);
+      }
+    };
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -56,7 +89,10 @@ const Login = () => {
 
   return (
     <div className="min-h-screen flex px-20 py-5 items-center justify-center bg-[#fcf8f5]">
-      <div className="flex flex-col md:flex-row w-[80%] max-w-6xl shadow-xl drop-shadow-xl rounded-3xl  overflow-hidden bg-white ">
+      <div
+        ref={cardRef}
+        className="flex flex-col md:flex-row w-[80%] max-w-6xl shadow-xl drop-shadow-xl rounded-3xl  overflow-hidden bg-white "
+      >
         {/* Left Section */}
         <div className="flex-1 bg-[#f0f5fc] text-white flex flex-col rounded-3xl items-center justify-center p-8 order-1 md:order-1">
           <h2 className="text-5xl font-bold mb-4 mt-7 text-black">
