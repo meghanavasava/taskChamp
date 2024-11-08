@@ -1,19 +1,19 @@
 import React, { useEffect } from "react";
 import styles from "./SplashScreen.module.css";
 
-const SplashScreen = ({ onTimeout }) => {
+const SplashScreen = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
-      onTimeout();
-    }, 3000);
+      window.location.href = "/Registration";
+    }, 5000);
 
     return () => clearTimeout(timer);
-  }, [onTimeout]);
+  }, []);
 
   return (
     <div className={styles.splashScreen}>
-      <h1>Welcome to My App</h1>
-      <p>Loading...</p>
+      <h1>Tasky</h1>
+      <p>Welcome! We’re here to help you organize your tasks effectively.</p>
     </div>
   );
 };

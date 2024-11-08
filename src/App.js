@@ -23,31 +23,25 @@ function App() {
 
   return (
     <div>
-      {showSplash ? (
-        <SplashScreen onTimeout={handleSplashTimeout} />
-      ) : (
-        <BrowserRouter>
-          <Routes>
-            <Route path="/Login" element={<Login />} />
-            <Route
-              path="/Registration"
-              element={<Registration userId={userId} />}
-            />
-            <Route
-              path="/MyActivity"
-              element={<MyActivity userId={userId} />}
-            />
-            <Route
-              path="/UserProfile"
-              element={<UserProfile userId={userId} />}
-            />
-            <Route path="/LeaderBoard" element={<LeaderBoard />} />
-            <Route path="/AboutUs" element={<AboutUs />} />
-            <Route path="/Feed" element={<Feed />} />
-            <Route path="/Chat" element={<Chat />} />
-          </Routes>
-        </BrowserRouter>
-      )}
+      <BrowserRouter>
+        <Routes>
+          <Route path="/Login" element={<Login />} />
+          <Route
+            path="/Registration"
+            element={<Registration userId={userId} />}
+          />
+          <Route path="/MyActivity" element={<MyActivity userId={userId} />} />
+          <Route
+            path="/UserProfile"
+            element={<UserProfile userId={userId} />}
+          />
+          <Route path="/LeaderBoard" element={<LeaderBoard />} />
+          <Route path="/AboutUs" element={<AboutUs />} />
+          <Route path="/Feed" element={<Feed />} />
+          <Route path="/Chat" element={<Chat />} />
+        </Routes>
+      </BrowserRouter>
+      <SplashScreen onTimeout={handleSplashTimeout} />
     </div>
   );
 }
