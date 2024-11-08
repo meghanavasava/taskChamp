@@ -15,6 +15,7 @@
   animation: backgroundShift 6s ease-in-out infinite;
 }
 
+
 @keyframes backgroundShift {
   0% {
     background-position: 0% 50%;

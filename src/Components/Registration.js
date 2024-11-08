@@ -121,10 +121,7 @@ const Registration = () => {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-[#fcf8f5] px-20 py-7">
-      <div
-        ref={cardRef}
-        className="flex w-[90%] h-[70%] max-w5xl rounded-3xl shadow-lg bg-white overflow-hidden"
-      >
+      <div ref={cardRef} className={styles.reg_container}>
         <div className="w-[90%] md:w-[50%] px-10 py-6">
           <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
             Create Account

@@ -17,10 +17,6 @@ function App() {
   const [showSplash, setShowSplash] = useState(true);
   const userId = "user_1729172812032";
 
-  const handleSplashTimeout = () => {
-    setShowSplash(false);
-  };
-
   return (
     <div>
       <BrowserRouter>
@@ -41,7 +37,7 @@ function App() {
           <Route path="/Chat" element={<Chat />} />
         </Routes>
       </BrowserRouter>
-      <SplashScreen onTimeout={handleSplashTimeout} />
+      <SplashScreen />
     </div>
   );
 }
