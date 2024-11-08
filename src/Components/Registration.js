@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { createUserInFirebase } from "../FirebaseOperations";
 import { useNavigate } from "react-router-dom";
 import { User } from "../models/User";
@@ -19,6 +19,38 @@ const Registration = () => {
   const [error, setError] = useState("");
   const [profileImage, setProfileImage] = useState(null);
   const [profileImageUrl, setProfileImageUrl] = useState("");
+  const cardRef = useRef(null);
+
+  useEffect(() => {
+    const card = cardRef.current;
+
+    const handleMouseMove = (e) => {
+      const { width, height, left, top } = card.getBoundingClientRect();
+      const x = e.clientX - left;
+      const y = e.clientY - top;
+
+      const rotateX = (y / height - 0.5) * 10; // Rotate based on vertical mouse movement
+      const rotateY = (x / width - 0.5) * -10; // Rotate based on horizontal mouse movement
+
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    };
+
+    const handleMouseLeave = () => {
+      card.style.transform = "perspective(1000px) rotateX(0) rotateY(0)";
+    };
+
+    if (card) {
+      card.addEventListener("mousemove", handleMouseMove);
+      card.addEventListener("mouseleave", handleMouseLeave);
+    }
+
+    return () => {
+      if (card) {
+        card.removeEventListener("mousemove", handleMouseMove);
+        card.removeEventListener("mouseleave", handleMouseLeave);
+      }
+    };
+  }, []);
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -89,7 +121,10 @@ const Registration = () => {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-[#fcf8f5] px-20 py-7">
-      <div className="flex w-[90%] h-[70%] max-w5xl rounded-3xl shadow-lg bg-white overflow-hidden">
+      <div
+        ref={cardRef}
+        className="flex w-[90%] h-[70%] max-w5xl rounded-3xl shadow-lg bg-white overflow-hidden"
+      >
         <div className="w-[90%] md:w-[50%] px-10 py-6">
           <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
             Create Account
