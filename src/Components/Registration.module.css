@@ -1,10 +1,27 @@
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 .reg_container {
-  max-width: 600px;
-  margin: auto;
-  padding: 20px 40px 40px 40px;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: #f9f9f9;
+  width: 90%;
+  height: 70%;
+  max-width: 5xl;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  overflow: hidden;
+  display: flex;
+}
+
+.animate {
+  animation: slideInFromRight 2s ease-out forwards;
 }
 
 .reg_header {
