@@ -19,8 +19,8 @@ const TaskForm = ({ reloadWithTask, setDateTask }) => {
       const x = e.clientX - left;
       const y = e.clientY - top;
 
-      const rotateX = (y / height - 0.5) * 10;
-      const rotateY = (x / width - 0.5) * -10;
+      const rotateX = (y / height - 0.5) * 15;
+      const rotateY = (x / width - 0.5) * -15;
 
       card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
     };
@@ -66,35 +66,37 @@ const TaskForm = ({ reloadWithTask, setDateTask }) => {
   return (
     <div className={styles.task_form_div}>
       <img src="task_form1.jpg" className={styles.task_form_image1}></img>
-      <form onSubmit={handleSubmit} className={styles.task_form} ref={cardRef}>
-        <input
-          type="text"
-          value={taskname}
-          onChange={(e) => setTaskname(e.target.value)}
-          placeholder="Task Name"
-          className={styles.task_form_input}
-          required
-        />
-        <input
-          type="date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-          className={styles.task_form_input}
-          required
-        />
-        <select
-          value={level}
-          onChange={(e) => setLevel(e.target.value)}
-          className={styles.task_form_select}
-        >
-          <option value="easy">Easy</option>
-          <option value="medium">Medium</option>
-          <option value="hard">Hard</option>
-        </select>
-        <button type="submit" className={styles.task_form_button}>
-          Create Task
-        </button>
-      </form>
+      <div className={styles.form_container} ref={cardRef}>
+        <form onSubmit={handleSubmit} className={styles.task_form}>
+          <input
+            type="text"
+            value={taskname}
+            onChange={(e) => setTaskname(e.target.value)}
+            placeholder="Task Name"
+            className={styles.task_form_input}
+            required
+          />
+          <input
+            type="date"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+            className={styles.task_form_input}
+            required
+          />
+          <select
+            value={level}
+            onChange={(e) => setLevel(e.target.value)}
+            className={styles.task_form_select}
+          >
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+          </select>
+          <button type="submit" className={styles.task_form_button}>
+            Create Task
+          </button>
+        </form>
+      </div>
       <img src="task_form2.jpg" className={styles.task_form_image2}></img>
     </div>
   );

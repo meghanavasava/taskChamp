@@ -49,7 +49,7 @@
   position: relative;
   z-index: 10;
   margin-top: 30px;
-  background: linear-gradient(90deg, #ff8a8a, #9c76c1, #3bacb6);
+  background: linear-gradient(90deg, #ead6ff, #ead6ff, #ead6ff);
   -webkit-background-clip: text;
   color: transparent;
 }
@@ -67,7 +67,7 @@
   border-radius: 50%;
   margin-bottom: 10px;
   transition: transform 1.5s ease;
-  box-shadow: 0 8px 16px rgba(59, 46, 70, 0.618);
+  box-shadow: 0 8px 16px black;
 }
 
 .profileImage:hover {
