@@ -1,6 +1,6 @@
 .footer {
-  background: linear-gradient(90deg, #f1b0b0, #b78dd7, #84b8c0);
-  color: #fff;
+  background: linear-gradient(90deg, #10061d, #1d0a35, #1d0a35);
+  color: #d1c4db;
   padding: 15px 0;
   font-size: 14px;
   position: relative;
@@ -30,7 +30,7 @@
 .footer_title {
   font-size: 20px;
   margin-bottom: 5px;
-  color: aliceblue;
+  color: white;
   font-weight: 700;
   text-align: left;
 }
@@ -39,6 +39,7 @@
   margin-bottom: 10px;
   font-size: large;
   font-weight: 700;
+  color: white;
 }
 
 .footer_navList {
@@ -51,12 +52,13 @@
 }
 
 .footer_navList li:hover {
-  color: #30363c;
+  color: #e09eff;
 }
 
 .footerBottom {
   text-align: center;
   margin-top: 15px;
+  color: white;
 }
 
 .footerBottom p {
