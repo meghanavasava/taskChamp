@@ -3,69 +3,71 @@
   flex-direction: column;
   gap: 10px;
   padding: 20px;
-  width: 400px;
+  width: 500px;
   margin: 0 20px;
-  box-shadow: 0 2px 4px rgba(95, 42, 2, 0.441);
+  box-shadow: 0 10px 15px black;
   border-radius: 8px;
-  color: #a05757;
-  background-color: #fff2f2;
+  color: #d1c4db;
+  background-color: #4a2b73;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   perspective: 1000px;
 }
 
 .task_form:hover {
   transform: scale(1.05);
-  box-shadow: 0 7px 10px rgba(95, 42, 2, 0.441);
+  box-shadow: 0 7px 10px rgba(15, 7, 26, 0.6); /* Darker shadow on hover */
 }
 
 .task_form_input,
-.task_form_select,
-.task_form_button {
-  padding: 10px;
-  border: 1px solid #f5dad2;
-  border-radius: 4px;
+.task_form_select {
+  padding: 5px;
+  border: 3px solid transparent;
+  border-radius: 7px;
   width: 100%;
-  color: #a05757;
+  color: #1a0b2e;
   font-size: 16px;
+  background-color: #c798e3;
 }
 
 .task_form_input::placeholder {
-  color: #a05757;
+  color: #2e1052;
 }
 
 .task_form_input:focus,
 .task_form_select:focus {
-  border: 2px solid #ecb3b3 !important;
+  border: 2px solid #2e1052 !important;
   outline: none;
 }
 
 .task_form_button {
-  background-color: #ff8a8a;
+  background-color: rgba(15, 7, 26, 0.6);
   width: 100%;
   margin-top: 10px;
   height: 40px;
   font-weight: 700;
+  border-radius: 7px;
   color: white;
   cursor: pointer;
   border: none;
-  transition: transform 0.8s ease;
+  transition: transform 0.8s ease, background-color 0.3s ease;
 }
 
 .task_form_button:hover {
-  background-color: #e57c7c;
+  background-color: #1a0b2e;
   transform: scale(1.03);
 }
 
-.task_form_image1 {
+.task_form_image1,
+.task_form_image2 {
   height: 200px;
-  padding: 8px 0;
   margin-right: 20px;
   animation: bounceSideToSide1 12s ease-in-out infinite;
   transition: transform 0.5s ease;
 }
 
 @keyframes bounceSideToSide1 {
-  0% {
+  0%,
+  100% {
     transform: translateX(0);
   }
   25% {
@@ -76,33 +78,6 @@
   }
   75% {
     transform: translateX(20px) translateY(-10px) scale(0.9);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-
-.task_form_image2 {
-  height: 200px;
-  animation: bounceSideToSide2 12s ease-in-out infinite;
-  margin-left: 20px;
-}
-
-@keyframes bounceSideToSide2 {
-  0% {
-    transform: translateX(0);
-  }
-  25% {
-    transform: translateX(20px) translateY(-10px) scale(1.1);
-  }
-  50% {
-    transform: translateX(0) translateY(0);
-  }
-  75% {
-    transform: translateX(-20px) translateY(-10px) scale(0.9);
-  }
-  100% {
-    transform: translateX(0);
   }
 }
 
