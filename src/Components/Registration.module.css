@@ -49,9 +49,10 @@
   border: 1px solid #5c3d89;
   color: #f5f5f5;
   width: 100%;
-  padding: 5px 0.75rem;
+  font-size: 14px;
+  padding: 2px 0.75rem;
   opacity: 0.8;
-  border-radius: 10px;
+  border-radius: 5px;
   transition: border 0.3s ease;
 }
 
@@ -59,34 +60,15 @@
   background-color: #4a2b73;
   color: #f5f5f5;
   border: 1px solid #5c3d89;
-  border-radius: 10px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 12px;
   width: 100%;
+  margin-bottom: 10px;
   transition: background-color 0.3s ease, border-color 0.3s ease;
-}
-
-.input[type="file"]:hover {
-  background-color: #5c3d89; /* Change background on hover */
-}
-
-.input[type="file"]:focus {
-  outline: none;
-  border-color: #3b2d57; /* Slightly darker border on focus */
 }
 
 .input:focus {
   border-color: #e09eff;
-}
-
-.passwordButton {
-  position: absolute;
-  top: 0;
-  right: 0.75rem;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-  color: #3b82f6;
 }
 
 .registerButton {
@@ -186,12 +168,12 @@
 .submitButton {
   background-color: #6a3ba3;
   color: #ffffff;
-  padding: 0.5rem;
+  padding: 5px;
   font-size: 1rem;
   margin-top: 20px;
   font-weight: bold;
   width: 100%;
-  border-radius: 10px;
+  border-radius: 7px;
   transition: background-color 0.6s ease, transform 0.6s ease;
 }
 
