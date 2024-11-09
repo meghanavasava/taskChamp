@@ -31,18 +31,55 @@
   border-radius: 5px;
 }
 
+.glowingEffect {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  background-color: #6a3ba3;
+  border-radius: 50%;
+  box-shadow: 0 0 150px 150px rgba(105, 65, 155, 0.386);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  /* visibility: hidden; */
+  transition: all 0s ease-in-out;
+}
+
+.glowingEffect.disable {
+  visibility: hidden !important;
+}
+
+.glowingEffect.active {
+  visibility: visible !important;
+}
+
 .streak_calendar_table {
   padding: 50px 70px;
-  background-color: #f8f1ff;
+  /* background: linear-gradient(
+    90deg,
+    #000000,
+    #11092b,
+    #1a0c33,
+    #200f3a,
+    #26123f,
+    #2b1545,
+    #30194a,
+    #351d50,
+    #3a2155,
+    #3f255b,
+    #000000
+  ); */
+  background-color: #10061d;
   border-radius: 12px;
+  position: relative; /* Needed to contain the absolute position of glowing effect */
+  overflow: hidden;
   margin: 0px 120px;
-  box-shadow: 0 4px 8px rgba(51, 2, 94, 0.5);
+  box-shadow: 0 8px 10px black;
   transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
   perspective: 1000px;
 }
 
 .streak_calendar_table:hover {
-  box-shadow: 0 8px 12px rgba(51, 2, 94, 0.5);
+  box-shadow: 0 15px 20px black !important;
 }
 
 .streak_calendar_day {
@@ -50,6 +87,7 @@
   background-color: #e6d5fb;
   color: #8967b3;
   text-align: center;
+  opacity: 0.5;
   cursor: pointer;
   border-radius: 5px;
   transition: transform 0.5s ease, box-shadow 0.2s ease;
