@@ -54,20 +54,6 @@
 
 .streak_calendar_table {
   padding: 50px 70px;
-  /* background: linear-gradient(
-    90deg,
-    #000000,
-    #11092b,
-    #1a0c33,
-    #200f3a,
-    #26123f,
-    #2b1545,
-    #30194a,
-    #351d50,
-    #3a2155,
-    #3f255b,
-    #000000
-  ); */
   background-color: #10061d;
   border-radius: 12px;
   position: relative; /* Needed to contain the absolute position of glowing effect */
@@ -84,8 +70,8 @@
 
 .streak_calendar_day {
   padding: 10px 8px;
-  background-color: #e6d5fb;
-  color: #8967b3;
+  background-color: #a286c5df;
+  color: black;
   text-align: center;
   opacity: 0.5;
   cursor: pointer;
@@ -95,20 +81,23 @@
 
 .streak_calendar_day:hover {
   transform: scale(1.02);
-  background-color: #ceb7eb;
-  box-shadow: 0 4px 12px rgba(123, 68, 165, 0.35);
+  background-color: #f5f1f9f1;
+  box-shadow: 0 4px 12px black;
 }
 
 .streak_calendar_day.activity {
-  background-color: #9c76c1;
+  background-color: #453262df;
+  opacity: 1;
 }
 
 .streak_calendar_day.special {
-  background-color: #e6d5fb;
+  background-color: #453262df;
+  opacity: 1;
 }
 
 .streak_calendar_day.special:hover {
-  background-color: #ceb7eb;
+  background-color: #371761 !important;
+  opacity: 1;
 }
 
 .task_section {
@@ -155,8 +144,8 @@ body {
 }
 
 .selected_day {
-  background-color: #b19cd3 !important;
-  color: #1c0432ec;
+  background-color: #371761 !important;
+  color: white;
 }
 
 .streak_calendar_table:hover {
