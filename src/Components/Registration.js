@@ -20,6 +20,21 @@ const Registration = () => {
   const [profileImage, setProfileImage] = useState(null);
   const [profileImageUrl, setProfileImageUrl] = useState("");
   const cardRef = useRef(null);
+  const glowRef = useRef(null);
+  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const glow = glowRef.current;
+    const handleMouseMove = (e) => {
+      setCursorPosition({ x: e.clientX, y: e.clientY });
+    };
+
+    glow.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      glow.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
 
   useEffect(() => {
     const card = cardRef.current;
@@ -120,10 +135,34 @@ const Registration = () => {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-[#fcf8f5] px-20 py-7">
+    <div
+      ref={glowRef}
+      className="flex min-h-screen items-center justify-center bg-[#1e0634] px-20 py-7"
+    >
+      <div
+        className="glowingEffect"
+        style={{
+          position: "absolute",
+          left: `${cursorPosition.x}px`,
+          top: `${cursorPosition.y}px`,
+          width: "1px",
+          height: "1px",
+          backgroundColor: "#6a3ba3",
+          borderRadius: "50%",
+          boxShadow: "0 0 75px 75px rgba(106, 59, 163, 0.6)",
+          pointerEvents: "none",
+          transform: "scale(1)",
+          transition: "all 0s ease-in-out",
+          opacity: 0.3,
+          animation: "pulse 0s infinite",
+        }}
+      ></div>
+
       <div ref={cardRef} className={styles.reg_container}>
-        <div className="w-[90%] md:w-[50%] px-10 py-6">
-          <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
+        <div
+          className={`${styles.blurBackground} w-[80%] md:w-[50%] px-10 py-6`}
+        >
+          <h2 className="text-3xl font-bold text-center text-[#f5f5f5] mb-6">
             Create Account
           </h2>
 
@@ -140,26 +179,26 @@ const Registration = () => {
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-sm text-gray-700 font-medium mb-1">
+              <label className="block text-sm text-[#d1c4db] font-medium mb-1">
                 Full Name
               </label>
               <input
                 type="text"
                 name="username"
                 placeholder="Enter Username"
-                className="w-full px-3 py-1 text-sm border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none"
+                className={styles.input}
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 required
               />
             </div>
             <div>
-              <label className="block text-gray-700 text-sm font-medium mb-1">
+              <label className="block text-[#d1c4db] text-sm font-medium mb-1">
                 Email Address
               </label>
               <input
                 type="email"
-                className="w-full px-3 text-sm py-1 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none"
+                className={styles.input}
                 placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -168,13 +207,13 @@ const Registration = () => {
               />
             </div>
             <div>
-              <label className="block text-gray-700 text-sm font-medium mb-1">
+              <label className="block text-[#d1c4db] text-sm font-medium mb-1">
                 Password
               </label>
               <div className="relative">
                 <input
                   type={showPassword ? "text" : "password"}
-                  className="w-full px-3 py-1 border text-sm border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none"
+                  className={styles.input}
                   placeholder="Enter your password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -197,12 +236,12 @@ const Registration = () => {
 
             {/* Birthdate Input */}
             <div>
-              <label className="block text-gray-700 text-sm font-medium mb-1">
+              <label className="block text-[#d1c4db] text-sm font-medium mb-1">
                 Birthdate
               </label>
               <input
                 type="date"
-                className="w-full px-3 py-1 text-sm border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none"
+                className={styles.input}
                 value={birthdate}
                 onChange={(e) => setBirthdate(e.target.value)}
               />
@@ -210,12 +249,12 @@ const Registration = () => {
 
             {/* Country Input */}
             <div>
-              <label className="block text-gray-700 text-sm font-medium mb-1">
+              <label className="block text-[#d1c4db] text-sm font-medium mb-1">
                 Country
               </label>
               <input
                 type="text"
-                className="w-full px-3 py-1 text-sm border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none"
+                className={styles.input}
                 placeholder="Enter your country"
                 value={country}
                 onChange={(e) => setCountry(e.target.value)}
@@ -225,20 +264,17 @@ const Registration = () => {
 
             {/* Image Upload */}
             <div>
-              <label className="block text-gray-700 text-sm font-medium mb-1">
+              <label className="block text-[#d1c4db] text-sm font-medium mb-1">
                 Profile Image
               </label>
               <input
                 type="file"
                 onChange={handleImageUpload}
-                className="w-full text-sm border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none"
+                className={styles.input}
               />
             </div>
 
-            <button
-              type="submit"
-              className="w-full bg-[#669fd6] text-white text-sm font-bold py-2 rounded-lg mt-6 hover:bg-[#4b68ae] hover:scale-105 transition duration-700"
-            >
+            <button type="submit" className={styles.submitButton}>
               Register
             </button>
             {userId && (
@@ -252,20 +288,20 @@ const Registration = () => {
             )}
           </form>
 
-          <p className="text-center text-md text-gray-700 mt-4">
+          <p className="text-center text-md text-[#d1c4db] mt-4">
             Already have an account?{" "}
             <button
               type="button"
               onClick={handleLoginRedirect}
-              className="text-blue-500 text-md underline hover:text-blue-700"
+              className="text-[#e09eff] text-md hover:text-[#c880d5]"
             >
               Login here
             </button>
           </p>
         </div>
-        <div className="hidden md:flex md:w-1/2 order-1 md:order-1 bg-[#f0f5fc] rounded-3xl flex-col items-center justify-center p-8 text-center">
-          <h1 className="text-5xl font-bold text-gray-800">Welcome!!</h1>
-          <p className="text-red-500 font-medium text-3xl mt-2 mb-4">
+        <div className="hidden md:flex md:w-1/2 order-1 md:order-1 bg-[#3b225d] rounded-right flex-col items-center justify-center p-8 text-center">
+          <h1 className="text-5xl font-bold text-[#f5f5f5]">Welcome!!</h1>
+          <p className="text-[#e09eff] font-medium text-3xl mt-2 mb-4">
             Ready to conquer your day?
           </p>
           <img src="tt5.png" alt="Illustration" className="w-4/4" />

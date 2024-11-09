@@ -11,7 +11,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const cardRef = useRef(null);
-  const glowRef = useRef(null); 
+  const glowRef = useRef(null);
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
@@ -35,8 +35,8 @@ const Login = () => {
       const x = e.clientX - left;
       const y = e.clientY - top;
 
-      const rotateX = (y / height - 0.5) * 10; 
-      const rotateY = (x / width - 0.5) * -10; 
+      const rotateX = (y / height - 0.5) * 10;
+      const rotateY = (x / width - 0.5) * -10;
 
       card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
     };
@@ -112,14 +112,14 @@ const Login = () => {
           top: `${cursorPosition.y}px`,
           width: "1px",
           height: "1px",
-          backgroundColor: "#6a3ba3", 
+          backgroundColor: "#6a3ba3",
           borderRadius: "50%",
-          boxShadow: "0 0 75px 75px rgba(106, 59, 163, 0.6)", 
+          boxShadow: "0 0 75px 75px rgba(106, 59, 163, 0.6)",
           pointerEvents: "none",
           transform: "scale(1)",
           transition: "all 0s ease-in-out",
           opacity: 0.3,
-          animation: "pulse 0s infinite", 
+          animation: "pulse 0s infinite",
         }}
       ></div>
 
