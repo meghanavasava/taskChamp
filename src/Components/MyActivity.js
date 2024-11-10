@@ -33,31 +33,37 @@ const MyActivity = () => {
   }, []);
 
   return (
-    <div className={styles.pageContainer}>
-      <div className={styles.container}>
-        <div className={styles.navbar}>
-          <Navbar />
-        </div>
-        <div className={styles.streak}>
-          <h1 className={styles.heading}>My Activity</h1>
-          <br></br>
-          <br></br>
-          {user && (
-            <div className={styles.userGreeting}>
-              {imageUrl && (
-                <img
-                  src={imageUrl}
-                  alt="Profile"
-                  className={styles.profileImage}
-                />
-              )}
-              <h2 className={styles.userTask}>{user.username}'s Task</h2>
+    <div className={styles.pageContainer_Outer}>
+      <div className={styles.pageContainer}>
+        <div className={styles.pageContainer_Inner}>
+          <div className={styles.container}>
+            <div className={styles.navbar}>
+              <Navbar />
             </div>
-          )}
-          <StreakCalendar />
+            <div className={styles.streak_outer}>
+              <div className={styles.streak}>
+                <h1 className={styles.heading}>My Activity</h1>
+                <br></br>
+                <br></br>
+                {user && (
+                  <div className={styles.userGreeting}>
+                    {imageUrl && (
+                      <img
+                        src={imageUrl}
+                        alt="Profile"
+                        className={styles.profileImage}
+                      />
+                    )}
+                    <h2 className={styles.userTask}>{user.username}'s Task</h2>
+                  </div>
+                )}
+                <StreakCalendar />
+              </div>
+            </div>
+          </div>
+          <Footer className={styles.footer} />
         </div>
       </div>
-      <Footer className={styles.footer} />
     </div>
   );
 };

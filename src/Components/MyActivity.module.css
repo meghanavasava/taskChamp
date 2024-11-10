@@ -1,15 +1,25 @@
+.pageContainer_Outer {
+  display: flex;
+  flex-direction: column;
+}
 .pageContainer {
   display: flex;
   flex-direction: column;
   color: #cebde1;
+  width: 100%;
+  overflow: hidden;
   min-height: 100vh;
-  background-color: #351b57;
+  position: relative;
 }
+
+/* .pageContainer_Inner {
+} */
 
 .container {
   display: flex;
   flex: 1;
   width: 100%;
+  z-index: -3;
   justify-content: center;
   align-items: center;
 }
@@ -17,7 +27,7 @@
 .navbar {
   width: 20%;
   height: 100vh;
-  position: fixed;
+  position: fixed !important;
   top: 0;
   left: 0;
   display: flex;
@@ -25,10 +35,20 @@
   background-color: #f4f4f4;
 }
 
+.streak_outer {
+  background-position: center;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  width: 100%;
+  background-size: cover;
+  background-image: url("https://i.pinimg.com/564x/cf/bf/89/cfbf89d19825eb6f9ee39c651bd52009.jpg");
+}
+
 .streak {
   width: 80%;
   margin-left: 20%;
   padding-bottom: 50px;
+  backdrop-filter: blur(120px);
   overflow-y: auto;
   display: flex;
   flex-direction: column;
