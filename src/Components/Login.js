@@ -98,122 +98,103 @@ const Login = () => {
   return (
     <div
       ref={glowRef}
-      className={`${styles.minHScreen} flex px-20 py-5 items-center justify-center relative`}
-      style={{
-        backgroundColor: "rgb(30, 6, 52)",
-        overflow: "hidden",
-      }}
+      className={`${styles.minHScreen} flex items-center justify-center relative`}
     >
-      <div
-        className="glowingEffect"
-        style={{
-          position: "absolute",
-          left: `${cursorPosition.x}px`,
-          top: `${cursorPosition.y}px`,
-          width: "1px",
-          height: "1px",
-          backgroundColor: "#6a3ba3",
-          borderRadius: "50%",
-          boxShadow: "0 0 75px 75px rgba(106, 59, 163, 0.6)",
-          pointerEvents: "none",
-          transform: "scale(1)",
-          transition: "all 0s ease-in-out",
-          opacity: 0.3,
-          animation: "pulse 0s infinite",
-        }}
-      ></div>
-
-      <div
-        ref={cardRef}
-        className={`${styles.cardContainer} flex flex-col md:flex-row w-[90%] max-w-6xl relative`}
-      >
+      <div className={styles.log_inner}>
         <div
-          className={`${styles.leftSection} flex-1 flex flex-col items-center justify-center`}
+          className="glowingEffect"
+          style={{
+            position: "absolute",
+            left: `${cursorPosition.x}px`,
+            top: `${cursorPosition.y}px`,
+            width: "1px",
+            height: "1px",
+            backgroundColor: "#6a3ba3",
+            borderRadius: "50%",
+            boxShadow: "0 0 200px 200px #481e7cf5",
+            pointerEvents: "none",
+            transform: "scale(1)",
+            transition: "all 0s ease-in-out",
+            opacity: 0.3,
+            animation: "pulse 0s infinite",
+          }}
+        ></div>
+        <div
+          ref={cardRef}
+          className={`${styles.cardContainer} flex flex-col md:flex-row w-[40%] max-w-6xl relative`}
         >
-          <h2 className={`${styles.welcomeTitle} text-5xl font-bold mb-4 mt-7`}>
-            Welcome back !!
-          </h2>
-          <p
-            className={`${styles.welcomeSubtitle} text-3xl font-bold text-center`}
-          >
-            Let's stay on track!
-          </p>
-          <img
-            src="/tt4.png"
-            alt="Animated Graphic"
-            className="w-4/4 rounded-lg"
-          />
-        </div>
-
-        <div className={`${styles.rightSection} flex-1`}>
-          <div className="w-full max-w-md mx-auto">
-            <h2
-              className={`${styles.loginTitle} text-5xl font-bold text-center mb-8 mt-6`}
-            >
-              Login
-            </h2>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <label className={styles.label}>Username or Email</label>
-              <input
-                type="text"
-                placeholder="Enter your Username or Email"
-                className={`${styles.input} w-full`}
-                value={usernameOrEmail}
-                onChange={(e) => setUsernameOrEmail(e.target.value)}
-                required
-              />
-              <label className={`${styles.label} mt-4`}>Password</label>
-              <div className="flex items-center">
+          <div className={`${styles.rightSection} flex-1`}>
+            <div className="w-full max-w-md mx-auto">
+              <h2
+                className={`${styles.loginTitle} text-4xl font-bold text-center mb-8 mt-6`}
+              >
+                Login
+              </h2>
+              <form onSubmit={handleSubmit} className="space-y-1">
+                <label className={styles.label}>Username or Email</label>
                 <input
-                  type={showPassword ? "text" : "password"}
-                  placeholder="Enter your Password"
+                  type="text"
+                  placeholder="Enter your Username or Email"
                   className={`${styles.input} w-full`}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  value={usernameOrEmail}
+                  onChange={(e) => setUsernameOrEmail(e.target.value)}
                   required
                 />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className={styles.toggleButton}
-                >
-                  <img
-                    src={showPassword ? "/visible.svg" : "/hidden.svg"}
-                    alt={showPassword ? "Hide" : "Show"}
-                    className="w-5 h-5"
+                <br></br>
+                <br></br>
+                <label className={`${styles.label}`}>Password</label>
+                <div className="flex items-center relative">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    placeholder="Enter your Password"
+                    className={`${styles.input} w-full`}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
                   />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute inset-y-0 right-3 flex items-center text-blue-500"
+                  >
+                    <img
+                      src={showPassword ? "/visible.svg" : "/hidden.svg"}
+                      alt={showPassword ? "Hide" : "Show"}
+                      className="w-5 h-5"
+                    />
+                  </button>
+                </div>
+                <div className="flex items-center mt-4 mb-4">
+                  <input type="checkbox" id="terms" className="mr-2 mt-2" />
+                  <label
+                    htmlFor="terms"
+                    className={`${styles.textGray} mb-2.5 mt-4`}
+                  >
+                    I agree to the{" "}
+                    <span className={styles.link}>terms of service</span> and{" "}
+                    <span className={styles.link}>privacy policy</span>.
+                  </label>
+                </div>
+                <button type="submit" className={`${styles.submitButton} mt-4`}>
+                  Login
                 </button>
-              </div>
-              <div className="flex items-center mt-4">
-                <input type="checkbox" id="terms" className="mr-2" />
-                <label
-                  htmlFor="terms"
-                  className={`${styles.textGray} mb-4 mt-2`}
-                >
-                  I agree to the{" "}
-                  <span className={styles.link}>terms of service</span> and{" "}
-                  <span className={styles.link}>privacy policy</span>.
-                </label>
-              </div>
-              <button type="submit" className={styles.submitButton}>
-                Login
-              </button>
-              {error && (
-                <p className={`${styles.errorMessage} text-center mt-4`}>
-                  {error}
+                {error && (
+                  <p className={`${styles.errorMessage} text-center mt-4`}>
+                    {error}
+                  </p>
+                )}
+              </form>
+              <div className="text-center mt-6">
+                <p className={`${styles.textGray} text-md`}>
+                  Don't have an account?{" "}
+                  <button
+                    onClick={() => navigate("/Registration")}
+                    className={styles.registerLink}
+                  >
+                    Register
+                  </button>
                 </p>
-              )}
-            </form>
-            <div className="text-center mt-6">
-              <p className={`${styles.textGray} text-md`}>
-                Don't have an account?{" "}
-                <button
-                  onClick={() => navigate("/Registration")}
-                  className={styles.registerLink}
-                >
-                  Register
-                </button>
-              </p>
+              </div>
             </div>
           </div>
         </div>
