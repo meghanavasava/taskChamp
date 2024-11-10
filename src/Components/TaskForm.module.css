@@ -11,8 +11,11 @@
   background-size: cover;
   position: relative;
   background-position: center;
+  border: 3px solid rgba(210, 179, 255, 0.62);
   background-color: #4a2b73;
-  background-image: url("../../public/log5.png");
+  /* background-image: url("../../public/log5.png"); */
+  background-image: url("https://i.pinimg.com/originals/37/d8/fd/37d8fd385021566890f0df2e253a0901.gif");
+  /* background-image: url("https://i.pinimg.com/originals/70/eb/0b/70eb0b53eb57c91db403928c5d02a19a.gif"); */
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   perspective: 1000px;
 }
@@ -22,7 +25,7 @@
   flex-direction: column;
   gap: 10px;
   padding: 30px;
-  backdrop-filter: blur(40px);
+  backdrop-filter: blur(80px);
   width: 100%;
   border-radius: 12px;
   color: #d1c4db;
@@ -80,7 +83,7 @@
 }
 
 .task_form_button {
-  background-color: rgba(92, 54, 145, 0.8);
+  background-color: rgba(87, 45, 142, 0.931);
   width: 100%;
   margin-top: 10px;
   height: 40px;

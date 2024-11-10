@@ -19,8 +19,8 @@ const TaskForm = ({ reloadWithTask, setDateTask }) => {
       const x = e.clientX - left;
       const y = e.clientY - top;
 
-      const rotateX = (y / height - 0.5) * 15;
-      const rotateY = (x / width - 0.5) * -15;
+      const rotateX = (y / height - 0.5) * 20;
+      const rotateY = (x / width - 0.5) * -20;
 
       card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
     };
