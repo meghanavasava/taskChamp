@@ -149,7 +149,7 @@ const Registration = () => {
             height: "1px",
             backgroundColor: "#6a3ba3",
             borderRadius: "50%",
-            boxShadow: "0 0 200px 200px rgba(106, 59, 163, 0.6)",
+            boxShadow: "0 0 200px 200px #481e7cf5",
             pointerEvents: "none",
             transform: "scale(1)",
             transition: "all 0s ease-in-out",
@@ -159,9 +159,7 @@ const Registration = () => {
         ></div>
 
         <div ref={cardRef} className={styles.reg_container}>
-          <div
-            className={`${styles.blurBackground} w-[100%] md:w-[100%]`}
-          >
+          <div className={`${styles.blurBackground} w-[100%] md:w-[100%]`}>
             <div className={styles.blur_inner}>
               <h2 className="text-3xl font-bold text-center text-[#f5f5f5] mb-6">
                 Create Account
