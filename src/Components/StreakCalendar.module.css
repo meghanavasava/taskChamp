@@ -11,7 +11,7 @@
   font-weight: bold;
   margin-top: 0;
   margin-bottom: 20px;
-  color: #624e88;
+  color: white;
   text-align: center;
 }
 
@@ -26,30 +26,54 @@
   text-align: center;
   font-weight: bold;
   padding: 15px 8px;
-  background-color: #8967b3;
+  background-color: #4c247de4;
   color: white;
   border-radius: 5px;
 }
 
+.glowingEffect {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  background-color: #6a3ba3;
+  border-radius: 50%;
+  box-shadow: 0 0 150px 150px rgba(105, 65, 155, 0.386);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  /* visibility: hidden; */
+  transition: all 0s ease-in-out;
+}
+
+.glowingEffect.disable {
+  visibility: hidden !important;
+}
+
+.glowingEffect.active {
+  visibility: visible !important;
+}
+
 .streak_calendar_table {
   padding: 50px 70px;
-  background-color: #f8f1ff;
+  background-color: #10061d;
   border-radius: 12px;
+  position: relative; 
+  overflow: hidden;
   margin: 0px 120px;
-  box-shadow: 0 4px 8px rgba(51, 2, 94, 0.5);
+  box-shadow: 0 8px 10px black;
   transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
   perspective: 1000px;
 }
 
 .streak_calendar_table:hover {
-  box-shadow: 0 8px 12px rgba(51, 2, 94, 0.5);
+  box-shadow: 0 15px 20px black !important;
 }
 
 .streak_calendar_day {
   padding: 10px 8px;
-  background-color: #e6d5fb;
-  color: #8967b3;
+  background-color: #a286c5df;
+  color: black;
   text-align: center;
+  opacity: 0.7;
   cursor: pointer;
   border-radius: 5px;
   transition: transform 0.5s ease, box-shadow 0.2s ease;
@@ -57,20 +81,23 @@
 
 .streak_calendar_day:hover {
   transform: scale(1.02);
-  background-color: #ceb7eb;
-  box-shadow: 0 4px 12px rgba(123, 68, 165, 0.35);
+  background-color: #f5f1f9f1;
+  box-shadow: 0 4px 12px black;
 }
 
 .streak_calendar_day.activity {
-  background-color: #9c76c1;
+  background-color: #453262df;
+  opacity: 1;
 }
 
 .streak_calendar_day.special {
-  background-color: #e6d5fb;
+  background-color: #453262df;
+  opacity: 1;
 }
 
 .streak_calendar_day.special:hover {
-  background-color: #ceb7eb;
+  background-color: #371761 !important;
+  opacity: 1;
 }
 
 .task_section {
@@ -117,8 +144,8 @@ body {
 }
 
 .selected_day {
-  background-color: #b19cd3 !important;
-  color: #1c0432ec;
+  background-color: #371761 !important;
+  color: white;
 }
 
 .streak_calendar_table:hover {
