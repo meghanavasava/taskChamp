@@ -22,11 +22,16 @@
   width: 100%;
 }
 
+.streak_inner_header {
+  backdrop-filter: blur(4px);
+  padding: 15px 8px;
+  border-radius: 5px;
+}
+
 .streak_calendar_header {
   text-align: center;
   font-weight: bold;
-  padding: 15px 8px;
-  background-color: #4c247de4;
+  background-image: url("https://i.pinimg.com/736x/6f/31/8c/6f318c69597b920930e2ae912b629f08.jpg");
   color: white;
   border-radius: 5px;
 }
@@ -53,10 +58,10 @@
 }
 
 .streak_calendar_table {
-  padding: 50px 70px;
-  background-color: #10061d;
+  background-color: #0c061d;
   border-radius: 12px;
-  position: relative; 
+  position: relative;
+  padding: 50px 70px;
   overflow: hidden;
   margin: 0px 120px;
   box-shadow: 0 8px 10px black;
@@ -70,7 +75,7 @@
 
 .streak_calendar_day {
   padding: 10px 8px;
-  background-color: #a286c5df;
+  background-color: #f5f1f9c1;
   color: black;
   text-align: center;
   opacity: 0.7;
@@ -81,7 +86,7 @@
 
 .streak_calendar_day:hover {
   transform: scale(1.02);
-  background-color: #f5f1f9f1;
+  background-color: #f5f1f9;
   box-shadow: 0 4px 12px black;
 }
 
@@ -91,7 +96,7 @@
 }
 
 .streak_calendar_day.special {
-  background-color: #453262df;
+  background-color: #6d5394df;
   opacity: 1;
 }
 

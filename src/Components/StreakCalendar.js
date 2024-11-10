@@ -215,13 +215,27 @@ const StreakCalendar = () => {
           </div>
 
           <div className={styles.streak_calendar_grid}>
-            <div className={styles.streak_calendar_header}>Sun</div>
-            <div className={styles.streak_calendar_header}>Mon</div>
-            <div className={styles.streak_calendar_header}>Tue</div>
-            <div className={styles.streak_calendar_header}>Wed</div>
-            <div className={styles.streak_calendar_header}>Thu</div>
-            <div className={styles.streak_calendar_header}>Fri</div>
-            <div className={styles.streak_calendar_header}>Sat</div>
+            <div className={styles.streak_calendar_header}>
+              <div className={styles.streak_inner_header}>Sun</div>
+            </div>
+            <div className={styles.streak_calendar_header}>
+              <div className={styles.streak_inner_header}>Mon</div>
+            </div>
+            <div className={styles.streak_calendar_header}>
+              <div className={styles.streak_inner_header}>Tue</div>
+            </div>
+            <div className={styles.streak_calendar_header}>
+              <div className={styles.streak_inner_header}>Wed</div>
+            </div>
+            <div className={styles.streak_calendar_header}>
+              <div className={styles.streak_inner_header}>Thus</div>
+            </div>
+            <div className={styles.streak_calendar_header}>
+              <div className={styles.streak_inner_header}>Fri</div>
+            </div>
+            <div className={styles.streak_calendar_header}>
+              <div className={styles.streak_inner_header}>Sat</div>
+            </div>
 
             {calendarDays.map((day, index) => {
               if (day === null) {
