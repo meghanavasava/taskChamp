@@ -42,7 +42,7 @@
   ); */
   color: white;
   /* border: 1px solid rgba(255, 255, 255, 0.208); */
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 .glowingEffect {
@@ -67,22 +67,24 @@
 
 .streak_calendar_table_1 {
   margin: 0px 120px;
-  border-radius: 12px;
+  border-radius: 15px;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
   background-position: center;
   box-shadow: 0 8px 10px black;
-  background-image: url("https://i.pinimg.com/564x/56/b9/bf/56b9bff1c72c4cb98bade7ec7118e64b.jpg");
+  background-image: url("https://i.pinimg.com/originals/37/d8/fd/37d8fd385021566890f0df2e253a0901.gif");
+  /* background-image: url("https://i.pinimg.com/564x/56/b9/bf/56b9bff1c72c4cb98bade7ec7118e64b.jpg"); */
 }
 
 .streak_calendar_table {
   /* background-color: #0d0229af; */
-  backdrop-filter: blur(150px);
-  border-radius: 12px;
+  backdrop-filter: blur(130px);
+  border-radius: 20px;
   position: relative;
-  padding: 50px 70px;
+  padding: 50px 65px;
   overflow: hidden;
+  border: 3px solid rgba(210, 179, 255, 0.6);
   transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
   perspective: 1000px;
 }
