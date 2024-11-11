@@ -12,6 +12,17 @@
   position: relative;
 }
 
+.debug {
+  position: fixed;
+  left: 100px;
+  top: 100px;
+  color: #f4f4f4;
+}
+
+.canvas#canvas {
+	position: fixed;
+}
+
 /* .pageContainer_Inner {
 } */
 
