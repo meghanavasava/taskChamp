@@ -159,7 +159,7 @@ const MyActivity = () => {
       this.size = this.start.size;
       this.style = rgb[Math.floor(Math.random() * rgb.length)];
       this.time = 0;
-      this.ttl = 550;
+      this.ttl = 450;
     }
     draw(ctx) {
       ctx.fillStyle = this.style;
@@ -170,9 +170,7 @@ const MyActivity = () => {
     }
     update() {
       const progress = 1 - (this.ttl - this.time) / this.ttl;
-      this.size = this.start.size * (1 - (1 - progress) ** 4); // easeOutQuart
-      // this.x += (this.end.x - this.x) * 0.01;
-      // this.y += (this.end.y - this.y) * 0.01;
+      this.size = this.start.size * (1 - (1 - progress) ** 4);
       this.x = this.start.x;
       this.y = this.start.y;
       this.time++;
