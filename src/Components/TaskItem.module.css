@@ -27,7 +27,7 @@
   right: 0;
   bottom: 0;
   border-radius: 8px;
-  border: 3px solid #f3f1ff8b;
+  border: 3px solid #f3f1ffc1;
   animation: rotate-border 7s linear infinite;
   transition: border-color 0.5s ease;
   pointer-events: none;
@@ -56,7 +56,7 @@
 }
 
 .task_item:hover {
-  border: 3px solid #f3f1ff8b;
+  border: 3px solid #f3f1ffc1;
   backdrop-filter: blur(200px);
   transform: scale(1.02);
 }
@@ -66,12 +66,10 @@
 }
 
 .task_item.done {
-  /* background: #b3e8e5; */
-  /* border: 3px solid transparent; */
   text-decoration: line-through;
   background-color: rgba(26, 4, 45, 0.376);
   text-decoration-thickness: 2px;
-  text-decoration-color: #c4afe196;
+  text-decoration-color: #c4afe164;
 }
 
 .done p,
@@ -80,7 +78,7 @@
   color: black !important;
 }
 
-/* .task_item.done::before {
+.task_item.done::before {
   content: "";
   position: absolute;
   top: 0;
@@ -88,14 +86,14 @@
   right: 0;
   bottom: 0;
   border-radius: 8px;
-  border: 3px solid #3bacb6;
+  border: 3px solid #f3f1ff4b;
   animation: rotate-border 7s linear infinite;
   transition: border-color 0.5s ease;
   pointer-events: none;
-} */
+}
 
 .done:hover {
-  border: 3px solid #f3f1ff8b;
+  border: 3px solid #f3f1ff4b;
   transform: scale(1.02);
 }
 
@@ -106,7 +104,7 @@
 .done button.delete,
 .done button.update {
   color: white !important;
-  background-color: rgba(27, 4, 49, 0.622) !important;
+  background-color: rgba(27, 4, 49, 0.72) !important;
 }
 
 .done button.delete:hover,
@@ -115,24 +113,26 @@
 }
 
 .task_item h3 {
-  font-size: 20px;
-  margin: 0 0 10px;
+  font-size: 24px;
+  margin: 0 0 5px;
   color: white;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .task_item p {
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: 600;
   color: #f3f1ff8b;
-  margin: 0 0 10px;
+  margin: 0 0 1px;
 }
 
 .task_item label {
   display: flex;
   align-items: center;
-  font-size: 16px;
+  font-size: 17px;
+  font-weight: 600;
   color: #f3f1ff8b;
-  margin-bottom: 10px;
+  margin-bottom: 13px;
 }
 
 .task_item input[type="checkbox"] {
