@@ -17,14 +17,40 @@ const MyActivity = () => {
   const footerRef = useRef(null);
   const mouse = useRef({ x: undefined, y: undefined });
   const rgb = [
+    // Darker Pink shades
     "rgb(105, 0, 30)", // Darker Pink
     "rgb(184, 0, 76)", // Darker Deep Pink
+    "rgb(139, 0, 44)", // Dark Raspberry
+    "rgb(255, 20, 147)", // Deep Pink
+
+    // Darker Purple shades
     "rgb(75, 0, 130)", // Darker Purple
     "rgb(55, 0, 100)", // Darker Indigo (a dark purple-blue)
+    "rgb(48, 25, 52)", // Dark Eggplant
+    "rgb(93, 33, 57)", // Dark Violet
+
+    // Darker Blue shades
     "rgb(0, 0, 85)", // Darker Blue
     "rgb(0, 0, 139)", // Dark Blue
+    "rgb(0, 0, 128)", // Navy Blue
+    "rgb(0, 51, 102)", // Dark Steel Blue
+    "rgb(0, 102, 204)", // Deep Sky Blue
+
+    // Darker Cyan shades
     "rgb(0, 77, 77)", // Darker Cyan
     "rgb(0, 139, 139)", // Dark Cyan
+    "rgb(0, 128, 128)", // Teal
+    "rgb(0, 102, 102)", // Dark Sea Green
+
+    // Adding more Darker shades of Pink, Purple, Blue, Cyan
+    "rgb(94, 0, 32)", // Very Dark Pink
+    "rgb(69, 0, 42)", // Dark Crimson
+    "rgb(128, 0, 128)", // Purple (same as dark purple but more neutral)
+    "rgb(38, 0, 77)", // Dark Magenta
+    "rgb(0, 0, 205)", // Medium Dark Blue
+    "rgb(0, 36, 68)", // Dark Slate Blue
+    "rgb(0, 48, 58)", // Deep Dark Cyan
+    "rgb(0, 83, 83)", // Dark Sea Green
   ];
 
   useEffect(() => {
