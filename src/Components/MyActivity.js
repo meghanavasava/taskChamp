@@ -17,13 +17,14 @@ const MyActivity = () => {
   const footerRef = useRef(null);
   const mouse = useRef({ x: undefined, y: undefined });
   const rgb = [
-    "rgb(26, 188, 156)",
-    "rgb(46, 204, 113)",
-    "rgb(52, 152, 219)",
-    "rgb(155, 89, 182)",
-    "rgb(241, 196, 15)",
-    "rgb(230, 126, 34)",
-    "rgb(231, 76, 60)",
+    "rgb(105, 0, 30)", // Darker Pink
+    "rgb(184, 0, 76)", // Darker Deep Pink
+    "rgb(75, 0, 130)", // Darker Purple
+    "rgb(55, 0, 100)", // Darker Indigo (a dark purple-blue)
+    "rgb(0, 0, 85)", // Darker Blue
+    "rgb(0, 0, 139)", // Dark Blue
+    "rgb(0, 77, 77)", // Darker Cyan
+    "rgb(0, 139, 139)", // Dark Cyan
   ];
 
   useEffect(() => {
@@ -46,8 +47,7 @@ const MyActivity = () => {
 
     function animationLoop() {
       ctx.clearRect(0, 0, w, h);
-      ctx.globalCompositeOperation = "lighter";
-
+      ctx.globalCompositeOperation = "destination-over";
       if (!isMouseOverElement(navbar) && !isMouseOverElement(footer)) {
         drawBalls(ctx);
       }
@@ -66,9 +66,9 @@ const MyActivity = () => {
       });
     }
     function mousemove(e) {
+      const rect = canvas.getBoundingClientRect();
       mouse.current.x = e.clientX;
       mouse.current.y = e.clientY;
-
       if (!isMouseOverElement(navbar) && !isMouseOverElement(footer)) {
         Array.from({ length: 3 }).forEach(() =>
           ballsRef.current.push(new Ball(mouse.current))
@@ -120,9 +120,9 @@ const MyActivity = () => {
   class Ball {
     constructor(mouse) {
       this.start = {
-        x: mouse.x + Math.random() * 20 - 10,
-        y: mouse.y + Math.random() * 20 - 10,
-        size: Math.random() * 10 + 2,
+        x: mouse.x + Math.random() * 5 - 2.5,
+        y: mouse.y + Math.random() * 5 - 2.5,
+        size: Math.random() * 10 + 5,
       };
       this.end = {
         x: this.start.x + Math.random() * 600 - 300,
@@ -133,7 +133,7 @@ const MyActivity = () => {
       this.size = this.start.size;
       this.style = rgb[Math.floor(Math.random() * rgb.length)];
       this.time = 0;
-      this.ttl = 100;
+      this.ttl = 550;
     }
     draw(ctx) {
       ctx.fillStyle = this.style;
@@ -145,8 +145,10 @@ const MyActivity = () => {
     update() {
       const progress = 1 - (this.ttl - this.time) / this.ttl;
       this.size = this.start.size * (1 - (1 - progress) ** 4); // easeOutQuart
-      this.x += (this.end.x - this.x) * 0.01;
-      this.y += (this.end.y - this.y) * 0.01;
+      // this.x += (this.end.x - this.x) * 0.01;
+      // this.y += (this.end.y - this.y) * 0.01;
+      this.x = this.start.x;
+      this.y = this.start.y;
       this.time++;
     }
   }
