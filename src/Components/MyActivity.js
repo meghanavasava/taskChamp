@@ -211,6 +211,11 @@ const MyActivity = () => {
               <canvas ref={canvasRef} className={styles.canvas} id="canvas" />
               <div className={styles.streak} ref={streakRef}>
                 <h1 className={styles.heading}>My Activity</h1>
+                <h1 className={styles.heading}>My Activity</h1>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
                 <br></br>
                 <br></br>
                 {user && (
