@@ -157,24 +157,6 @@ const MyActivity = () => {
 
   return (
     <div className={styles.pageContainer_Outer} ref={glowRef}>
-      {/* <div
-        className="glowingEffect"
-        style={{
-          position: "absolute",
-          left: `${cursorPosition.x}px`,
-          top: `${cursorPosition.y}px`,
-          width: "1px",
-          height: "1px",
-          backgroundColor: "#6a3ba3",
-          borderRadius: "50%",
-          boxShadow: "0 0 200px 200px #fffff",
-          pointerEvents: "none",
-          transform: "scale(1)",
-          transition: "all 0s ease-in-out",
-          opacity: 0.3,
-          animation: "pulse 0s infinite",
-        }}
-      ></div> */}
       <div className={styles.pageContainer}>
         <div className={styles.pageContainer_Inner}>
           <div className={styles.container}>
@@ -183,14 +165,8 @@ const MyActivity = () => {
             </div>
             <div className={styles.streak_outer}>
               <div className={styles.streak}>
-                {/* <canvas ref={canvas} className={styles.canvas}>
-                  balls = <span></span>
-                </canvas> */}
                 <canvas ref={canvasRef} className={styles.canvas} id="canvas" />
                 <h1 className={styles.heading}>My Activity</h1>
-                {/* <div id="debug" className={styles.debug}>
-                  balls.length <span></span>
-                </div> */}
                 <br></br>
                 <br></br>
                 {user && (

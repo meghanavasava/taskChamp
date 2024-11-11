@@ -19,12 +19,16 @@
   color: #f4f4f4;
 }
 
-.canvas#canvas {
-	position: fixed;
+.canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
 }
-
-/* .pageContainer_Inner {
-} */
 
 .container {
   display: flex;
