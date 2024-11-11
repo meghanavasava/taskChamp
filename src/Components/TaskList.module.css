@@ -17,11 +17,11 @@
 }
 
 .tasklist h1:nth-child(1) {
-  color: #58b0be;
+  color: rgb(201, 198, 255);
 }
 
 .tasklist h1:nth-child(2) {
-  color: #176b87;
+  color: rgb(221, 188, 249);
   animation: animate 5s ease-in-out infinite;
 }
 
