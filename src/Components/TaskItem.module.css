@@ -2,7 +2,8 @@
   /* background-color: #0056b3; */
   background-size: cover;
   background-position: center;
-  margin-bottom: 15px;
+  margin-bottom: 35px;
+  object-fit: cover;
   background-repeat: no-repeat;
   background-image: url("https://i.pinimg.com/564x/14/31/a7/1431a726423b954a039f4d0223a1c1c0.jpg");
   border-radius: 8px;
@@ -55,9 +56,13 @@
   transform: scale(1.02);
 }
 
+.task_item_outer:hover .task_item {
+  backdrop-filter: blur(1000px) !important;
+}
+
 .task_item:hover {
   border: 3px solid #f3f1ffc1;
-  backdrop-filter: blur(200px);
+  backdrop-filter: blur(200px) !important;
   transform: scale(1.02);
 }
 

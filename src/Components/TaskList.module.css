@@ -57,9 +57,9 @@
 }
 
 .tasklist_image {
-  height: 250px;
-  margin: 40px 0;
-  animation: pulse 20s ease-in-out infinite;
+  height: 320px;
+  margin: 0;
+  animation: pulse 7s ease-in-out infinite;
 }
 
 @keyframes pulse {
