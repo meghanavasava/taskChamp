@@ -12,6 +12,7 @@ const MyActivity = () => {
   const glowRef = useRef(null);
   const canvasRef = useRef(null);
   const ballsRef = useRef([]);
+  const streakRef = useRef(null);
   const [balls, setBalls] = useState([]);
   const mouse = useRef({ x: undefined, y: undefined });
   const rgb = [
@@ -26,6 +27,7 @@ const MyActivity = () => {
 
   useEffect(() => {
     const canvas = canvasRef.current;
+    const str = streakRef.current;
     const ctx = canvas.getContext("2d");
     let w, h;
 
@@ -85,9 +87,9 @@ const MyActivity = () => {
     class Ball {
       constructor(mouse) {
         this.start = {
-          x: mouse.x + Math.random() * 40 - 20,
-          y: mouse.y + Math.random() * 40 - 20,
-          size: Math.random() * 10 + 30,
+          x: mouse.x + Math.random() * 20 - 10,
+          y: mouse.y + Math.random() * 20 - 10,
+          size: Math.random() * 10 + 2,
         };
         this.end = {
           x: this.start.x + Math.random() * 600 - 300,
@@ -98,7 +100,7 @@ const MyActivity = () => {
         this.size = this.start.size;
         this.style = rgb[Math.floor(Math.random() * rgb.length)];
         this.time = 0;
-        this.ttl = 120;
+        this.ttl = 100;
       }
       draw(ctx) {
         ctx.fillStyle = this.style;
@@ -164,8 +166,9 @@ const MyActivity = () => {
               <Navbar />
             </div>
             <div className={styles.streak_outer}>
-              <div className={styles.streak}>
-                <canvas ref={canvasRef} className={styles.canvas} id="canvas" />
+              <canvas ref={canvasRef} className={styles.canvas} id="canvas" />
+              <div className={styles.streak} ref={streakRef}>
+                
                 <h1 className={styles.heading}>My Activity</h1>
                 <br></br>
                 <br></br>
