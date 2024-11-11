@@ -53,6 +53,7 @@
   border-radius: 50%;
   box-shadow: 0 0 150px 150px rgba(111, 6, 210, 0.45);
   pointer-events: none;
+  z-index: -1;
   transform: translate(-50%, -50%);
   transition: all 0s ease-in-out;
 }
@@ -74,11 +75,9 @@
   background-position: center;
   box-shadow: 0 8px 10px black;
   background-image: url("https://i.pinimg.com/originals/37/d8/fd/37d8fd385021566890f0df2e253a0901.gif");
-  /* background-image: url("https://i.pinimg.com/564x/56/b9/bf/56b9bff1c72c4cb98bade7ec7118e64b.jpg"); */
 }
 
 .streak_calendar_table {
-  /* background-color: #0d0229af; */
   backdrop-filter: blur(130px);
   border-radius: 20px;
   position: relative;
@@ -98,7 +97,7 @@
   background-color: #f0f0ffd5;
   color: black;
   text-align: center;
-  opacity: 0.7;
+  opacity: 0.85;
   cursor: pointer;
   border-radius: 5px;
   transition: transform 0.5s ease, box-shadow 0.2s ease;
