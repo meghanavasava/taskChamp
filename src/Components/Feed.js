@@ -3,6 +3,7 @@ import { realDb } from "../firebase";
 import { ref, onValue, query, orderByChild, get } from "firebase/database";
 import AddPost from "./AddPost";
 import PostList from "./PostList";
+import styles from "./Feed.module.css";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 
@@ -135,7 +136,7 @@ const Feed = () => {
                         className="flex items-center justify-between p-2 hover:bg-gray-50 rounded-lg"
                       >
                         <div className="flex items-center space-x-3">
-                          <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white font-medium">
+                          <div className={styles.flip_card}>
                             {user.username.charAt(0).toUpperCase()}
                           </div>
                           <span className="font-medium text-gray-700">
