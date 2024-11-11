@@ -19,8 +19,8 @@ const TaskForm = ({ reloadWithTask, setDateTask }) => {
       const x = e.clientX - left;
       const y = e.clientY - top;
 
-      const rotateX = (y / height - 0.5) * 15;
-      const rotateY = (x / width - 0.5) * -15;
+      const rotateX = (y / height - 0.5) * 20;
+      const rotateY = (x / width - 0.5) * -20;
 
       card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
     };
@@ -65,7 +65,7 @@ const TaskForm = ({ reloadWithTask, setDateTask }) => {
 
   return (
     <div className={styles.task_form_div}>
-      <img src="task_form1.jpg" className={styles.task_form_image1}></img>
+      {/* <img src="tf1.png" className={styles.task_form_image1}></img> */}
       <div className={styles.form_container} ref={cardRef}>
         <form onSubmit={handleSubmit} className={styles.task_form}>
           <input
@@ -97,7 +97,7 @@ const TaskForm = ({ reloadWithTask, setDateTask }) => {
           </button>
         </form>
       </div>
-      <img src="task_form2.jpg" className={styles.task_form_image2}></img>
+      {/* <img src="tf2.png" className={styles.task_form_image2}></img> */}
     </div>
   );
 };
