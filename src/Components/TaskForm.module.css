@@ -83,7 +83,7 @@
 }
 
 .task_form_button {
-  background-color: rgba(87, 45, 142, 0.931);
+  background-color: rgb(92, 54, 145);
   width: 100%;
   margin-top: 10px;
   height: 40px;
@@ -96,7 +96,7 @@
 }
 
 .task_form_button:hover {
-  background-color: rgb(92, 54, 145);
+  background-color: rgb(78, 43, 128);
   transform: scale(1.03);
 }
 
