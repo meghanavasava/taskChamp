@@ -87,7 +87,7 @@ const Chat = () => {
           <div
             className={`${styles.no_chat_outer} flex-1 flex items-center justify-center text-gray-500`}
           >
-            <div>Select a conversation to start messaging</div>
+            <div className={styles.no_chat_inner}>Select a conversation to start messaging</div>
           </div>
         )}
       </div>

@@ -111,7 +111,7 @@
 
 .chat_inner {
   width: 100%;
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(40px);
   overflow-y: auto;
 }
 
