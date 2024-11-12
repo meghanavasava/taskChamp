@@ -91,6 +91,11 @@
   color: #111827;
 }
 
+.no_chat_outer
+{
+  background-color: #111827;
+}
+
 .lastMessage {
   font-size: 0.875rem;
   color: #6b7280;

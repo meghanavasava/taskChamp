@@ -4,6 +4,7 @@ import Navbar from "./Navbar";
 import ChatWindow from "./ChatWindow";
 import Footer from "./Footer";
 import { auth, realDb } from "../firebase";
+import styles from "./Chat.module.css";
 import { ref, onValue, get } from "firebase/database";
 import { Search as SearchIcon, Send, Paperclip } from "lucide-react";
 
@@ -83,8 +84,10 @@ const Chat = () => {
             chatPartner={selectedChatPartner}
           />
         ) : (
-          <div className="flex-1 flex items-center justify-center text-gray-500">
-            Select a conversation to start messaging
+          <div
+            className={`${styles.no_chat_outer} flex-1 flex items-center justify-center text-gray-500`}
+          >
+            <div>Select a conversation to start messaging</div>
           </div>
         )}
       </div>

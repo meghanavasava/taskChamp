@@ -11,7 +11,6 @@
   align-items: center;
   justify-content: space-between;
   background-color: white;
-  border-bottom: 1px solid #e5e7eb;
 }
 
 .headerInfo {
@@ -93,6 +92,7 @@
 .chat_head_outer {
   border: 1.5px solid rgb(187, 159, 213);
   background-size: cover;
+  border-left: transparent;
   background-position: center;
   object-fit: cover;
   background-repeat: no-repeat;
