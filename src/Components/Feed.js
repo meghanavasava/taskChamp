@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { realDb } from "../firebase";
 import { ref, onValue, query, orderByChild, get } from "firebase/database";
 import AddPost from "./AddPost";
@@ -20,6 +20,38 @@ const Feed = () => {
   const [quote, setQuote] = useState("");
   const [topStreaks, setTopStreaks] = useState([]);
   const userId = localStorage.getItem("userId");
+  const cardRef = useRef(null);
+
+  useEffect(() => {
+    const card = cardRef.current;
+
+    const handleMouseMove = (e) => {
+      const { width, height, left, top } = card.getBoundingClientRect();
+      const x = e.clientX - left;
+      const y = e.clientY - top;
+
+      const rotateX = (y / height - 0.5) * 15;
+      const rotateY = (x / width - 0.5) * -15;
+
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    };
+
+    const handleMouseLeave = () => {
+      card.style.transform = "perspective(1000px) rotateX(0) rotateY(0)";
+    };
+
+    if (card) {
+      card.addEventListener("mousemove", handleMouseMove);
+      card.addEventListener("mouseleave", handleMouseLeave);
+    }
+
+    return () => {
+      if (card) {
+        card.removeEventListener("mousemove", handleMouseMove);
+        card.removeEventListener("mouseleave", handleMouseLeave);
+      }
+    };
+  }, []);
 
   const fetchUsername = async (userId) => {
     try {
@@ -95,9 +127,11 @@ const Feed = () => {
       <Navbar></Navbar>
       <div className="min-h-screen" style={{ marginLeft: "250px" }}>
         {/* Quote Header */}
-        <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-6">
-          <div className="max-w-6xl mx-auto px-4">
-            <p className="text-xl italic font-light text-center">{quote}</p>
+        <div className={`text-white ${styles.quote_outer}`}>
+          <div className={`max-w-6xl py-4 mx-auto px-4 ${styles.quote_inner}`}>
+            <p className="text-xl italic font-semibold font-light text-center">
+              {quote}
+            </p>
           </div>
         </div>
 
@@ -106,22 +140,26 @@ const Feed = () => {
           {userId && username ? (
             <div className="flex gap-8">
               {/* Left Column - Posts */}
-              <div className="flex-grow max-w-3xl">
-                <h2 className="text-2xl font-bold mb-6 text-gray-800"></h2>
-                <PostList
-                  posts={posts}
-                  user={{ uid: userId, displayName: username }}
-                />
+              <div className={`flex-grow max-w-3xl`}>
+                <div>
+                  <h2 className="text-2xl font-bold mb-6 text-gray-800"></h2>
+                  <PostList
+                    posts={posts}
+                    user={{ uid: userId, displayName: username }}
+                  />
+                </div>
               </div>
 
               {/* Right Column - Add Post & Streaks */}
               <div className="w-80 space-y-6">
                 {/* Add Post Section */}
-                <div className="bg-white rounded-xl shadow-sm p-4">
-                  <h3 className="text-lg font-semibold mb-4 text-gray-800">
-                    Share Thoughts
-                  </h3>
-                  <AddPost />
+                <div
+                  ref={cardRef}
+                  className={`bg-white rounded-xl shadow-sm ${styles.post_form_outer}`}
+                >
+                  <div className={`${styles.post_form_inner} rounded-xl`}>
+                    <AddPost />
+                  </div>
                 </div>
 
                 {/* Top Streaks Section */}

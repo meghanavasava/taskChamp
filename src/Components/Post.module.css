@@ -51,6 +51,11 @@
 .post_inner {
   border: 2px solid rgba(255, 255, 255, 0.298);
   backdrop-filter: blur(180px);
+  transition: transform 1s ease-in-out;
+}
+
+.post_inner:hover {
+  transform: scale(1.03);
 }
 
 .liked_post {
