@@ -79,15 +79,22 @@ const Chat = () => {
           onSelectChat={setSelectedChatPartner}
         />
         {currentUser && selectedChatPartner ? (
-          <ChatWindow
-            currentUser={currentUser}
-            chatPartner={selectedChatPartner}
-          />
+          <div className={styles.window_div_outer}>
+            <div className={styles.window_div}>
+              <ChatWindow
+                className={styles.chat_window}
+                currentUser={currentUser}
+                chatPartner={selectedChatPartner}
+              />
+            </div>
+          </div>
         ) : (
           <div
             className={`${styles.no_chat_outer} flex-1 flex items-center justify-center text-gray-500`}
           >
-            <div className={styles.no_chat_inner}>Select a conversation to start messaging</div>
+            <div className={styles.no_chat_inner}>
+              Select a conversation to start messaging
+            </div>
           </div>
         )}
       </div>

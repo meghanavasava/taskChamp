@@ -126,8 +126,8 @@ const ChatWindow = ({ currentUser, chatPartner }) => {
         </div>
       </div>
 
-      <div className={`flex-1 overflow-y-auto ${styles.chat_outer}`}>
-        <div className={`space-y-4 p-5 ${styles.chat_inner}`}>
+      <div className={`flex-1 overflow-y-auto`}>
+        <div className={`space-y-4 p-5`}>
           {messages.map((msg) => (
             <Message
               key={msg.id}
@@ -138,8 +138,8 @@ const ChatWindow = ({ currentUser, chatPartner }) => {
         </div>
       </div>
 
-      <div className={styles.chat_head_outer}>
-        <div className={`p-5 ${styles.chat_head_inner}`}>
+      <div>
+        <div className={`p-5`}>
           <div className="flex items-center gap-2">
             <button className="text-gray-400 hover:text-gray-600">
               <Paperclip className="h-5 w-5 text-[#D4BEE4] hover:text-[#9B7EBD]" />
