@@ -115,17 +115,19 @@ const ChatWindow = ({ currentUser, chatPartner }) => {
     <div className="flex-1 flex flex-col">
       <div className={styles.chat_head_outer}>
         <div
-          className={`p-4 flex items-center gap-3 ${styles.chat_head_inner}`}
+          className={`p-4 flex items-center gap-2 ${styles.chat_head_inner}`}
         >
           <div className={styles.flip_card}>
             {chatPartner.username?.[0]?.toUpperCase()}
           </div>
-          <div className="text-xl text-white">{chatPartner.username}</div>
+          <div className="text-xl font-bold ml-2 text-white">
+            {chatPartner.username}
+          </div>
         </div>
       </div>
 
       <div className={`flex-1 overflow-y-auto ${styles.chat_outer}`}>
-        <div className={`space-y-4 p-4 ${styles.chat_inner}`}>
+        <div className={`space-y-4 p-5 ${styles.chat_inner}`}>
           {messages.map((msg) => (
             <Message
               key={msg.id}
@@ -140,14 +142,14 @@ const ChatWindow = ({ currentUser, chatPartner }) => {
         <div className={`p-5 ${styles.chat_head_inner}`}>
           <div className="flex items-center gap-2">
             <button className="text-gray-400 hover:text-gray-600">
-              <Paperclip className="h-5 w-5" />
+              <Paperclip className="h-5 w-5 text-[#D4BEE4] hover:text-[#9B7EBD]" />
             </button>
             <input
               type="text"
               placeholder="Type a message..."
               value={messageText}
               onChange={(e) => setMessageText(e.target.value)}
-              className="flex-1 border border-gray-200 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500"
+              className="flex-1 placeholder-[#9B7EBD] text-[#3B1E54] font-semibold border border-[#9B7EBD] rounded-lg px-4 py-2 focus:outline-none focus:border-[#3B1E54]"
             />
             <button onClick={sendMessage} className={styles.chat_button}>
               <Send className="h-4 w-4" />
