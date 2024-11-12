@@ -89,6 +89,10 @@
   background-color: #1557b0;
 }
 
+.transparent_div {
+  background-color: transparent;
+}
+
 .chat_head_outer {
   border: 1.5px solid rgb(187, 159, 213);
   background-size: cover;
@@ -96,12 +100,13 @@
   background-position: center;
   object-fit: cover;
   background-repeat: no-repeat;
-  background: linear-gradient(270deg, #010720de, #1b0639, #2f0644e0);
+  background: linear-gradient(270deg, #010720, #1b0639, #2f0644);
   background-image: url("https://i.pinimg.com/564x/d2/6a/f4/d26af4e954c30605acbd7d2f486984ed.jpg");
 }
 
 .chat_head_inner {
   backdrop-filter: blur(150px);
+  background-color: #08012062;
 }
 
 .chat_outer {
@@ -120,10 +125,10 @@
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%;
-  background-color: rgb(230, 205, 255);
+  background-color: rgba(204, 188, 226, 0.759);
   display: flex;
   align-items: center;
-  color: #3b1e54;
+  color: #1f0734;
   font-weight: 700;
   justify-content: center;
   transition: transform 1s;
@@ -135,7 +140,7 @@
 }
 
 .chat_button {
-  background-color: rgb(118, 82, 165);
+  background-color: rgb(89, 22, 176);
   color: white;
   border-radius: 0.5rem;
   padding: 0.5rem 10px;
@@ -148,6 +153,6 @@
 }
 
 .chat_button:hover {
-  background-color: rgba(118, 82, 165, 0.799);
+  background-color: rgba(89, 22, 176, 0.755);
   box-shadow: #111827;
 }

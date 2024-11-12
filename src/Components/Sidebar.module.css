@@ -2,8 +2,8 @@
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%;
-  background-color: rgb(230, 205, 255);
-  color: #3b1e54;
+  background-color: rgba(204, 188, 226, 0.759);
+  color: #1f0734;
   font-weight: 700;
   display: flex;
   align-items: center;
@@ -13,12 +13,13 @@
 }
 
 .chat_rec:hover {
-  background-color: rgba(0, 0, 0, 0.33);
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
 .sidebar_inner {
   height: 100%;
   backdrop-filter: blur(120px);
+  background-color: #08012062;
 }
 
 .sidebar_outer {
