@@ -96,36 +96,41 @@ const Post = ({ post, user }) => {
         </div>
 
         {showComments && (
-          <div className="space-y-4 pt-4 border-t border-gray-100">
+          <div className="space-y-4 pt-4 mt-4 border-t border-gray-100">
             {comments.map((comment, index) => (
-              <div key={index} className="bg-gray-50 rounded-lg p-4">
-                <div className="flex items-center justify-between mb-2">
+              <div
+                key={index}
+                className={`bg-gray-50 rounded-lg px-4 py-2.5 ${styles.comment_div}`}
+              >
+                <div className="flex items-center justify-between mb-0">
                   <div className="flex items-center space-x-2">
                     <div className={styles.flip_card_comment}>
                       {comment.username.charAt(0).toUpperCase()}
                     </div>
-                    <span className="font-medium text-gray-800">
+                    <span className="text-md text-gray-300">
                       {comment.username}
                     </span>
                   </div>
-                  <span className="text-sm text-gray-500">
+                  <span className="text-sm text-gray-400">
                     {formatTimestamp(comment.createdAt)}
                   </span>
                 </div>
-                <p className="text-gray-700 ml-10">{comment.content}</p>
+                <p className="text-white font-semibold text-lg ml-10">
+                  {comment.content}
+                </p>
               </div>
             ))}
 
-            <div className="flex space-x-2 mt-4">
+            <div className="flex space-x-2">
               <input
                 value={newComment}
                 onChange={(e) => setNewComment(e.target.value)}
                 placeholder="Write a comment..."
-                className="flex-1 px-4 py-2 rounded-lg border border-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className={`flex-1 px-4 py-1.5 rounded-lg border border-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent ${styles.comment_input}`}
               />
               <button
                 onClick={handleComment}
-                className="px-6 py-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg hover:from-blue-600 hover:to-blue-700 transition duration-200"
+                className={`px-2.5 py-1.5 text-white rounded-lg transition duration-200 ${styles.comment_btn}`}
               >
                 Comment
               </button>

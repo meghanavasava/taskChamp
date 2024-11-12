@@ -22,11 +22,12 @@
 }
 
 .flip_card_comment {
-  width: 2rem;
-  height: 2rem;
-  background: linear-gradient(to right, #3b82f6, #2563eb);
+  width: 1.8rem;
+  height: 1.8rem;
+  background-color: rgba(162, 112, 232, 0.65);
   border-radius: 50%;
   display: flex;
+  margin-right: 2px;
   align-items: center;
   justify-content: center;
   color: white;
@@ -70,4 +71,25 @@
 .not_liked_post:hover {
   color: white;
   background-color: rgba(162, 112, 232, 0.679);
+}
+
+.comment_div {
+  background-color: rgba(214, 193, 255, 0.125);
+}
+
+.comment_input {
+  background-color: rgba(240, 219, 255, 0.9);
+  border: none;
+  color: #3b1e54;
+}
+.comment_input::placeholder {
+  color: #654984;
+}
+
+.comment_btn {
+  background-color: #7334aa !important;
+}
+
+.comment_btn:hover {
+  background-color: #7430b1 !important;
 }
