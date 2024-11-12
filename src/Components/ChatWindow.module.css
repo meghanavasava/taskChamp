@@ -100,13 +100,13 @@
   background-position: center;
   object-fit: cover;
   background-repeat: no-repeat;
-  background: linear-gradient(270deg, #010720, #1b0639, #2f0644);
-  background-image: url("https://i.pinimg.com/564x/d2/6a/f4/d26af4e954c30605acbd7d2f486984ed.jpg");
+  /* background: linear-gradient(270deg, #010720, #1b0639, #2f0644); */
+  background-image: url("https://i.pinimg.com/originals/70/eb/0b/70eb0b53eb57c91db403928c5d02a19a.gif");
 }
 
 .chat_head_inner {
-  backdrop-filter: blur(150px);
-  background-color: #08012062;
+  backdrop-filter: blur(500px);
+  background-color: #0801207e;
 }
 
 .chat_outer {
@@ -125,7 +125,7 @@
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%;
-  background-color: rgba(204, 188, 226, 0.759);
+  background-color: rgba(204, 188, 226, 0.6);
   display: flex;
   align-items: center;
   color: #1f0734;
