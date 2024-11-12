@@ -96,11 +96,12 @@
   background-position: center;
   object-fit: cover;
   background-repeat: no-repeat;
-  background-image: url("https://i.pinimg.com/564x/14/31/a7/1431a726423b954a039f4d0223a1c1c0.jpg");
+  background: linear-gradient(270deg, #010720de, #1b0639, #2f0644e0);
+  background-image: url("https://i.pinimg.com/564x/d2/6a/f4/d26af4e954c30605acbd7d2f486984ed.jpg");
 }
 
 .chat_head_inner {
-  backdrop-filter: blur(60px);
+  backdrop-filter: blur(150px);
 }
 
 .chat_outer {
@@ -134,7 +135,7 @@
 }
 
 .chat_button {
-  background-color: #803ba5;
+  background-color: rgb(118, 82, 165);
   color: white;
   border-radius: 0.5rem;
   padding: 0.5rem 10px;
@@ -147,6 +148,6 @@
 }
 
 .chat_button:hover {
-  background-color: #803ba5aa;
+  background-color: rgba(118, 82, 165, 0.799);
   box-shadow: #111827;
 }
