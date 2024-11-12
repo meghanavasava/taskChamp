@@ -1,21 +1,26 @@
 .flip_card {
-  width: 2rem; /* w-8 */
-  height: 2rem; /* h-8 */
-  background: linear-gradient(
-    to right,
-    #3b82f6,
-    #2563eb
-  ); /* bg-gradient-to-r from-blue-500 to-blue-600 */
-  border-radius: 50%; /* rounded-full */
+  width: 2rem;
+  height: 2rem;
+  background: linear-gradient(to right, #3b82f6, #2563eb);
+  border-radius: 50%;
   display: flex;
-  align-items: center; /* items-center */
-  justify-content: center; /* justify-center */
-  color: white; /* text-white */
-  font-weight: 500; /* font-medium */
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 500;
   transition: transform 1s ease-in-out;
   transform-style: preserve-3d;
 }
 
 .flip_card:hover {
-  transform: rotateY(360deg); /* Flip 360 degrees vertically */
+  transform: rotateY(360deg);
+}
+
+.feed_outer {
+  background-image: url("https://i.pinimg.com/originals/a7/99/61/a79961637e3d670135579a9138176fcf.gif");
+}
+
+.feed_inner
+{
+  backdrop-filter: blur(50px);
 }

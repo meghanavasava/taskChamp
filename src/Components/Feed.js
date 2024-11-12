@@ -91,9 +91,9 @@ const Feed = () => {
   }, [userId]);
 
   return (
-    <div>
+    <div className={styles.feed_outer}>
       <Navbar></Navbar>
-      <div className="min-h-screen bg-gray-50" style={{ marginLeft: "250px" }}>
+      <div className="min-h-screen" style={{ marginLeft: "250px" }}>
         {/* Quote Header */}
         <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-6">
           <div className="max-w-6xl mx-auto px-4">
@@ -102,7 +102,7 @@ const Feed = () => {
         </div>
 
         {/* Main Content */}
-        <div className="max-w-6xl mx-auto px-4 py-8">
+        <div className={`max-w-6xl mx-auto px-12 py-8 ${styles.feed_inner}`}>
           {userId && username ? (
             <div className="flex gap-8">
               {/* Left Column - Posts */}
