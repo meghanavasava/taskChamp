@@ -91,10 +91,10 @@ const Sidebar = ({ currentUser, recentChats, allUsers, onSelectChat }) => {
   return (
     <div className={styles.sidebar_outer}>
       <div
-        className={`w-80 bg-transparent flex flex-col ${styles.sidebar_inner}`}
+        className={`w-64 bg-transparent flex flex-col ${styles.sidebar_inner}`}
       >
         <div className="p-4 bg-transparent">
-          <Search onSelectUser={onSelectChat} />
+          <Search onSelectUser={onSelectChat}/>
         </div>
         <div className="flex-1 overflow-y-auto">
           {sortedRecentChats.map((chat) => {
