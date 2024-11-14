@@ -1,14 +1,47 @@
 .tasklist {
   padding: 20px;
-  background-color: #f9f9f9;
   border-radius: 10px;
   max-width: 900px;
+  position: relative;
   margin: auto;
 }
 
 .tasklist h1 {
-  font-size: 26px;
-  color: #444;
-  margin-bottom: 20px;
-  text-align: center;
+  font-size: 40px;
+  font-weight: 800;
+  margin-top: 30px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    rgb(229, 197, 255),
+    rgb(201, 184, 255),
+    rgb(205, 198, 255)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-align: center !important;
+  position: absolute;
+}
+
+.tasklist_image {
+  height: 320px;
+  margin: 0;
+  animation: pulse 7s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.09);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
